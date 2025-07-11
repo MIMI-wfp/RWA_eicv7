@@ -48,10 +48,9 @@ po/*~
 # RStudio Connect folder
 rsconnect/
 
-# Data files
-*.RData
-*.csv
-*.dta
+# Data folders
+raw_data/
+processed_data/
 
 # DS store
 .DS_Store

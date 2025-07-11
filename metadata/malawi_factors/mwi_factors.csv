@@ -1,0 +1,223 @@
+item_code,item,unit,unit_code,average_factor_kg,waste
+104,Maize grain (not as ufa),PIECE,9,0.271,0
+105,Green maize,PIECE,9,0.35130276666666665,0.3
+106,Rice,PIECE,9,0.271,0
+108,Sorghum (mapira),PACKET,51,0.28,0
+111,Bread,PIECE,9,0.5249291333333334,0
+112,"Buns, scones",PIECE,9,0.0888663,0
+113,Biscuits,PIECE,9,0.07407956666666667,0
+114,"Spaghetti, macaroni, pasta",PACKET,51,0.2333333333333333,0
+114,"Spaghetti, macaroni, pasta",PIECE,9,0.4064099333333333,0
+115,Breakfast cereal,PACKET,51,0.5,0
+116,Infant feeding cereals,PACKET,51,0.5,0
+117,Other (cereal/grain),PACKET,51,0,NA
+117,Other (cereal/grain),PIECE,9,0,NA
+201,Cassava tubers,PIECE,9,0.3249933,0.05
+202,Cassava flour,PIECE,9,4.58,0
+203,White sweet potato,PIECE,9,0.1465,0.05
+205,Irish potato,PIECE,9,0.17400000000000002,0.05
+206,Potato crisps,PACKET,51,0.028,0
+206,Potato crisps,PIECE,9,0.056307699999999995,0
+207,"Plantain, cooking banana",PIECE,9,0.25847,0.15
+208,Cocoyam (masimbi),PIECE,9,0.7783611,0.05
+209,Other (root/tuber/plantain),PIECE,9,0,NA
+305,Groundnut flour,PACKET,51,0.08,0
+306,Soyabean flour,PACKET,51,0.4684616666666667,0
+306,Soyabean flour,PIECE,9,0.271,0
+309,Macademia nuts,PIECE,9,0.0030000000000000005,0
+310,Other (nuts/pulses),PACKET,51,0,NA
+401,Onion,PIECE,9,0.07835976666666666,0.05
+402,Cabbage,PIECE,9,1.4014783333333334,0
+403,Tanaposi/Rape,PIECE,9,0.10432540000000001,0
+404,Nkhwani,PIECE,9,0.0275,0
+405,Chinese cabbage,PIECE,9,0.13101013333333333,0
+406,Other cultivated green leafy vegetables,PIECE,9,0.008,0
+407,Gathered wild green leaves,PIECE,9,0.008,0
+408,Tomato,PIECE,9,0.11819193333333333,0
+409,Cucumber,PIECE,9,0.22197423333333333,0
+410,Pumpkin,PIECE,9,1.6638016666666664,0.15
+411,Okra / Therere,PIECE,9,0.077,0
+413,Mushroom,PACKET,51,0.32137096666666665,0
+413,Mushroom,PIECE,9,0.0683334,0
+414,Other vegetables (vegetables),PACKET,51,0,NA
+414,Other vegetables (vegetables),PIECE,9,0,NA
+501,Eggs,PIECE,9,0.06066666666666667,0.05
+5023,Sun Dried fish (Small Variety),PACKET,51,0.04933333333333333,0
+5033,Fresh fish (Small Variety),PIECE,9,0.013333333333333334,0
+504,Beef,PIECE,9,0.9890567999999998,0.1
+505,Goat,PIECE,9,0.9699479333333333,0.1
+506,Pork,PIECE,9,0.9462580666666667,0.1
+508,Chicken,PIECE,9,1.42147,0.1
+509,"Other poultry - guinea fowl, doves, etc.",PIECE,9,1.187282,0.1
+510,"Small animal √Ø¬ø¬Ω rabbit, mice, etc.",PIECE,9,0.022000000000000002,0.1
+511,"Termites, other insects (eg Ngumbi, caterpillar)",PIECE,9,0.012932736666666667,0
+512,Tinned meat or fish,PIECE,9,0.34,0
+5123,Smoked fish (Small Variety),PIECE,9,0.04222222222222222,0
+514,Fish Soup/Sauce,LITRE,15,1,0
+514,Fish Soup/Sauce,PACKET,51,0,0
+515,Other (meats/fish),PACKET,51,0,NA
+515,Other (meats/fish),PIECE,9,0,NA
+522,Chicken/Pieces,PIECE,9,0.09299999999999999,NA
+601,Mango,PIECE,9,0.22311483333333335,0.05
+602,Banana,PIECE,9,0.16756556666666667,0.15
+603,"Citrus √Ø¬ø¬Ω naartje, orange, etc.",PIECE,9,0.1599046,0.15
+604,Pineapple,PIECE,9,0.7653557333333333,0.15
+605,Papaya,PIECE,9,1.396172,0.05
+606,Guava,PIECE,9,0.10234139999999999,0.15
+607,Avocado,PIECE,9,0.34883333333333333,0.05
+608,"Wild fruit (masau, malambe, etc.)",PACKET,51,0.43736536666666664,0.15
+608,"Wild fruit (masau, malambe, etc.)",PIECE,9,0.23820129999999998,0.15
+609,Apple,PIECE,9,0.09233333333333334,0.05
+610,Other (fruit),PIECE,9,0,NA
+701,Fresh milk,LITRE,15,1,0
+701,Fresh milk,PACKET,51,1,0
+702,Powdered milk,LITRE,15,1,0
+702,Powdered milk,PACKET,51,0.15,0
+703,Margarine - Blue band,PIECE,9,0.254,0
+704,Butter,PACKET,51,0,0
+705,Chambiko - soured milk,LITRE,15,1,0
+705,Chambiko - soured milk,PACKET,51,0.5984999999999999,0
+706,Yoghurt,LITRE,15,1,0
+706,Yoghurt,PACKET,51,0.09333333333333334,0
+707,Cheese,LITRE,15,0.24333333333333332,0
+707,Cheese,PIECE,9,0.244,0
+708,Infant feeding formula (for bottle),LITRE,15,1,0
+801,Sugar,LITRE,15,1,0
+801,Sugar,PACKET,51,1,0
+802,Sugar Cane,PACKET,51,0.9933333333333332,0.75
+802,Sugar Cane,PIECE,9,1.1464793666666668,0.75
+803,Cooking oil,LITRE,15,0.947,0
+803,Cooking oil,PACKET,51,0.05833333333333334,0
+803,Cooking oil,PIECE,9,0.04,0
+804,Other (sugar/fat/oil),PIECE,9,0,NA
+810,Salt,PACKET,51,0.15,0
+810,Salt,PIECE,9,0.7118055666666666,0
+811,Spices,PACKET,51,0.237,0
+811,Spices,PIECE,9,0.01,0
+812,"Yeast, baking powder, bicarbonate of soda",LITRE,15,0.25,0
+812,"Yeast, baking powder, bicarbonate of soda",PACKET,51,0.15,0
+812,"Yeast, baking powder, bicarbonate of soda",PIECE,9,0.006000000000000001,0
+813,Tomato sauce (bottle),LITRE,15,1,0
+814,"Hot sauce (Nali, etc.)",LITRE,15,1,0
+814,"Hot sauce (Nali, etc.)",PIECE,9,0.108,0
+815,"Jam, jelly",LITRE,15,1,0
+816,"Sweets, candy, chocolates",PACKET,51,0.24,0
+816,"Sweets, candy, chocolates",PIECE,9,0.012000000000000002,0
+817,Honey,LITRE,15,1,0
+817,Honey,PACKET,51,0,0
+820,Maize - boiled or roasted (vendor),PIECE,9,0.27435699999999996,0.3
+821,Chips (vendor),PACKET,51,0.33,0
+822,Cassava - boiled (vendor),PIECE,9,0.06944503333333334,0
+823,Eggs - boiled (vendor),PIECE,9,0.07205496666666668,0.05
+824,Chicken (vendor),PIECE,9,0.07964453333333332,0.1
+825,Meat (vendor),PIECE,9,0.0263279,0.1
+826,Fish (vendor),PIECE,9,0.0372393,0.1
+827,"Mandazi, doughnut (vendor)",PACKET,51,0.17843533333333336,0.1
+827,"Mandazi, doughnut (vendor)",PIECE,9,0.04460883333333334,0.1
+828,Samosa (vendor),PIECE,9,0.0413343,0
+829,Meal eaten at restaurant (vendor),PACKET,51,0,NA
+829,Meal eaten at restaurant (vendor),PIECE,9,0.9499999999999998,NA
+830,Other (vendor food),PACKET,51,0,NA
+830,Other (vendor food),PIECE,9,0,NA
+831,Boiled sweet potatoes,PIECE,9,0.24200000000000002,NA
+832,Rosted sweet potatoes,PIECE,9,0.11433333333333334,NA
+834,Rosted groundnuts,PACKET,51,0.105,NA
+834,Rosted groundnuts,PIECE,9,0.05000000000000001,NA
+835,Popcorn,PACKET,51,0.03,NA
+836,Zikondamoyo/Nkate,PIECE,9,0.09233333333333334,NA
+838,Cassava - roasted (vendor),PIECE,9,0.03833333333333334,NA
+901,Tea,PACKET,51,0.0030000000000000005,0
+901,Tea,PIECE,9,0.01,0
+902,Coffee,PACKET,51,0.36000000000000004,0
+904,Squash (Sobo drink concentrate),LITRE,15,1.048,0
+905,Fruit juice,LITRE,15,1.048,0
+905,Fruit juice,PACKET,51,0.947,0
+905,Fruit juice,PIECE,9,0.042,0
+906,Freezes (flavoured ice),LITRE,15,1,0
+906,Freezes (flavoured ice),PACKET,51,0.10000000000000002,0
+906,Freezes (flavoured ice),PIECE,9,0.314,0
+907,"Soft drinks (Coca-cola, Fanta, Sprite, etc.)",LITRE,15,1.048,0
+907,"Soft drinks (Coca-cola, Fanta, Sprite, etc.)",PIECE,9,1.015,0
+908,Chibuku (commercial traditional-style beer),LITRE,15,1,0
+908,Chibuku (commercial traditional-style beer),PACKET,51,0.5,0
+908,Chibuku (commercial traditional-style beer),PIECE,9,0.3,0
+909,Bottled water,LITRE,15,1,0
+910,Maheu,LITRE,15,1,0
+910,Maheu,PACKET,51,0.5,0
+911,"Bottled / canned beer (Carlsberg, etc.)",LITRE,15,1.014,0
+912,Thobwa,LITRE,15,1.014,0
+913,Traditional beer (masese),LITRE,15,1.014,0
+913,Traditional beer (masese),PACKET,51,0.5,0
+914,Wine or commercial liquor,LITRE,15,1.014,0
+915,Locally brewed liquor (kachasu),LITRE,15,1.014,0
+916,Other (beverages),LITRE,15,1,NA
+916,Other (beverages),PACKET,51,0,NA
+101,NA,NA,NA,NA,0
+102,NA,NA,NA,NA,0
+103,NA,NA,NA,NA,0
+107,NA,NA,NA,NA,0
+109,NA,NA,NA,NA,0
+110,NA,NA,NA,NA,0
+204,NA,NA,NA,NA,0.05
+301,NA,NA,NA,NA,0
+302,NA,NA,NA,NA,0
+303,NA,NA,NA,NA,0
+304,NA,NA,NA,NA,0
+307,NA,NA,NA,NA,0
+308,NA,NA,NA,NA,0
+412,NA,NA,NA,NA,0
+502,NA,NA,NA,NA,0.1
+503,NA,NA,NA,NA,0.1
+507,NA,NA,NA,NA,0.1
+513,NA,NA,NA,NA,0.1
+903,NA,NA,NA,NA,0
+1000,NA,NA,NA,NA,0
+1002,NA,NA,NA,NA,0
+1003,NA,NA,NA,NA,0
+1005,NA,NA,NA,NA,0
+1006,NA,NA,NA,NA,0
+1007,NA,NA,NA,NA,0
+1008,NA,NA,NA,NA,0
+1011,NA,NA,NA,NA,0
+1012,NA,NA,NA,NA,0
+1014,NA,NA,NA,NA,0
+1015,NA,NA,NA,NA,0.1
+1020,NA,NA,NA,NA,0
+1021,NA,NA,NA,NA,0
+1022,NA,NA,NA,NA,0.15
+1024,NA,NA,NA,NA,0.05
+1025,NA,NA,NA,NA,0.15
+1026,NA,NA,NA,NA,0
+1027,NA,NA,NA,NA,0
+1028,NA,NA,NA,NA,0.05
+1029,NA,NA,NA,NA,0
+1031,NA,NA,NA,NA,0.15
+1032,NA,NA,NA,NA,0.05
+1033,NA,NA,NA,NA,0
+1036,NA,NA,NA,NA,0
+1038,NA,NA,NA,NA,0
+1044,NA,NA,NA,NA,0.1
+1046,NA,NA,NA,NA,0.15
+1049,NA,NA,NA,NA,0
+1050,NA,NA,NA,NA,0
+1056,NA,NA,NA,NA,0
+1057,NA,NA,NA,NA,0
+1061,NA,NA,NA,NA,0
+1062,NA,NA,NA,NA,0
+1066,NA,NA,NA,NA,0
+1068,NA,NA,NA,NA,0.1
+1072,NA,NA,NA,NA,0
+1081,NA,NA,NA,NA,0
+1082,NA,NA,NA,NA,0.1
+1083,NA,NA,NA,NA,0
+1088,NA,NA,NA,NA,0
+5021,NA,NA,NA,NA,0.1
+5022,NA,NA,NA,NA,0.1
+5031,NA,NA,NA,NA,0.1
+5032,NA,NA,NA,NA,0.1
+5121,NA,NA,NA,NA,0.1
+5122,NA,NA,NA,NA,0.1
+311,NA,NA,NA,NA,0
+312,NA,NA,NA,NA,0.3
+313,NA,NA,NA,NA,0.3
+833,NA,NA,NA,NA,0.3

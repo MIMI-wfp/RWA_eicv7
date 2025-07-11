@@ -1,0 +1,178 @@
+﻿food_group_original,food_group_FCS,food_group,item_code,name_fra,name_eng,edible_portion,source,itemcode_sen,itemcode_civ,itemcode_bfa,itemcode_gnb,itemcode_ben,itemcode_mli,itemcode_ner,itemcode_tgo
+Cereals and Bread,Main staples,grains_roots_tubers,1,Riz local brisé,Broken local rice,1,WAFCT_2019,1,1,1,1,1,1,1,1
+Cereals and Bread,Main staples,grains_roots_tubers,2,Riz local entier,Whole local rice,1,WAFCT_2019,2,2,2,2,2,2,2,2
+Cereals and Bread,Main staples,grains_roots_tubers,3,Riz importé brisé,Broken imported rice,1,WAFCT_2019,3,3,3,3,3,3,3,3
+Cereals and Bread,Main staples,grains_roots_tubers,4,Riz importé entier,Whole imported rice,1,WAFCT_2019,4,4,4,4,4,4,4,4
+Cereals and Bread,Main staples,grains_roots_tubers,5,Maïs en épi,Corn on the cob,0.36,X(USDA),5,5,5,5,5,5,5,5
+Cereals and Bread,Main staples,grains_roots_tubers,6,Maïs en grain,Corn grain,1,WAFCT_2019,6,6,6,6,6,6,6,6
+Cereals and Bread,Main staples,grains_roots_tubers,7,Mil,Millet,1,WAFCT_2019,7,7,7,7,7,7,7,7
+Cereals and Bread,Main staples,grains_roots_tubers,8,Sorgho,Sorghum,1,WAFCT_2019,8,8,8,8,8,8,8,8
+Cereals and Bread,Main staples,grains_roots_tubers,9,Blé,Wheat,1,WAFCT_2019,9,9,9,9,9,9,9,9
+Cereals and Bread,Main staples,grains_roots_tubers,10,Fonio,Fonio,1,WAFCT_2019,10,10,10,10,10,10,10,10
+Cereals and Bread,Main staples,grains_roots_tubers,11,Autres céréales,Other cereals,1,WAFCT_2019,11,11,11,11,11,11,11,11
+Cereals and Bread,Main staples,grains_roots_tubers,12,Farine de maïs,Corn flour,1,WAFCT_2019,12,12,12,12,12,12,12,12
+Cereals and Bread,Main staples,grains_roots_tubers,13,semoule de mais,Corn semolina,1,WAFCT_2019,13,13,13,13,13,13,13,13
+Cereals and Bread,Main staples,grains_roots_tubers,14,Farine/semoule de mil,Millet flour/semolina,1,WAFCT_2019,14,14,14,14,14,14,14,14
+Cereals and Bread,Main staples,grains_roots_tubers,15,semoule de mil,Millet semolina,1,WAFCT_2019,15,15,15,15,15,15,15,15
+Cereals and Bread,Main staples,grains_roots_tubers,16,Farine de blé local ou importé,Local or imported wheat flour,1,WAFCT_2019,16,16,16,16,16,16,16,16
+Cereals and Bread,Main staples,grains_roots_tubers,17,semoule de blé,Wheat semolina,1,WAFCT_2019,17,17,17,17,17,17,17,17
+Cereals and Bread,Main staples,grains_roots_tubers,18,Autres farines de céréales,Other cereal flours,1,WAFCT_2019,18,18,18,18,18,18,18,18
+Cereals and Bread,Main staples,grains_roots_tubers,19,Autres semoules de céréales,Other cereal semolina,1,WAFCT_2019,19,19,19,19,19,19,19,19
+Cereals and Bread,Main staples,grains_roots_tubers,20,Pâtes alimentaires,Pasta,1,WAFCT_2019,20,20,20,20,20,20,20,20
+Cereals and Bread,Main staples,grains_roots_tubers,21,Pain moderne,Modern bread,1,WAFCT_2019,21,21,21,21,21,21,21,21
+Cereals and Bread,Main staples,grains_roots_tubers,22,Pain traditionnel,Traditional bread,1,WAFCT_2019,22,22,22,22,22,22,22,22
+Cereals and Bread,Main staples,grains_roots_tubers,169,Céréales de petit déjeuner,Breakfast cereals,1,WAFCT_2019,169,169,,169,,,,
+Cereals and Bread,Main staples,misc,23,Croissants,Croissants,1,WAFCT_2019,23,23,23,23,23,23,23,23
+Cereals and Bread,Main staples,misc,24,Biscuits,Biscuits,1,WAFCT_2019,24,24,24,24,24,24,24,24
+Cereals and Bread,Main staples,misc,25,Gâteaux,Cakes,1,WAFCT_2019,25,25,25,25,25,25,25,25
+Cereals and Bread,Main staples,grains_roots_tubers,26,"Beignets, galettes","Fritters, pancakes",1,WAFCT_2019,26,26,26,26,26,26,26,26
+Meat,Meat_Fish,meat_poultry_fish,27,Viande de boeuf,Beef meat,1,WAFCT_2019,27,27,27,27,27,27,27,27
+Meat,Meat_Fish,meat_poultry_fish,28,Viande de chameau,Camel meat,1,WAFCT_2019,28,28,28,28,28,28,28,28
+Meat,Meat_Fish,meat_poultry_fish,29,Viande de mouton,Mutton,1,WAFCT_2019,29,29,29,29,29,29,29,29
+Meat,Meat_Fish,meat_poultry_fish,30,Viande de chèvre,Goat meat,0.66,WAFCT_2019,30,30,30,30,30,30,30,30
+Meat,Meat_Fish,meat_poultry_fish,31,"Abats rouges (foie, rognon, poumon, coeur, rate, etc.)",Red offals ,0.9628,X(AVERAGE),31,31,31,31,31,31,31,31
+Meat,Meat_Fish,meat_poultry_fish,170,"Abats blancs (pieds, tête, etc.) et tripes (estomac, intestins,",White offals ,0.9628,X(AVERAGE),170,170,,170,,,,
+Meat,Meat_Fish,meat_poultry_fish,32,Viande de porc,Pork,1,WAFCT_2019,32,32,32,32,32,32,32,32
+Meat,Meat_Fish,meat_poultry_fish,33,Poulet sur pied,Live chicken,1,WAFCT_2019,33,33,33,33,33,33,33,33
+Meat,Meat_Fish,meat_poultry_fish,171,Autre volaille sur pied,Other live poultry,1,WAFCT_2019,171,171,,171,,,,
+Meat,Meat_Fish,meat_poultry_fish,34,Viande de poulet,Chicken meat,1,WAFCT_2019,34,34,34,34,34,34,34,34
+Meat,Meat_Fish,meat_poultry_fish,35,Viande d'autres volailles domestiques,Other domestic poultry meat,0.77,X(AVERAGE),35,35,35,35,35,35,35,35
+Meat,Meat_Fish,meat_poultry_fish,36,"Charcuterie (jambon, saucisson), conserves de viandes",Charcuterie ,1,X(AVERAGE),36,36,36,36,36,36,36,36
+Meat,Meat_Fish,meat_poultry_fish,37,"Viande séchée (boeuf, mouton, chameau)",Dried meat ,1,WAFCT_2019,37,37,37,37,37,37,37,37
+Meat,Meat_Fish,meat_poultry_fish,38,Gibiers,Game meat,1,WAFCT_2019,38,38,38,38,38,38,38,38
+Meat,Meat_Fish,meat_poultry_fish,39,Autres viandes n.d.a.,Other unspecified meat,0.74,X(AVERAGE),39,39,39,39,39,39,39,39
+Fish and Seafood,Meat_Fish,meat_poultry_fish,40,Poisson frais yaboye ou obo (sardinelle),Fresh Sardine ,0.82,WAFCT_2019,40,40,40,40,40,40,40,40
+Fish and Seafood,Meat_Fish,meat_poultry_fish,41,Poisson frais thiof/ seudeu (baracouda),Fresh Barracuda ,0.64,WAFCT_2019,41,41,41,41,41,41,41,41
+Fish and Seafood,Meat_Fish,meat_poultry_fish,42,Poisson frais wass,Fresh Wass,0.52,WAFCT_2019,42,42,42,42,42,42,42,42
+Fish and Seafood,Meat_Fish,meat_poultry_fish,43,"Autre Poisson frais (dorade, youfouf, rouget, siket [capitaine], thiarumbekh [mollette], …..)",Other Fresh Fish ,0.47,X(AVERAGE),43,43,43,43,43,43,43,43
+Fish and Seafood,Meat_Fish,meat_poultry_fish,44,Poisson fumé Kethiakh (sardinelle),Smoked Sardine ,0.43,WAFCT_2019,44,44,44,44,44,44,44,44
+Fish and Seafood,Meat_Fish,meat_poultry_fish,45,"Autre Poisson fumé (yaboye ou obo fumé, …)",Other Smoked Fish ,0.66,WAFCT_2019,45,45,45,45,45,45,45,45
+Fish and Seafood,Meat_Fish,meat_poultry_fish,172,Con fumé,Smoked Con,0.66,WAFCT_2019,172,172,,172,,,,
+Fish and Seafood,Meat_Fish,meat_poultry_fish,46,Poisson séché,Dried Fish,1,WAFCT_2019,46,46,46,46,46,46,46,46
+Fish and Seafood,Meat_Fish,meat_poultry_fish,47,Crabes,Crabs,0.2,WAFCT_2019,47,47,47,47,47,47,47,47
+Fish and Seafood,Meat_Fish,meat_poultry_fish,48,Crevettes fraiches,Fresh Shrimp,0.57,WAFCT_2019,48,48,48,48,48,48,48,48
+Fish and Seafood,Meat_Fish,meat_poultry_fish,49,Crevettes séchées,Dried Shrimp,1,WAFCT_2019,49,49,49,49,49,49,49,49
+Fish and Seafood,Meat_Fish,meat_poultry_fish,173,Escargots,Snails,0.65,WAFCT_2019,173,173,,173,,,,
+Fish and Seafood,Meat_Fish,meat_poultry_fish,50,autres fruits de mer,Other Seafood,0.43,X(AVERAGE),50,50,50,50,50,50,50,50
+Fish and Seafood,Meat_Fish,meat_poultry_fish,51,Conserves de poisson,Canned Fish,0.82,WAFCT_2019,51,51,51,51,51,51,51,51
+"Milk, Cheese, and Eggs",Milk,dairy,52,Lait frais industriel,Industrial Fresh Milk,1,WAFCT_2019,52,52,52,52,52,52,52,52
+"Milk, Cheese, and Eggs",Milk,dairy,174,Lait frais non industriel (méwou rate non fermenté),Non-Industrial Fresh Milk ,1,WAFCT_2019,174,,,174,,,,
+"Milk, Cheese, and Eggs",Milk,dairy,53,"Lait caillé, yaourt","Curdled Milk, Yogurt",1,WAFCT_2019,53,53,53,53,53,53,53,53
+"Milk, Cheese, and Eggs",Milk,dairy,54,Lait concentré sucré,Sweetened Condensed Milk,1,WAFCT_2019,54,54,54,54,54,54,54,54
+"Milk, Cheese, and Eggs",Milk,dairy,55,Lait concentré non-sucré,Unsweetened Condensed Milk,1,WAFCT_2019,55,55,55,55,55,55,55,55
+"Milk, Cheese, and Eggs",Milk,dairy,56,Lait en poudre,Powdered Milk,1,WAFCT_2019,56,56,56,56,56,56,56,56
+"Milk, Cheese, and Eggs",Milk,dairy,57,Fromage,Cheese,1,WAFCT_2019,57,57,57,57,57,57,57,57
+"Milk, Cheese, and Eggs",Milk,dairy,58,Lait et farines pour bébé,Baby Milk and Flours,1,WAFCT_2019,58,58,58,58,58,58,58,58
+"Milk, Cheese, and Eggs",Milk,dairy,59,Autres produits laitiers,Other Dairy Products,1,WAFCT_2019,59,59,59,59,59,59,59,59
+"Milk, Cheese, and Eggs",Milk,eggs,60,OEufs,Eggs,0.87,WAFCT_2019,60,60,60,60,60,60,60,60
+Oils and Fats,Oils,dairy,61,Beurre,Butter,1,WAFCT_2019,61,61,61,61,61,61,61,61
+Oils and Fats,Oils,nuts_seeds,62,Beurre de karité,Shea Butter,1,WAFCT_2019,62,62,62,62,62,62,62,62
+Oils and Fats,Oils,nuts_seeds,63,Huile de palme rouge,Red Palm Oil,1,WAFCT_2019,63,63,63,63,63,63,63,63
+Oils and Fats,Oils,nuts_seeds,64,Huile d'arachide raffinée,Refined Peanut Oi,1,WAFCT_2019,64,64,64,64,64,64,64,64
+Oils and Fats,Oils,nuts_seeds,65,"Huile d'arachide ""Segal""",Segal Peanut Oil,1,WAFCT_2019,65,65,64,65,65,65,65,65
+Oils and Fats,Oils,nuts_seeds,66,Huile de soja,Soy Oil,1,WAFCT_2019,66,66,,66,66,66,66,66
+Oils and Fats,Oils,nuts_seeds,67,Huile de coton,Cottonseed Oil,1,WAFCT_2019,67,67,65,67,67,67,67,67
+Oils and Fats,Oils,nuts_seeds,68,Huile de palme raffinée,Refined Palm Oil,1,WAFCT_2019,68,68,66,68,68,68,68,68
+Oils and Fats,Oils,nuts_seeds,175,Huile de karité,Shea Oil,1,WAFCT_2019,175,175,,175,,,,
+Oils and Fats,Oils,nuts_seeds,69,Noix de palme,Palm Nuts,1,WAFCT_2019,69,69,67,69,69,69,69,69
+Oils and Fats,Oils,misc,70,"Autres huiles n.d.a. (maïs, huile palmiste, huile d'olive,huile de tournesol, huile de lait de vache etc.)",Other Oils ,1,WAFCT_2019,70,70,68,70,70,70,70,70
+Fruits,Fruits,vita_fruit_veg,71,Mangue,Mango,0.71,WAFCT_2019,71,71,69,71,71,71,71,71
+Fruits,Fruits,other_fruit,72,Ananas,Pineapple,0.68,WAFCT_2019,72,72,70,72,72,72,72,72
+Fruits,Fruits,other_fruit,73,Orange,Orange,0.73,WAFCT_2019,73,73,71,73,73,73,73,73
+Fruits,Fruits,other_fruit,74,Citrons,Lemons,0.66,WAFCT_2019,74,74,73,74,74,74,74,74
+Fruits,Fruits,other_fruit,75,"Autres agrumes (mandarine, pamplemousse, etc.)",Other Citrus,0.704,X(AVERAGE),75,75,74,75,75,75,75,75
+Fruits,Fruits,other_fruit,76,Banane douce,Sweet Banana,0.62,WAFCT_2019,76,76,72,76,76,76,76,76
+Fruits,Fruits,other_fruit,77,Avocats,Avocados,0.71,WAFCT_2019,77,77,75,77,77,77,77,77
+Fruits,Fruits,vita_fruit_veg,78,Pastèque,Watermelon,0.55,WAFCT_2019,78,78,76,78,78,78,78,78
+Fruits,Fruits,vita_fruit_veg,79,Melon,Melon,0.51,WAFCT_2019,79,79,77,79,79,79,79,79
+Fruits,Fruits,other_fruit,80,Dattes,Dates,0.84,WAFCT_2019,80,80,78,80,80,80,80,80
+Fruits,Fruits,other_fruit,81,Noix de coco,Coconut,1,WAFCT_2019,81,81,79,81,81,81,81,81
+Fruits,Fruits,other_fruit,82,Canne à sucre,Sugar Cane,0.36,X(OTHER),82,82,80,82,82,82,82,82
+Fruits,Fruits,other_fruit,83,Pommes,Apples,0.9,WAFCT_2019,83,83,81,83,83,83,83,83
+Fruits,Fruits,vita_fruit_veg,84,Papaye,Papaya,0.62,WAFCT_2019,84,84,,84,84,84,84,84
+Fruits,Fruits,vita_fruit_veg,176,Goyave,Guava,0.98,WAFCT_2019,176,176,,176,,,,
+Fruits,Fruits,vita_fruit_veg,85,Fruit de baobab (bouye),Baobab Fruit (Bouye),0.23,WAFCT_2019,85,85,,85,85,85,85,85
+Fruits,Fruits,nuts_seeds,86,Néré,Locust Bean,0.3,WAFCT_2019,86,86,,86,86,86,86,86
+Fruits,Fruits,other_fruit,87,"Autres fruits (tamarin noir, liane sauvage, raisin, fraise,pomme sauvage, bissap ""dome"",etc.)",Other Fruits,0.76,X(AVERAGE),87,87,82,87,87,87,87,87
+Vegetables,Vegetables,green_leafy_veg,88,Salade (laitue),Lettuce,0.7,WAFCT_2019,88,88,83,88,88,88,88,88
+Vegetables,Vegetables,green_leafy_veg,89,Choux,Cabbage,0.92,WAFCT_2019,89,89,84,89,89,89,89,89
+Vegetables,Vegetables,vita_fruit_veg,90,Carotte,Carrot,0.92,WAFCT_2019,90,90,85,90,90,90,90,90
+Vegetables,Vegetables,green_leafy_veg,91,Haricot vert,Green Beans,0.92,WAFCT_2019,91,91,86,91,91,91,91,91
+Vegetables,Vegetables,green_leafy_veg,92,Concombre,Cucumber,0.97,WAFCT_2019,92,92,87,92,92,92,92,92
+Vegetables,Vegetables,other_veg,93,"Aubergine,",Eggplant,0.81,WAFCT_2019,93,93,88,93,93,93,93,93
+Vegetables,Vegetables,green_leafy_veg,94,Courge/Courgette,Squash/Zucchini,0.68,WAFCT_2019,94,94,89,94,94,94,94,94
+Vegetables,Vegetables,vita_fruit_veg,95,Poivron frais,Fresh Bell Pepper,0.8,X(AVERAGE),95,95,90,95,95,95,95,95
+Vegetables,Vegetables,other_veg,96,Tomate fraîche,Fresh Tomato,0.91,WAFCT_2019,96,96,91,96,96,96,96,96
+Vegetables,Vegetables,other_veg,97,Tomate séchée,Dried Tomato,1,WAFCT_2019,97,97,92,97,97,97,97,97
+Vegetables,Vegetables,green_leafy_veg,98,Gombo frais,Fresh Okra,0.86,WAFCT_2019,98,98,93,98,98,98,98,98
+Vegetables,Vegetables,green_leafy_veg,99,Gombo sec,Dried Okra,1,WAFCT_2019,99,99,94,99,99,99,99,99
+Vegetables,Vegetables,other_veg,100,Oignon frais,Fresh Onion,0.89,WAFCT_2019,100,100,95,100,100,100,100,100
+Vegetables,Vegetables,green_leafy_veg,177,Champignon frais,Fresh Mushroom,1,Assumed,177,177,,177,,,,
+Vegetables,Vegetables,other_veg,101,Ail,Garlic,0.85,WAFCT_2019,101,101,96,101,101,101,101,101
+Vegetables,Vegetables,green_leafy_veg,102,Feuilles d'oseille (bissap),Sorrel Leaves (Bissap),0.76,WAFCT_2019,102,102,97,102,102,102,102,102
+Vegetables,Vegetables,green_leafy_veg,103,"Feuilles de baobab/ ""laalo""","Baobab Leaves/ ""Laalo""",0.54,WAFCT_2019,103,103,98,103,103,103,103,103
+Vegetables,Vegetables,green_leafy_veg,104,"Feuilles de haricot/ ""niébé""","Bean Leaves/ ""Niébé""",0.82,WAFCT_2019,104,104,100,104,104,104,104,104
+Vegetables,Vegetables,green_leafy_veg,105,Feuilles nébédaye (moringa),Nébédaye Leaves (Moringa),0.62,WAFCT_2019,105,105,,105,105,105,105,105
+Vegetables,Vegetables,green_leafy_veg,106,Autres légumes en feuilles,Other Leafy Vegetables,0.804,X(AVERAGE),106,106,101,106,106,106,106,106
+Vegetables,Vegetables,green_leafy_veg,107,Autre légumes frais n.d.a.,Other Fresh Vegetables n.d.a.,0.804,X(AVERAGE),107,107,102,107,107,107,107,107
+Vegetables,Vegetables,other_veg,108,Concentré de tomate,Tomato Paste,1,WAFCT_2019,108,108,103,108,108,108,108,108
+Legumes and Tubers,Pulses_Nuts_Legumes,nuts_seeds,109,Petits pois,Green Peas,1,WAFCT_2019,109,109,104,109,109,109,109,109
+Legumes and Tubers,Pulses_Nuts_Legumes,nuts_seeds,110,Petit pois secs,Dried Green Peas,1,WAFCT_2019,110,110,105,110,110,110,110,110
+Legumes and Tubers,Vegetables,other_veg,111,Autres légumes secs n.d.a.,Other Dried Vegetables n.d.a.,1,WAFCT_2019,111,111,106,111,111,111,111,111
+Legumes and Tubers,Pulses_Nuts_Legumes,nuts_seeds,112,Niébé/Haricots secs,Dried Beans/ Niébé,1,WAFCT_2019,112,112,107,112,112,112,112,112
+Legumes and Tubers,Pulses_Nuts_Legumes,nuts_seeds,113,Arachides fraîches en coques,Fresh Groundnuts in Shell,1,WAFCT_2019,113,113,108,113,113,113,113,113
+Legumes and Tubers,Pulses_Nuts_Legumes,nuts_seeds,114,Arachides séchées en coques,Dried Groundnuts in Shell,1,WAFCT_2019,114,114,109,114,114,114,114,114
+Legumes and Tubers,Pulses_Nuts_Legumes,nuts_seeds,115,Arachides décortiquées,Shelled Groundnuts,1,WAFCT_2019,115,115,110,115,115,115,115,115
+Legumes and Tubers,Pulses_Nuts_Legumes,nuts_seeds,116,Arachides pilées,Ground peanuts,1,WAFCT_2019,116,116,111,116,116,116,116,116
+Legumes and Tubers,Pulses_Nuts_Legumes,nuts_seeds,117,Arachide grillée,Roasted Groundnuts,1,WAFCT_2019,117,117,112,117,117,117,117,117
+Legumes and Tubers,Pulses_Nuts_Legumes,nuts_seeds,118,Pâte d'arachide,Groundnut Paste,1,WAFCT_2019,118,118,113,118,118,118,118,118
+Legumes and Tubers,Pulses_Nuts_Legumes,nuts_seeds,119,Fromage à base de soja,Soy Cheese,1,WAFCT_2019,119,119,114,119,119,119,119,119
+Legumes and Tubers,Pulses_Nuts_Legumes,nuts_seeds,120,Sésame,Sesame,1,WAFCT_2019,120,120,115,120,120,120,120,120
+Legumes and Tubers,Pulses_Nuts_Legumes,nuts_seeds,121,Noix de cajou,Cashew Nuts,1,WAFCT_2019,121,121,116,121,121,121,121,121
+Legumes and Tubers,Pulses_Nuts_Legumes,nuts_seeds,122,Noix de karité,Shea Nuts,0.72,WAFCT_2019,122,122,117,122,122,122,122,122
+Legumes and Tubers,Main staples,grains_roots_tubers,123,Manioc,Cassava,0.84,WAFCT_2019,123,123,118,123,123,123,123,123
+Legumes and Tubers,Main staples,grains_roots_tubers,124,Igname,Yam,0.83,WAFCT_2019,124,124,119,124,124,124,124,124
+Legumes and Tubers,Main staples,grains_roots_tubers,125,Plantain,Plantain,0.61,WAFCT_2019,125,125,120,125,125,125,125,125
+Legumes and Tubers,Main staples,grains_roots_tubers,126,Pomme de terre,Potato,0.9,WAFCT_2019,126,126,121,126,126,126,126,126
+Legumes and Tubers,Main staples,grains_roots_tubers,127,"Taro, macabo","Taro, Macabo",0.86,WAFCT_2019,127,127,122,127,127,127,127,127
+Legumes and Tubers,Main staples,grains_roots_tubers,128,Patate douce,Sweet Potato,0.79,WAFCT_2019,128,128,123,128,128,128,128,128
+Legumes and Tubers,Main staples,grains_roots_tubers,129,Autres tubercules n.d.a.,Other Tubers n.d.a.,0.854,X(AVERAGE),129,129,124,129,129,129,129,129
+Legumes and Tubers,Main staples,grains_roots_tubers,130,Farines de manioc,Cassava Flour,1,WAFCT_2019,130,130,125,130,130,130,130,130
+Legumes and Tubers,Main staples,grains_roots_tubers,178,Pate de manioc,Cassava Paste,1,WAFCT_2019,178,174,,178,,,,
+Legumes and Tubers,Main staples,grains_roots_tubers,131,"Gari, tapioca","Gari, Tapioca",1,WAFCT_2019,131,131,126,131,131,131,131,131
+Legumes and Tubers,Main staples,grains_roots_tubers,132,Attiéke,Attiéke (Fermented Cassava),1,WAFCT_2019,132,132,127,132,132,132,132,132
+Legumes and Tubers,Fruits,other_fruit,133,Fruit de Kapokier,Kapok Tree Fruit,1,X(AVERAGE),133,133,128,133,133,133,133,133
+"Sugar, Honey, Chocolate, and Sweets",Sugars,misc,134,Sucre poudre,Powdered Sugar,1,WAFCT_2019,134,134,129,134,134,134,134,134
+"Sugar, Honey, Chocolate, and Sweets",Sugars,misc,135,Sucre morceaux,Sugar Cubes,1,WAFCT_2019,135,135,130,135,135,135,135,135
+"Sugar, Honey, Chocolate, and Sweets",Sugars,misc,136,Miel,Honey,1,WAFCT_2019,136,136,131,136,136,136,136,136
+"Sugar, Honey, Chocolate, and Sweets",Sugars,misc,137,"Chocolat à croquer, pâte à tartiner","Eating ,Spreadable Chocolate",1,WAFCT_2019,137,137,132,137,137,137,137,137
+"Sugar, Honey, Chocolate, and Sweets",Sugars,misc,138,"Caramel, bonbons, confiseries, etc.","Caramel, Sweets",1,WAFCT_2019,138,138,133,138,138,138,138,138
+"Spices, Condiments and Others",Others,misc,139,Sel,Salt,1,WAFCT_2019,139,139,134,139,139,139,139,139
+"Spices, Condiments and Others",Others,misc,140,Piment séché,Dried Pepper,1,WAFCT_2019,140,140,135,140,140,140,140,140
+"Spices, Condiments and Others",Others,misc,141,Piment frais,Fresh Pepper,0.82,WAFCT_2019,141,141,136,141,141,141,141,141
+"Spices, Condiments and Others",Others,grains_roots_tubers,142,Gingembre frais,Fresh Ginger,0.85,WAFCT_2019,142,142,137,142,142,142,142,142
+"Spices, Condiments and Others",Others,misc,143,Gingembre moulu,Ground Ginger,1,WAFCT_2019,143,143,138,143,143,143,143,143
+"Spices, Condiments and Others",Others,misc,144,"Cube alimentaire (Maggi, Jumbo, )","Food Cube (Maggi, Jumbo, etc.)",1,WAFCT_2019,144,144,139,144,144,144,144,144
+"Spices, Condiments and Others",Others,misc,145,"Arôme (Maggi, Jumbo, etc.)","Flavoring (Maggi, Jumbo, etc.)",1,WAFCT_2019,145,145,140,145,145,145,145,145
+"Spices, Condiments and Others",Others,misc,146,Soumbala (moutarde africaine),Soumbala (African Mustard),1,WAFCT_2019,146,146,141,146,146,146,146,146
+"Spices, Condiments and Others",Others,misc,147,Mayonnaise,Mayonnaise,1,Assumed,147,147,142,147,147,147,147,147
+"Spices, Condiments and Others",Others,misc,148,Vinaigre de citron,Lemon Vinegar,1,WAFCT_2019,148,148,143,148,148,148,148,148
+"Spices, Condiments and Others",Others,misc,149,Autres vinaigres,Other Vinegars,1,WAFCT_2019,149,149,143,149,149,149,149,149
+"Spices, Condiments and Others",Others,misc,150,Moutarde,Mustard,1,WAFCT_2019,150,150,144,150,150,150,150,150
+"Spices, Condiments and Others",Others,misc,151,Poivre,Pepper,0.82,WAFCT_2019,151,151,145,151,151,151,151,151
+"Spices, Condiments and Others",Others,misc,179,Poisson séché en condiment,Dried Fish as Condiment,1,Assumed,179,,,179,,,,
+"Spices, Condiments and Others",Others,misc,152,Autres condiments (poivre etc.),Other Condiments ,1,X(AVERAGE),152,152,146,152,152,152,152,152
+"Spices, Condiments and Others",Others,misc,153,Noix de cola,Cola Nut,1,WAFCT_2019,153,153,147,153,153,153,153,153
+"Spices, Condiments and Others",Others,misc,154,"Autres produits alimentaires (noix de pomme sauvage, etc.)",Other Food Products ,1,consider excl,154,154,148,154,154,154,154,154
+Beverages,Others,misc,155,Café en poudre,Ground Coffee,1,WAFCT_2019,155,155,149,155,155,155,155,155
+Beverages,Others,misc,156,Café soluble,Instant Coffee,1,WAFCT_2019,156,156,150,156,156,156,156,156
+Beverages,Others,misc,157,Thé (Ataya),Tea (Ataya),1,WAFCT_2019,157,157,151,157,157,157,157,157
+Beverages,Others,misc,180,Thé soluble ou infusion,Soluble Tea or Infusion,1,WAFCT_2019,180,158,151,180,,158,158,158
+Beverages,Others,misc,158,Chocolat en poudre,Powdered Chocolate,1,X(AVERAGE),158,159,152,158,158,159,159,159
+Beverages,Others,misc,159,"Autres tisanes et infusions n.d.a. (quinquelibat, citronelle,etc)",Other Herbal Teas and Infusions,1,WAFCT_2019,159,160,153,159,159,160,160,160
+Beverages,Others,misc,160,"Jus de fruits (orange, bissap, gingembre, jus de cajou,etc.)",Fruit Juices ,1,WAFCT_2019,160,161,154,160,160,161,161,161
+Beverages,Others,misc,161,Eau minérale/ filtrée,Mineral/Filtered Water,1,WAFCT_2019,161,162,155,161,161,162,162,162
+Beverages,Others,misc,162,"Boissons gazeuses (coca, etc.)",Carbonated Drinks ,1,WAFCT_2019,162,163,156,162,162,163,163,163
+Beverages,Others,misc,163,Jus en poudre,Powdered Juice,1,WAFCT_2019,163,164,157,163,163,164,164,164
+Beverages,Others,misc,164,"Bières et vins traditionnels (dolo, vin de palme, vin de, raphia, vin de cajou, etc.)",Traditional Beers and Wines ,1,WAFCT_2019,164,165,158,164,164,165,165,165
+Beverages,Others,misc,165,Bières industrielles,Industrial Beers,1,WAFCT_2019,165,166,159,165,165,166,166,166

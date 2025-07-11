@@ -1,0 +1,149 @@
+﻿item_code,item_name,edible_portion,assumption_source
+1,Dry bean,0.99,tza_npsw5
+2,Fresh bean,0.99,tza_npsw5
+3,String bean,0.99,tza_npsw5
+4,Groundnut flour,1,mwi_ihs4
+5,Irish potato,0.95,mwi_ihs4
+6,Sweet potato,0.88,tza_npsw5
+7,Cassava (root),0.94,tza_npsw5
+8,Tarot/amateke,0.81,tza_npsw5
+9,Banana-cooking (Inyamunyo),0.85,mwi_ihs4
+10,Corn (flour from Mill),1,tza_npsw5
+11,Corn (flour from Factory),1,tza_npsw5
+12,Cassava flour (yasekuwe),1,tza_npsw5
+13,Cassava (fermented),1,tza_npsw5
+14,Cassava from Mill),1,tza_npsw5
+15,Cassava from Factory),1,tza_npsw5
+16,Local rice,1,tza_npsw5
+17,Imported rice,1,tza_npsw5
+18,Maize (fresh),0.68,tza_npsw5
+19,Dry maize (grain),1,tza_npsw5
+20,Tomato,1,mwi_ihs4
+21,Fresh milk,1,mwi_ihs4
+22,Curdled Milk,1,mwi_ihs4
+23,Cakes/Chapati/Mandazi,1,tza_npsw5
+24,Bread,1,tza_npsw5
+25,Sugar (imported),1,tza_npsw5
+26,Sugar (local),1,tza_npsw5
+27,Salt,1,tza_npsw5
+28,Local banana beer,1,assumed
+29,Sorghum juice(Ubushera),1,assumed
+30,Local sorghum beer(ikigage),1,assumed
+31,Peanut oil,1,tza_npsw5
+32,Margarine,1,mwi_ihs4
+33,Palm oil,1,tza_npsw5
+34,Other plant oils,1,tza_npsw5
+35,Lard of pork,1,tza_npsw5
+36,Beef meat,0.91,tza_npsw5
+37,Sheep /Mutton / lamb meat,0.9,assumed
+38,Goat meat,0.9,mwi_ihs4
+39,Pork meat,0.9,mwi_ihs4
+40,Rabbit Meat,0.9,mwi_ihs4
+41,Wild Meat,0.9,mwi_ihs4
+42,Other Meats,0.9,assumed
+43,"Sausages, bacon, ham etc",1,tza_npsw5
+44,Preserved/canned meat,1,mwi_ihs4
+45,Sorghum,1,mwi_ihs4
+46,Fermented sorghum,1,assumed
+47,Wheat (grain),1,assumed
+48,Other cereals,1,assumed
+49,Sorghum (flour),1,tza_npsw5
+50,Wheat (flour),1,tza_npsw5
+51,Millet (flour),1,tza_npsw5
+52,Other flour of cereals,1,assumed
+53,Biscuits,1,tza_npsw5
+54,Pasta,1,tza_npsw5
+55,Chicken live,0.9,mwi_ihs4
+56,Frozen chicken,0.9,mwi_ihs4
+57,Other domestic poultries e.g. ducks,0.9,mwi_ihs4
+58,Eggs,0.95,mwi_ihs4
+59,Fish (fresh / frozen),0.56,tza_npsw5
+60,Small Sized Fish (fresh),1,mwi_ihs4
+61,Fish (dry / smoked),1,mwi_ihs4
+62,Small Sized Fish (dry),1,mwi_ihs4
+63,Preserved/canned fish,1,mwi_ihs4
+64,Condensed milk unsweetened,1,tza_npsw5
+65,Milk powder,1,tza_npsw5
+66,Yogurt,1,tza_npsw5
+67,Ice cream,1,tza_npsw5
+68,Cheese,1,tza_npsw5
+69,Butter (local),1,tza_npsw5
+70,Butter (imported),1,tza_npsw5
+71,Banana fruit (Imineke),0.85,mwi_ihs4
+72,Banana - beer (Ikakama/Inkashi),1,assumed
+73,Mangos,0.74,tza_npsw5
+74,Papayas,0.74,tza_npsw5
+75,Avocado,0.75,tza_npsw5
+76,Pineapple,0.85,mwi_ihs4
+77,Guava,0.85,mwi_ihs4
+78,Orange (local),0.85,mwi_ihs4
+79,Orange (imported),0.85,mwi_ihs4
+80,Tangerine,0.85,mwi_ihs4
+81,Citron - Lemon,0.85,mwi_ihs4
+82,Passion Fruit,0.85,assumed
+83,Plums,0.85,assumed
+84,Berries,0.95,assumed
+85,Apples,0.95,mwi_ihs4
+86,Other fruits,0.74,tza_npsw5
+87,Soya Flour,1,mwi_ihs4
+88,Sunflower flour,1,mwi_ihs4
+89,Ground nuts (peanuts),1,tza_npsw5
+90,Grilled ground nuts,1,tza_npsw5
+91,Soya (fresh),0.99,tza_npsw5
+92,Soya (dry),0.99,tza_npsw5
+93,Green pea (fresh),0.99,tza_npsw5
+94,Green pea (dry),0.99,tza_npsw5
+95,Onion,0.95,mwi_ihs4
+96,Garlic,0.95,assumed
+97,Pumpkin,0.85,mwi_ihs4
+98,Cucumber,1,mwi_ihs4
+99,Eggplant,1,assumed
+100,Carrot,0.84,tza_npsw5
+101,Leeks,0.9,assumed
+102,Lettuce,0.9,assumed
+103,Celery,0.9,assumed
+104,Parsley,0.9,assumed
+105,Mushrooms,1,mwi_ihs4
+106,Cassava leaves,1,assumed
+107,Amarante (small leafed green),1,assumed
+108,Cabbages,1,assumed
+109,Spinach,1,assumed
+110,Amarante (large leafed green),1,assumed
+111,Other Vegetables,1,assumed
+112,Chayote,1,assumed
+113,Pepper,0.84,tza_npsw5
+114,Yams/Ibikoro,0.81,tza_npsw5
+115,Other tubers,0.81,tza_npsw5
+116,Sugarcane,0.25,mwi_ihs4
+117,"Jam, marmalade",1,mwi_ihs4
+118,Honey,1,mwi_ihs4
+119,Chocolate,1,mwi_ihs4
+120,Candy / Gum,1,mwi_ihs4
+121,Sugar glu,1,assumed
+122,Pepper(ground / liquid),1,tza_npsw5
+123,Vinegar,1,assumed
+124,Mayonnaise,1,assumed
+125,Tomato concentrate,1,assumed
+126,Pepper-raw,1,assumed
+127,Boullion cubes(MAGGI),1,assumed
+128,Baby food,1,assumed
+129,Other food items,1,assumed
+130,Coffee (local),1,tza_npsw5
+131,Coffee (imported),1,tza_npsw5
+132,Tea (local),1,tza_npsw5
+133,Tea (imported),1,tza_npsw5
+134,Cocoa and powdered drinking chocolate,1,tza_npsw5
+135,Mineral water,1,assumed
+136,Carbonated Soft Drinks,1,tza_npsw5
+137,Local banana juice,1,assumed
+138,Passion fruit juice,1,assumed
+139,Other juices of fruits (local),1,mwi_ihs4
+140,Other juices of fruits (imported),1,mwi_ihs4
+141,Powdered juice(super dip),1,assumed
+142,Liqueurs (local),1,mwi_ihs4
+143,Liqueurs (imported),1,mwi_ihs4
+144,Wine (local),1,mwi_ihs4
+145,Wine (imported),1,mwi_ihs4
+146,Other local beer,1,mwi_ihs4
+147,Commercial beer (local),1,mwi_ihs4
+148,Commercial beer (imported),1,mwi_ihs4

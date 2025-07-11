@@ -1,0 +1,174 @@
+item_code,item_name,food_group
+1,Broken local rice,cereals
+2,Whole local rice,cereals
+3,Broken imported rice,cereals
+4,Imported whole rice,cereals
+5,Corn on the cob,cereals
+6,Corn kernels,cereals
+7,Mil,cereals
+8,Sorghum,cereals
+9,Wheat,cereals
+10,Fonio,cereals
+11,Other cereals,cereals
+12,Corn flour,cereals
+13,Corn semoli ,cereals
+14,Millet flour,cereals
+15,Millet semoli ,cereals
+16,Local or imported wheat flour,cereals
+17,Wheat semoli ,cereals
+18,Other cereal flours,cereals
+19,Other cereal semoli ,cereals
+20,Pasta,cereals
+21,Modern bread,cereals
+22,Traditio l bread,cereals
+169,Breakfast cereals,cereals
+23,Croissants,cereals
+24,Biscuits,cereals
+25,Cakes,cereals
+26,"Donuts, pancakes",cereals
+27,Beef,meat_poultry_offal
+28,Camel meat,meat_poultry_offal
+29,Mutton,meat_poultry_offal
+30,Goat meat,meat_poultry_offal
+31,Red offals,meat_poultry_offal
+170,White offals,meat_poultry_offal
+32,Pork meat,meat_poultry_offal
+33,Live chicken ,meat_poultry_offal
+171,Other live poultry,meat_poultry_offal
+34,Chicken meat,meat_poultry_offal
+35,Meat of other domestic poultry,meat_poultry_offal
+36,"Charcuterie (ham, sausage), canned meats",meat_poultry_offal
+37,Dried meat ,meat_poultry_offal
+38,Game,meat_poultry_offal
+39,Other meat n.e.s.,meat_poultry_offal
+40,Fresh yaboye or obo (sardinella) fish,fish_seafood
+41,Fresh fish thiof / seudeu (baracouda),fish_seafood
+42,Fresh fish wass,fish_seafood
+43,"Other Fresh fish (sea bream, youfouf, red mullet, siket [captain], thiarumbekh [mollette],… ..)",fish_seafood
+44,Smoked fish Kethiakh (sardinella),fish_seafood
+45,"Other smoked fish (smoked con, smoked yaboye or obo, ...)",fish_seafood
+172,Smoked Con,fish_seafood
+46,Dried fish,fish_seafood
+47,Crabs ,fish_seafood
+48,Fresh Shrimp,fish_seafood
+49,Dried Shrimp,fish_seafood
+50,Other Seafood,fish_seafood
+173,S ils,fish_seafood
+51,Canned fish,fish_seafood
+52,Industrial Fresh Milk,milk_products
+174,Non-Industrial Fresh Milk ,milk_products
+53,"Curdled milk, yogurt",milk_products
+54,Sweetened condensed milk,milk_products
+55,Unsweetened condensed milk,milk_products
+56,Powdered milk,milk_products
+57,Cheese,milk_products
+59,Other dairy products,milk_products
+60,Eggs,eggs
+61,Butter,oil_fats
+62,Shea Butter,oil_fats
+63,Red palm oil,oil_fats
+64,Refined peanut oil,oil_fats
+65,Segal Peanut Oil,oil_fats
+67,Cottonseed oil,oil_fats
+66,Soy Oil,oil_fats
+175,Shea Oil,oil_fats
+69,Palm Nuts,oil_fats
+70,"Other oils n.e.s. (corn, soybean, palm kernel oil, etc.)",oil_fats
+71,Mango,fruits
+72,Pineapple,fruits
+73,Orange,fruits
+76,Sweet ba  ,fruits
+74,Lemons,fruits
+75,Other citrus,fruits
+77,Avocados,fruits
+78,Watermelon,fruits
+79,Melon,fruits
+80,Dates,fruits
+81,Coconut,fruits
+82,Sugar cane,fruits
+87,"Other fruits (apples, grapes, etc.)",fruits
+83,Apples,fruits
+84,Papaya,fruits
+176,Guava,fruits
+85,Baobab Fruit (Bouye),fruits
+86,Locust Bean,pulses_legumes_nuts
+88,Lettuce,vegetables
+89,Cabbage,vegetables
+90,Carrot,vegetables
+91,Green bean,vegetables
+92,Cucumber,vegetables
+93,Eggplant,vegetables
+94,Squash/Zucchini,vegetables
+95,Fresh bell pepper,vegetables
+96,Fresh tomato,vegetables
+97,Dried tomato,vegetables
+98,Fresh okra,vegetables
+99,Dry okra,vegetables
+100,Fresh onion,vegetables
+101,Garlic,vegetables
+102,Sorrel leaves (bissap),vegetables
+103,"Baobab leaves / ""laalo""",vegetables
+104,"Bean leaves / ""cowpea""",vegetables
+105,Nebedaye leaves (moringa),vegetables
+106,"Other leafy vegetables (cassava, taro, etc.)",vegetables
+107,Other fresh vegetables n.e.s. (including white bissap flowers),vegetables
+108,Tomato concentrate,vegetables
+109,Green Peas,vegetables
+110,Dried Green Peas,pulses_legumes_nuts
+111,Other Dried Vegetables n.d.a.,vegetables
+112,Cowpea / Dried beans,pulses_legumes_nuts
+113,Fresh peanuts in shell,pulses_legumes_nuts
+114,Dried peanuts in shell,pulses_legumes_nuts
+115,Shelled Groundnuts,pulses_legumes_nuts
+116,Crushed peanuts,pulses_legumes_nuts
+117,Roasted peanut,pulses_legumes_nuts
+118,Peanut paste,pulses_legumes_nuts
+119,Soy cheese ,pulses_legumes_nuts
+120,Sesame,pulses_legumes_nuts
+121,Cashew nut,pulses_legumes_nuts
+122,Shea Nuts,pulses_legumes_nuts
+123,Cassava,roots_tubers
+124,Yam,roots_tubers
+125,Plantain,roots_tubers
+126,Potato,roots_tubers
+127,"Taro (diabetic), macabo",roots_tubers
+128,Sweet potato,roots_tubers
+129,Other tubers n.e.s.,roots_tubers
+130,Cassava flour,roots_tubers
+178,Cassava Paste,roots_tubers
+131,"Gari, tapioca",roots_tubers
+132,Attiéke,roots_tubers
+133,Kapok Tree Fruit ,fruits
+135,Sugar (powder or lumps),sugar_honey
+136,Honey,sugar_honey
+137,"Chewable chocolate, spread",sugar_honey
+138,"Caramel, candy, confectionery, etc.",sugar_honey
+139,Salt,miscellaneous
+151,Pepper,vegetables
+140,Dried Pepper,vegetables
+141,Fresh Pepper,vegetables
+142,Fresh Ginger,miscellaneous
+143,Ground Ginger,miscellaneous
+144,"Food cube (Maggi, Jumbo,)",miscellaneous
+145,"Aroma (Maggi, Jumbo, etc.)",miscellaneous
+146,Soumbala (African mustard),miscellaneous
+147,Mayon ise,oil_fats
+148,Lemon Vinegar,miscellaneous
+149,Other Vinegars,miscellaneous
+150,Mustard,miscellaneous
+179,Dried Fish as Condiment ,miscellaneous
+152,Other condiments (pepper etc.),miscellaneous
+153,Cola nuts,miscellaneous
+154,Other food products,miscellaneous
+155,Ground Coffee,miscellaneous
+156,Instant Coffee,miscellaneous
+157,Tea,miscellaneous
+158,Chocolate powder,sugar_honey
+159,"Other herbal teas and infusions n.e.s. (quinquelibat, citronella, etc.)",miscellaneous
+160,"Fruit juice (orange, bissap, ginger, cashew juice, etc.)",miscellaneous
+161,Filtered mineral water,miscellaneous
+162,"Soft drinks (cola, etc.)",miscellaneous
+163,Powdered juice,miscellaneous
+164,"Traditio l beers and wines (soumsoum, sung, palm wine, cashew wine, etc.)",miscellaneous
+165,Industrial beers,miscellaneous
+68,Refined palm oil,oil_fats
