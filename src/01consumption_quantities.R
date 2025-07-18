@@ -162,7 +162,7 @@ rm(edible_portions)
 #-------------------------------------------------------------------------------
 
 # WRITE CSV: 
-write_csv(food_consumption, "processed_data/rwa_eicv2324_food_consumption.csv")
+write_csv(food_consumption, "processed_data/prelim_food_consumption.csv")
 
 # clear environment 
 rm(list = ls())
