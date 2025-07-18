@@ -13,11 +13,6 @@ Data on non-standard units for the Rwanda EICV7 has been requested from the Nati
 
 
 
-###### Source of edible portions: 
-
-###### 
-
-Edible portions assumptions borrowed from Tanzania National Panel Survey analaysis, or Malawi IHS4 analysis. Whichever was available. Source of assumption noted in edible_portions.csv
 
 
 
