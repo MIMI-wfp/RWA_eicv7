@@ -1,0 +1,148 @@
+item_code,item_name,Assumptions,Nutrient source,Nutrient source ID ,Food_name_FCT,energy_kcal,vita_rae_mcg,thia_mg,ribo_mg,niac_mg,folate_mcg,vitb12_mcg,fe_mg,zn_mg,edible_portion,edp_source
+1,Dry bean,"Assumed kidney bean-""common"" bean (Phaseolus vulgaris L.) seems to be the most common  ",,,"Beans, kidney, dry, raw",305,1,0.35,0.18,2.4,272,0,6.4,2.78,1,WAFCT 2019
+2,Fresh bean,"Assumed broad bean. Was looking and apparently the ""common bean"" is one of the more commonly consumed beans in Rwanda-can't find a match in KFCT or WAFCT ",KFCT 2018,3002,"Beans, broad, fresh, raw ",82,16,0.12,0.14,2,284,0,1.6,1.1,1,WAFCT 2019
+3,String bean,,WAFCT 2019,04_003,"Bean, green, raw",40,38,0.11,0.1,0.8,36,0,1.2,0.2,0.92,WAFCT 2019
+4,Groundnut flour,,WAFCT 2019,06_027,"Groundnut flour, with fat",579,2,0.39,0.14,9.9,110,0,3.5,2.8,1,WAFCT 2019
+5,Irish potato,,KFCT 2018,2009,"Potato, Irish(English), white variety, peeled, raw ",105,0,1,1,1,15,0,1.4,0.32,0.85,KFCT 2018
+6,Sweet potato,Average,KFCT 2018,Average,Sweet potato,92,4.5,7.00E-02,0.03,0.75,15,0,0.7,0.21,0.84,Average 
+7,Cassava (root),Assumed white cassava ,KFCT 2018,2007,"Cassava, root, white, peeled, raw ",173,1,0.23,0.01,0.4,73,0,0.9,0.34,0.93,KFCT 2018
+8,Tarot/amateke,,KFCT 2018,2016,"Taro, peeled, raw",97,3,0.1,0.03,0.7,22,0,0.7,0.6,0.9,KFCT 2018
+9,Banana-cooking (Inyamunyo),,KFCT 2018,2004,"Banana, plantain, green, raw",97,0,0.06,0.04,0.33,19,0,0.8,0.23,0.5,KFCT 2018
+10,Corn (flour from Mill),,KFCT 2018,1017,"Cornflour, from maize starch",355,0,0.02,0,0.2,1,0,0.7,0.2,1,KFCT 2018
+11,Corn (flour from Factory),"used same values for cornflour, consider fortified? ",KFCT 2018,1017,"Cornflour, from maize starch",355,0,0.02,0,0.2,1,0,0.7,0.2,1,KFCT 2018
+12,Cassava flour (yasekuwe),,KFCT 2018,15011,Cassava Flour Ugali,186,1,0.03,0.05,0.6,18,0,0.8,0.41,1,KFCT 2018
+13,Cassava (fermented),,WAFCT 2019,02_041,"Cassava, fermented paste from white cassava flour (wet fufu)",165,0,0.04,0.03,0.8,69,0.6,0.9,0.56,1,WAFCT 2019
+14,Cassava from Mill),,WAFCT 2019,02_038,"Cassava, flour, from fermented white cassava",344,0,0.1,0.08,1.7,140,1,3.4,0.47,1,WAFCT 2019
+15,Cassava from Factory),,WAFCT 2019,02_038,"Cassava, flour, from fermented white cassava",344,0,0.1,0.08,1.7,140,1,3.4,0.47,1,WAFCT 2019
+16,Local rice,Used same values for local and imported rice ,KFCT 2018,1034,"Rice, white, milled, polished grain, dry, raw",353,0,0.07,0.11,1.1,9,0,0.9,1.32,1,KFCT 2018
+17,Imported rice,,KFCT 2018,1034,"Rice, white, milled, polished grain, dry, raw",353,0,0.07,0.11,1.1,9,0,0.9,1.32,1,KFCT 2018
+18,Maize (fresh),,KFCT 2018,1023,"Green Maize, white, whole, grain, fresh, raw",157,8,0.18,0.1,1.55,78,0,1.2,1.95,0.68,KFCT 2018
+19,Dry maize (grain),Flagging-CO can confirm if white or yellow maize is more common (some mn differences between the two) from a quick search it seems that white might be more common? ,KFCT 2018,1018,"Maize, grain, white variety, whole, dry, raw",345,0,0.25,0.1,2,71,0,2.6,1.88,1,KFCT 2018
+20,Tomato,,KFCT 2018,4036,"Tomato, red, ripe, raw",22,26,0.04,0.04,0.5,25,0,0.9,0.37,0.98,KFCT 2018
+21,Fresh milk,,KFCT 2018,6029,"Milk, cow, whole, fresh, boiled",82,47,0,0.3,0,8,1,0.1,0.74,1,KFCT 2018
+22,Curdled Milk,Ask CO ,KFCT 2018,6021,"Milk, cow, whole, fermented (Lala-mursik)",58,41,0,0.27,0,0,0.1,0.1,0.22,1,KFCT 2018
+23,Cakes/Chapati/Mandazi,,KFCT 2018,1012,"Cake or cupcake, plain butter cake, commercial",363,50,0.06,0.14,0.7,9,0.15,1,0.5,1,KFCT 2018
+24,Bread,,KFCT 2018,"100,510,061,007","Bread, white, brown , sweet",287.3,24.7,0.193,0.077,3.167,32.667,0.117,2.07,0.97,1,KFCT 2018
+25,Sugar (imported),,KFCT 2018,11003,"Sugar, white, granulated or lump",400,0,0,0,0,0,0,0,0,1,KFCT 2018
+26,Sugar (local),,KFCT 2018,11003,"Sugar, white, granulated or lump",400,0,0,0,0,0,0,0,0,1,KFCT 2018
+27,Salt,,KFCT 2018,13027,"Salt, Iodized",0,0,0,0,0,0,0,0.1,0.1,1,KFCT 2018
+28,Local banana beer,"Assumed local beer from WAFCT, ask CO",WAFCT 2019,12_003,"Traditional beers and wines (soumsoum, sung, palm wine, cashew wine, etc.)",43,0,0.02,0.04,0.4,6,0,0.6,0.07,1,WAFCT 2019
+29,Sorghum juice(Ubushera),,KFCT 2018,1037,"Sorghum, Grain, Red, Dried, Raw",336,0,0.24,0.11,3.3,64,0,3,1.97,1,KFCT 2018
+30,Local sorghum beer(ikigage),,WAFCT 2019,12_004,"Beer, sorghum (ca. 3% v/v alcohol)",27,0,0.04,0.05,0.5,6,0,0.2,0.07,1,WAFCT 2019
+31,Peanut oil,,KFCT 2018,9009,Peanut oil,900,0,0,0,0,0,0,0.1,0.1,1,KFCT 2018
+32,Margarine,,KFCT 2018,9006,"Margarine, 80% fat",748,819,0,0,0,1,0.06,0,0,1,KFCT 2018
+33,Palm oil,Assuming refined-can be changed to unrefined or weighted average depending on feedback from CO ,WAFCT 2019,11_007,"Palm oil, refined and decoloured, unfortified ",900,0,0,0,0,0,0,0.2,0,1,WAFCT 2019
+34,Other plant oils,Assumed soya bean oil,KFCT 2018,9012,Soya bean oil,900,3,0,0,0,0,0,0,0,1,KFCT 2018
+35,Lard of pork,Matched to animal fat lard unlikely to be a large mn difference between animal fat lard vs. pork lard,KFCT 2018,9001,Animal fat/lard,890,0,0,0,0,0,0,0.1,0.11,1,KFCT 2018
+36,Beef meat,,KFCT 2018,7004,"Beef, medium fat, w/o bones, raw",151,10,0,0.21,4.4,2,1.9,12.4,3.85,0.9,KFCT 2018
+37,Sheep /Mutton / lamb meat,,KFCT 2018,7049,"Lamb, raw (unspecified part) ",269,0,0.12,0.23,6.1,18,2.39,1.7,3.33,1,KFCT 2018
+38,Goat meat,,KFCT 2018,7016,"Goat, medium fat, raw",166,18,0.16,0.18,3.7,1,2.34,1.9,3.26,0.74,KFCT 2018
+39,Pork meat,Curious if the edible portion would really be 1? Could alternatively match to WAFCT,KFCT 2018,7020,"Pork, meat, raw (unspecified part)",286,0,0.63,0.17,3.8,4,0.6,1.1,1.59,1,KFCT 2018
+40,Rabbit Meat,Edible portion of 1? Could potentially match to USDA for edible portion,KFCT 2018,7021,"Rabbit meat, raw",151,10,0.46,0.06,7.5,11,5.3,1,1.6,1,KFCT 2018
+41,Wild Meat,Flagging-likely bushmeat? I assumed rabbit again (probably similar) ,KFCT 2018,7021,"Rabbit meat, raw",151,10,0.46,0.06,7.5,11,5.3,1,1.6,1,KFCT 2018
+42,Other Meats,Average of meats in the category,Average,Average,Average,195.6666667,8,0.305,0.151666667,5.5,7.833333333,2.971666667,3.183333333,2.538333333,0.94,Average 
+43,"Sausages, bacon, ham etc",,KFCT 2018,7025,"Sausage, pork, raw",343,26,0.04,0.12,2.7,21,0.6,1.1,1.7,1,KFCT 2018
+44,Preserved/canned meat,Current is an average of canned sausage and canned beef,Assumed,Assumed,"Charcuterie (ham, sausage), canned meats",258.67,6,0.23,0.12,4.62,6.33,1.7,1.21,1.71,1,Assumed
+45,Sorghum,,KFCT 2018,1039,"Sorghum, grain, white, flour",341,1,0.24,0.11,3.3,64,0,6.4,1.69,1,KFCT 2018
+46,Fermented sorghum,,KFCT 2018,1037,"Sorghum, Grain, Red, Dried, Raw",336,0,0.24,0.11,3.3,64,0,3,1.97,1,KFCT 2018
+47,Wheat (grain),,KFCT 2018,1045,"Wheat, whole, grain, dry, raw",328,0,0.43,0.14,2.7,0,0,4.9,3,1,KFCT 2018
+48,Other cereals,"Currently set at the average of maize, millet, sorghum, wheat, and fonio in WAFCT",,Average,Average,126,0,0.06,0.035,1.35,17.5,0,1.95,0.715,1,Assumed
+49,Sorghum (flour),,KFCT 2018,1040,"Sorghum, grain, white, flour",341,1,0.24,0.11,3.3,,0,6.4,1.69,1,KFCT 2018
+50,Wheat (flour),"Assumed refined wheat flour and used WAFCT entry for non-fortified. Potential question for CO is which would be the best match (e.g., atta, whole grain? Average of refined/atta/whole grain?)",KFCT 2018,01_043,"Wheat flour, white, unfortified",352,0,0.21,0.19,4.3,240,0,2,0.5,1,WAFCT 2019
+51,Millet (flour),finger(used more) vs bulrush,KFCT 2018,1026,"Millet, finger, flour",306,0,0.19,0.04,4.6,93,0,18.5,1.7,1,KFCT 2018
+52,Other flour of cereals,Assumed average of those currently in the category-to confirm with CO if there are better matches,Average,Average,Average,333,0.333333333,0.213333333,0.113333333,4.066666667,166.5,0,8.966666667,1.296666667,1,WAFCT 2019
+53,Biscuits,"Average of biscuit Savoury, Sweet",KFCT 2018,"10,031,004","Biscuit, Savoury, Sweet",476,24,0.125,0.045,1,22,0.05,1.4,0.715,1,KFCT 2018
+54,Pasta,,KFCT 2018,1031,"Pasta, spaghetti, dry, raw-imported",354,0,0.07,0.06,1.1,16,0,1,0.6,1,KFCT 2018
+55,Chicken live,,KFCT 2018,7009,"Chicken, unespecified part, w/o bone,",207,75,0.14,0.12,6.4,11,0.63,2.5,0.89,0.65,KFCT 2018
+56,Frozen chicken,used same values for live chicken,KFCT 2018,7009,"Chicken, unespecified part, w/o bone,",207,75,0.14,0.12,6.4,11,0.63,2.5,0.89,0.65,KFCT 2018
+57,Other domestic poultries e.g. ducks,,KFCT 2018,7008,"Duck, meat and skin, fresh, raw",253,39,0.35,0.45,3.51,0,0.6,1.9,1.55,1,KFCT 2018
+58,Eggs,,KFCT 2018,7011,"Egg, chicken, whole, raw",134,186,0.12,0.51,0,6,0,1.7,1.13,1,KFCT 2018
+59,Fish (fresh / frozen),,KFCT 2018,8010,"Nile tilapia, fillet, w/o skin and bones, raw",92,10,0.04,0.15,3.23,5,1.51,2.7,0.5,0.58,KFCT 2018
+60,Small Sized Fish (fresh),,KFCT 2018,8012,"Sardine, flesh, raw",145,13,0.01,0.05,0.91,23,0.5,1.3,1.2,0.6,KFCT 2018
+61,Fish (dry / smoked),,KFCT 2018,8008,"Nile perch, dry, raw",388,186,0,0,8,28,5,4,2,1,Assumed
+62,Small Sized Fish (dry),,KFCT 2018,8002,"Dagaa fish (omena), dried, raw",333,141,0.34,0.52,18.2,46,60,6.9,16,1,KFCT 2018
+63,Preserved/canned fish,,KFCT 2018,8012,"Sardine, flesh, raw",145,13,0.01,0.05,0.91,23,0.5,1.3,1.2,0.6,KFCT 2018
+64,Condensed milk unsweetened,,KFCT 2018,6016,"Milk, cow, condensed, whole, sweetened, raw",335,74,0.1,0.5,0.3,0,0.4,0.2,0.9,1,KFCT 2018
+65,Milk powder,,KFCT 2018,6018,"Milk, cow, powder, whole",495,395,0.34,1.32,0.8,54,3.2,0.5,2.97,1,KFCT 2018
+66,Yogurt,,KFCT 2018,6026,"Yoghurt, cow milk, whole, plain",85,34,0.1,0.2,0.1,0,0.2,0.2,0.34,1,KFCT 2018
+67,Ice cream,,KFCT 2018,6012,"Ice cream, vanilla flavour, regular fat",199,166,0,0.25,0.7,10,0.1,0.2,0.23,1,KFCT 2018
+68,Cheese,,KFCT 2018,6003,"Cheese, cheddar, regular fat",401,166,0.04,0.5,1.5,52,1.9,0.3,3.55,1,KFCT 2018
+69,Butter (local),,KFCT 2018,6001,"Butter (cow milk), no added salt (~80-84% fat)",735,845,0,0.05,1.1,6,0,0,0.06,1,KFCT 2018
+70,Butter (imported),,WAFCT 2019,11_001,"Butter , from cow's milk, unlsalted",743,838,0.01,0.01,0.8,5,0.16,0,0.08,1,WAFCT 2019
+71,Banana fruit (Imineke),,KFCT 2018,5004,"Banana, cavendish, raw",95,5,0.05,0.05,0.35,22,0,0.3,0.36,0.62,KFCT 2018
+72,Banana - beer (Ikakama/Inkashi),"assumed same as fruit, as CO",KFCT 2018,5004,"Banana, cavendish, raw",95,5,0.05,0.05,0.35,22,0,0.3,0.36,0.62,KFCT 2018
+73,Mangos,,KFCT 2018,5020,"Mango, ripe, raw",64,92,0.03,0.04,0.6,54,0,0.2,0.14,0.72,KFCT 2018
+74,Papayas,,KFCT 2018,5024,"Papaya, yellow skin, peeled, raw",36,85,0.04,0.03,0.3,37,0,0.6,0.2,0.76,KFCT 2018
+75,Avocado,,KFCT 2018,5003,"Avocado, ripe, raw",185,2,0.07,0.15,1.8,67,0,1,0.39,0.71,KFCT 2018
+76,Pineapple,,KFCT 2018,5030,"Pineapple, raw",41,3,0.05,0.03,0.12,32,0,0.4,0.37,0.68,KFCT 2018
+77,Guava,,KFCT 2018,5011,"Guava, pink-fleshed, raw",48,22,0.06,0.05,0.6,16,0,0.4,0.26,1,KFCT 2018
+78,Orange (local),,KFCT 2018,5023,"Orange, pulp, raw",42,5,0.04,0.03,0.2,52,0,0.2,0.05,0.75,KFCT 2018
+79,Orange (imported),,Assumed,Assumed,Orange/Tangerine,42.3822314,4.847107438,0.041528926,0.030764463,0.203822314,50.92975207,0,0.192355372,0.051911157,0.75,Assumed
+80,Tangerine,,KFCT 2018,5036,"Tangerine, pulp, raw",52,13,0.08,0.05,0.3,24,0,0,0.1,0.75,KFCT 2018
+81,Citron - Lemon,,KFCT 2018,5015,"Lemon, pulp, raw",37,1,0.03,0.02,0.2,11,0,0.3,0.1,0.66,KFCT 2018
+82,Passion Fruit,,KFCT 2018,5025,"Passion fruit, dark purple skin, raw",75,64,0.03,0.14,2.5,7,0,0.6,0.8,0.52,KFCT 2018
+83,Plums,,KFCT 2018,5031,"Plum, purple skin, raw",47,6,0.04,0.06,0.5,1,0,0.4,0.1,0.93,KFCT 2018
+84,Berries,Strawberries,KFCT 2018,5034,"Strawberry, raw",35,0,0.03,0.02,0.1,39,0,0.6,0.18,0.96,KFCT 2018
+85,Apples,,KFCT 2018,5001,"Apple, green skin, unpeeled, raw",55,1,0.025,0.01,0.1,0,0,0.4,0.07,0.9,KFCT 2018
+86,Other fruits,Average of fruits in the category for now-CO can give input on if there are others to include ,Average,Average,Average,62.46153846,21.70336482,0.04403778,0.05076889,0.56241588,29.49498229,0,0.399453955,0.226565083,0.765,Average 
+87,Soya Flour,,KFCT 2018,3013,"Flour, soya, full fat",437,6,0.8,0.3,4.2,338,0,6.25,3.84,1,KFCT 2018
+88,Sunflower flour,values of the dry seed,KFCT 2018,10015,"Seed, sunflower, unsalted, dry, raw",595,1,0.86,0.2,14.2,224,0,5,6,1,KFCT 2018
+89,Ground nuts (peanuts),,KFCT 2018,10009,"Nut, ground nut, with skin, unsalted, dry, raw",593,0,0.85,0.14,15,110,0,5.5,2.24,1,KFCT 2018
+90,Grilled ground nuts,,USDA,16090,"Peanuts, all types, dry-roasted, w/salt",587,0,0.152,0.197,18.188,97,0,1.58,2.77,1,USDA
+91,Soya (fresh),used same values for raw (dry),KFCT 2018,3022,"Soybean, dry, raw",386,0,0.73,0.15,2.59,359,0,7.3,3.83,1,KFCT 2018
+92,Soya (dry),,KFCT 2018,3022,"Soybean, dry, raw",386,0,0.73,0.15,2.59,359,0,7.3,3.83,1,KFCT 2018
+93,Green pea (fresh),,KFCT 2018,3015,"Garden peas, fresh, raw",93,30,0.29,0.13,2.3,216,0,2.63,4.65,1,KFCT 2018
+94,Green pea (dry),,KFCT 2018,3016,"Garden peas, dry, raw",324,5,0.88,0.17,2.6,110,0,4.8,3.21,1,KFCT 2018
+95,Onion,,KFCT 2018,13023,"Onion, mature, red skinned, peeled",42,1,0.02,0.04,0.3,14,0,0.9,0.16,1,KFCT 2018
+96,Garlic,,KFCT 2018,13019,"Garlic, peeled or unpeeled, fresh,",152,0,0.23,0.4,0.8,3,0,1.3,1,0.85,KFCT 2018
+97,Pumpkin,,KFCT 2018,4027,"Pumpkin, flesh, yellow w/o seeds, raw",32,126,0.07,0.06,0.78,50,0,0.2,0.21,0.8,KFCT 2018
+98,Cucumber,,KFCT 2018,4016,"Cucumber, green, unpeeled, raw",11,0,0.03,0.02,0.2,7,0,0.7,0.18,0.97,KFCT 2018
+99,Eggplant,,KFCT 2018,4017,"Eggplant / Brinjal, different varieties, whole edible, raw",27,12,0.05,0.05,1,29,0,0.4,0.21,0.91,KFCT 2018
+100,Carrot,,KFCT 2018,4011,"Carrot, peeled, raw",30,589,0.04,0.03,0.22,18,0,0.6,0.14,1,KFCT 2018
+101,Leeks,,KFCT 2018,4021,"Leeks, bulb and stem, raw",54,20,0.14,0,0,64,0,1.8,0.3,0.65,KFCT 2018
+102,Lettuce,,KFCT 2018,4022,"Lettuce, not further defined, raw",17,107,0.08,0.05,0.26,66,0,1.6,0.26,1,KFCT 2018
+103,Celery,,KFCT 2018,4013,"Celery, stalk, raw",27,39,0.03,0.03,0.4,13,0,1,0.21,0.65,KFCT 2018
+104,Parsley,,KFCT 2018,13025,"Parsley, fresh, raw",52,354,0.15,0.04,1.1,55,0,5.06,0.88,0.82,KFCT 2018
+105,Mushrooms,,KFCT 2018,4023,"Mushroom, fresh, raw",35,0,0.1,0.4,0.7,23,0,0.3,0.17,1,KFCT 2018
+106,Cassava leaves,,WAFCT 2019,04_008,Cassava. leaves. fresh. raw,93,287,0.25,0.46,2.4,120,0,5.5,1.29,0.7,WAFCT 2019
+107,Amarante (small leafed green),"same as Amarante (large leafed green), consider dividing by a factor",KFCT 2018,4001,"Amaranth, leaves, picked, raw",36,326,0.03,0.22,0.69,64,0,6.8,0.92,0.59,KFCT 2018
+108,Cabbages,VIT A chinese,KFCT 2018,4007,"Cabbage, leaf head, white, raw, ",18,16,0.04,0.04,0.4,15,0,0.5,0.2,0.78,KFCT 2018
+109,Spinach,,KFCT 2018,4039,"Spinach, leaves, raw",27,189,0.03,0.18,0.4,110,0,1.7,1,0.74,KFCT 2018
+110,Amarante (large leafed green),Amaranthus gangeticus,KFCT 2018,4001,"Amaranth, leaves, picked, raw",36,326,0.03,0.22,0.69,64,0,6.8,0.92,0.59,KFCT 2018
+111,Other Vegetables,Average,Average,Average,Average,35.35714286,170.7857143,0.076428571,0.128571429,0.66,49.85714286,0,2.354285714,0.492142857,0.8,Average 
+112,Chayote,matched to squash,KFCT 2018,4032,"Squash, butternut, peeled, flesh, raw",43,160,0.07,0.06,1.02,31,0,1,0.2,0.85,KFCT 2018
+113,Pepper,"average of red, gree and yellow capsicum",KFCT 2018,"4008, 4009, 4010","Capsicum, green, red, yellow, raw",45,41.3,0.033,0.033,0.697,30,0,0.6,0.127,1,KFCT 2018
+114,Yams/Ibikoro,,KFCT 2018,2019,"Yam, white, raw",112,0,0.11,0.02,0.4,16,0,0.8,0.27,0.81,KFCT 2018
+115,Other tubers,"Average from WAFCT, unspecified here",Average,Average,Average,111,2,0.06,0.03,1,14,0,1.3,0.71,1,Average 
+116,Sugarcane,edible factor correction,KFCT 2018,11002,"Sugarcane, Juice, Raw",37,1,0.03,0.04,0.1,45,0,1.1,0.14,1,KFCT 2018
+117,"Jam, marmalade",,WAFCT 2019,13_023,Jam or marmalade,281,2,0,0,0.1,2,0,1,0.2,1,WAFCT 2019
+118,Honey,,KFCT 2018,11001,"Honey, Raw",322,0,0,0,0,0,0,0.6,3,1,KFCT 2018
+119,Chocolate,,Assumed,Assumed,"Chewable chocolate, spread",541,0.083,0.085,0.17,1.61,14,0.27,4.38,1.06,1,Assumed
+120,Candy / Gum,,Assumed,Assumed,"Caramel, candy, confectionery, etc.",394,0,0.004,0.003,0.007,0,0,0.3,0.01,1,Assumed
+121,Sugar glu,,KFCT 2018,11003,"Sugar, white, granulated or lump",400,0,0,0,0,0,0,0,0,1,KFCT 2018
+122,Pepper(ground / liquid),,KFCT 2018,13026,"Pepper, ground, black, dry, raw",297,14,0.09,0.14,0.7,10,0,19.4,1.28,1,KFCT 2018
+123,Vinegar,,WAFCT 2019,13_003,Lemon vinegar,21,0,0,0,0,0,0,0.2,0.04,1,WAFCT 2019
+124,Mayonnaise,,Assumed,Assumed,Mayonnaise,680,15.667,0.01,0.019,0.283,5,0.12,0.21,0.15,1,Assumed
+125,Tomato concentrate,,KFCT 2018,13032,"Tomato, paste, with added salt",78,113,0.13,0.13,2.8,17,0,1.7,0.57,1,KFCT 2018
+126,Pepper-raw,"average of red, gree and yellow capsicum",KFCT 2018,"4008, 4009, 4010","Capsicum, green, red, yellow, raw",45,41.3,0.033,0.033,0.697,30,0,0.6,0.127,1,KFCT 2018
+127,Boullion cubes(MAGGI),values for all spice,KFCT 2018,13028,"Spice, mixed or all spice",360,55,0.25,0.45,4.9,52,0,35.5,3.65,1,KFCT 2018
+129,Other food items,If this is just other food items in general but not specific to a category we can eliminate (unless it has specified in the data what the other is) ,,,,,,,,,,,,,,
+130,Coffee (local),,KFCT 2018,12003,"Coffee, instant, dry powder or granules",311,0,0,1,42.9,13,0,3.9,0.71,1,KFCT 2018
+131,Coffee (imported),,WAFCT 2019,12_009,"Coffee, liquid",343,0,0.02,0.3,36,7,0,4.1,0.72,1,WAFCT 2019
+132,Tea (local),,KFCT 2018,12005,"Tea, chai, instant dry powder",299,0,0,0.99,10.8,103,0,2.3,1.7,1,KFCT 2018
+133,Tea (imported),,WAFCT 2019,12_008,Tea,0,0,0,0.02,0.1,5,0,0.1,0.03,1,WAFCT 2019
+134,Cocoa and powdered drinking chocolate,,KFCT 2018,12004,"Drinking chocolate, powder",541,61,0.03,0.15,0.5,6,0,2,1.55,1,KFCT 2018
+135,Mineral water,,KFCT 2018,12006,"Water, tap",0,0,0,0,0,0,0,0,0,1,KFCT 2018
+136,Carbonated Soft Drinks,,WAFCT 2019,12_024,"Soft drinks (cola, etc.)",40,0,0,0,0,0,0,0.1,0.06,1,WAFCT 2019
+137,Local banana juice,"Assumed same for banana fruit, ask CO",KFCT 2018,5004,"Banana, cavendish, raw",95,5,0.05,0.05,0.35,22,0,0.3,0.36,0.62,KFCT 2018
+138,Passion fruit juice,,KFCT 2018,5026,"Passion Fruit, juice",96,45,0.07,0.01,1.5,8,0,0.4,0.3,1,KFCT 2018
+139,Other juices of fruits (local),"Assumed same for juices in WAFCT, unspecified here",WAFCT 2019,12_012,"Fruit juice (orange, bissap, ginger, cashew juice, etc.)",48,0,0.02,0.02,0.1,0,0,0.3,0.04,1,Assumed
+140,Other juices of fruits (imported),,WAFCT 2019,12_012,"Fruit juice (orange, bissap, ginger, cashew juice, etc.)",48,0,0.02,0.02,0.1,0,0,0.3,0.04,1,Assumed
+141,Powdered juice(super dip),"Assumed, ""Tang""",Assumed,Assumed,Powdered juice,41.817,64.896,0,0.074,0.867,0,0,0.002,0.01,1,Assumed
+142,Liqueurs (local),,WAFCT 2019,12_003,"Traditional beers and wines (soumsoum, sung, palm wine, cashew wine, etc.)",43,0,0.02,0.04,0.4,6,0,0.6,0.07,1,WAFCT 2019
+143,Liqueurs (imported),,WAFCT 2019,12_001,"Beer, European (4.6% v/v alcohol)",41,0,0.01,0.02,0.6,6,0,0,0.01,1,WAFCT 2019
+144,Wine (local),"average of red, white dry and white sweet",KFCT 2018,"12007, 12008, 12009","Wine  Red, White, Dry, White, Sweet",81.3,0,0,0,0.167,0.33,0,0.47,0.077,1,KFCT 2018
+145,Wine (imported),Assumed same as local wine,KFCT 2018,"12007, 12008, 12009","Wine  Red, White, Dry, White, Sweet",81.3,0,0,0,0.167,0.33,0,0.47,0.077,1,KFCT 2018
+146,Other local beer,Assumed same as imported beer,WAFCT 2019,12_001,"Beer, European (4.6% v/v alcohol)",41,0,0.01,0.02,0.6,6,0,0,0.01,1,WAFCT 2019
+147,Commercial beer (local),assumed industrial,WAFCT 2019,12_003,"Traditional beers and wines (soumsoum, sung, palm wine, cashew wine, etc.)",43,0,0.02,0.04,0.4,6,0,0.6,0.07,1,WAFCT 2019
+148,Commercial beer (imported),assumed industrial,WAFCT 2019,12_001,"Beer, European (4.6% v/v alcohol)",41,0,0.01,0.02,0.6,6,0,0,0.01,1,WAFCT 2019
