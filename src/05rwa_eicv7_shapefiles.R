@@ -4,7 +4,7 @@
 
 # rq_packages <- c("readr", "tidyverse", "haven", "ggplot2", "sf")
 
-#1. Read in RWA eicv7 household roster, and recode adm1 and adm2 according to available shapefiles (https://data.humdata.org/dataset/cod-ab-rwa?)
+#1. Read in RWA eicv7 household roster, and recode adm1 and adm2 according to available shapefiles 
 # Keep only hhid, adm1 amd adm2
 rwa_hh_adm <- read_dta("CS_S01_S5_S7_Household.dta") %>%
   select(hhid, province, district) %>%
@@ -56,7 +56,7 @@ rwa_hh_adm <- read_dta("CS_S01_S5_S7_Household.dta") %>%
 
 
   
-#2. Read in shapefiles, keep just adm and geometry for both
+#2. Read in shapefiles (https://data.humdata.org/dataset/cod-ab-rwa?), keep just adm and geometry for both
 rwa_adm1 <- st_read("rwa_adm1_2006_NISR_WGS1984_20181002.shp") %>%
   select(ADM1_EN, geometry) %>%
   rename(adm1=ADM1_EN)
