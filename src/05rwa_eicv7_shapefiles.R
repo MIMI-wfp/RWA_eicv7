@@ -2,7 +2,17 @@
 # Author: Uchenna Agu
 # Contributor: Mo Osman
 
-# rq_packages <- c("readr", "tidyverse", "haven", "ggplot2", "sf")
+# Install/load required packages
+rq_packages <- c("readr", "tidyverse", "haven", "ggplot2", "sf")
+
+installed_packages <- rq_packages %in% rownames(installed.packages())
+if (any(installed_packages == FALSE)) {
+  install.packages(rq_packages[!installed_packages])
+}
+
+lapply(rq_packages, require, character.only = T)
+rm(list= c("rq_packages", "installed_packages"))
+
 
 #1. Read in RWA eicv7 household roster, and recode adm1 and adm2 according to available shapefiles 
 # Keep only hhid, adm1 amd adm2
