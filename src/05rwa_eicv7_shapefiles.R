@@ -2,8 +2,9 @@
 # Author: Uchenna Agu
 # Contributor: Mo Osman
 
+# rq_packages <- c("readr", "tidyverse", "haven", "ggplot2", "sf")
 
-#1. Read in RWA eicv7 household roster, and recode adm1 and adm2 according to available shapefiles
+#1. Read in RWA eicv7 household roster, and recode adm1 and adm2 according to available shapefiles (https://data.humdata.org/dataset/cod-ab-rwa?)
 # Keep only hhid, adm1 amd adm2
 rwa_hh_adm <- read_dta("CS_S01_S5_S7_Household.dta") %>%
   select(hhid, province, district) %>%
