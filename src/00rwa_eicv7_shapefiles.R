@@ -119,7 +119,7 @@ ggplot(data = rwa_adm2) +
 
 
 #4. Save files
-# saveRDS(rwa_hh_adm, file = "rwa_hh_adm.Rds")
-# saveRDS(rwa_adm1, file = "rwa_adm1.Rds")
-# saveRDS(rwa_adm2, file = "rwa_adm2.Rds")
+# saveRDS(rwa_hh_adm, file = "shapefiles/rwa_hh_adm.Rds")
+# saveRDS(rwa_adm1, file = "shapefiles/rwa_adm1.Rds")
+# saveRDS(rwa_adm2, file = "shapefiles/rwa_adm2.Rds")
 
