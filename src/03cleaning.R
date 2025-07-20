@@ -69,7 +69,7 @@ rm(demographic, hh_size)
 # GET CONSUMPTION QUANTITIES IN GRAMS/DAY/AFE: 
 quantities_gdafe <- food_consumption |> 
   left_join(hh_afe, by = "hhid") |>
-  mutate(quantity_gdafe = quantity_g / afe/ 7)
+  mutate(quantity_gdafe = quantity_g / afe / 7)
 
 #-------------------------------------------------------------------------------
 
@@ -251,7 +251,9 @@ food_consumption <- food_consumption |>
   dplyr::select(-quantity_g) |> 
   left_join(quantities_gdafe |> 
               dplyr::select(hhid, item_code, afe, quantity_gdafe) |> 
-              mutate(quantity_g = quantity_gdafe * afe * 7) |> 
+              # Note that values need to be grams consumed per day - to remain 
+              # consistent with other countries on the MIMI database:
+              mutate(quantity_g = quantity_gdafe * afe) |> 
               dplyr::select(-c(quantity_gdafe, afe)),
             by = c("hhid", "item_code"))
 

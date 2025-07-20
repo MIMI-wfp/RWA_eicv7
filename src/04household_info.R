@@ -82,7 +82,7 @@ hh_information <- household_summary |>
 #-------------------------------------------------------------------------------
 
 # WRITE CSV: 
-write_csv(hh_information, "processed_data/rwa_eicv2324_household_info.csv")
+write_csv(hh_information, "processed_data/rwa_eicv2324_hh_information.csv")
 
 rm(list = ls())
 
