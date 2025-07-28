@@ -33,13 +33,15 @@ afe <- read_csv("processed_data/rwa_eicv2324_afe.csv")
 # EXTRACT HOUSEHOLD INFORMATION:
 household_summary <- household_summary |>
   dplyr::select(hhid,
+                clust,
                 province,
                 district,
                 ur,
                 weight,
                 cons1ae) |> 
   # Month and year variables have not been made available in the public dataset
-  rename(adm1 = province,
+  rename(ea = clust,
+         adm1 = province,
          adm2 = district,
          res = ur,
          survey_wgt = weight,
@@ -74,7 +76,6 @@ hh_information <- household_summary |>
          survey = "eicv2324",
          year = NA,
          month = NA,
-         ea = NA,
          zone = NA) |> 
   dplyr::select(iso3, survey, hhid, zone, adm1, adm2, ea, res, sep_quintile,
                 res_quintile, year, month, survey_wgt, afe, pc_expenditure)
