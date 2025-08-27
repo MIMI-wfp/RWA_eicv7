@@ -73,6 +73,20 @@ rwa_food_consumption <- read_dta("raw_data/CS_S8B_Food_Expenditure_Consumption.d
 
 rm(food_items)
 
+# How many food items recalled in the data-set?
+rwa_food_consumption |> 
+  dplyr::distinct(hhid, item_code) |> 
+  nrow()
+
+# How often was a non-standard unit listed?
+rwa_food_consumption |> 
+  filter(unit_v2 %in% c(3, 4) | 
+         unit_v3 %in% c(3, 4) | 
+         unit_v4 %in% c(3, 4) | 
+         unit_v5 %in% c(3, 4)) |> 
+  dplyr::distinct(hhid, item_code) |> 
+  nrow()
+
 #-------------------------------------------------------------------------------
 
 # DIVIDE FOOD CONSUMPTION DATA INTO VISITS AND CALCULATE QUANTITIES:

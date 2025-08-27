@@ -25,6 +25,12 @@ rm(list= c("rq_packages", "installed_packages"))
 
 #-------------------------------------------------------------------------------
 
+# Read in map function: 
+source("src/05base_model_functions.R")
+rm(list = setdiff(ls(), c("plot_map")))
+
+#-------------------------------------------------------------------------------
+
 # READ DATA: 
 hh_information <- read_csv("processed_data/rwa_eicv2324_hh_information.csv")
 base_ai <- read_csv("processed_data/rwa_eicv2324_base_ai.csv")
@@ -42,43 +48,6 @@ rwa_hh_adm <- readRDS("shapefiles/rwa_hh_adm.rds")
 # Add locations to base_ai:
 base_ai <- base_ai |> 
   left_join(rwa_hh_adm, by = "hhid")
-
-#-------------------------------------------------------------------------------
-
-# Define map function: 
-plot_map <- function(data, col, title, metric, outline_sf, palette = "Zissou1", 
-                     n = 100, limits = c(0,100)) {
-  ggplot() +
-    # fill the states by your chosen variable
-    geom_sf(data = data,
-            aes_string(fill = col),
-            color = NA) +
-    # add a single black outline
-    geom_sf(data = outline_sf,
-            fill = NA,
-            color = "black",
-            size = 1) +
-    # continuous palette
-    scale_fill_gradientn(
-      colours = wes_palette(palette, n = n, type = "continuous"),
-      limits = limits,
-      name  = metric) +
-    labs(title   = title) +
-    theme_minimal() +
-    theme(
-      plot.title       = element_text(hjust = 0.5, size = 16, face = "bold"),
-      plot.caption     = element_text(hjust = 0.5),
-      panel.grid       = element_blank(),
-      axis.title       = element_blank(),
-      axis.text        = element_blank(),
-      axis.ticks       = element_blank(),
-      legend.position  = "bottom",
-      legend.direction = "horizontal",
-      legend.title     = element_text(hjust = 0.5),
-      legend.key.width = unit(1.35, "cm"),
-      legend.key.height= unit(0.6, "cm")
-    )
-}
 
 #-------------------------------------------------------------------------------
 

@@ -97,3 +97,40 @@ apparent_intake <- function(name_of_survey, path_to_file = here::here("processed
 
 }
 
+#-------------------------------------------------------------------------------
+
+# Define map function: 
+plot_map <- function(data, col, title, metric, outline_sf, palette = "Zissou1", 
+                     n = 100, limits = c(0,100)) {
+  ggplot() +
+    # fill the states by your chosen variable
+    geom_sf(data = data,
+            aes_string(fill = col),
+            color = NA) +
+    # add a single black outline
+    geom_sf(data = outline_sf,
+            fill = NA,
+            color = "black",
+            size = 1) +
+    # continuous palette
+    scale_fill_gradientn(
+      colours = wes_palette(palette, n = n, type = "continuous"),
+      limits = limits,
+      name  = metric) +
+    labs(title   = title) +
+    theme_minimal() +
+    theme(
+      plot.title       = element_text(hjust = 0.5, size = 16, face = "bold"),
+      plot.caption     = element_text(hjust = 0.5),
+      panel.grid       = element_blank(),
+      axis.title       = element_blank(),
+      axis.text        = element_blank(),
+      axis.ticks       = element_blank(),
+      legend.position  = "bottom",
+      legend.direction = "horizontal",
+      legend.title     = element_text(hjust = 0.5),
+      legend.key.width = unit(1.35, "cm"),
+      legend.key.height= unit(0.6, "cm")
+    )
+}
+
