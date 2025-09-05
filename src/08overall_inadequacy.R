@@ -12,7 +12,7 @@
 # INSTALL AND LOAD PACKAGES:
 
 rq_packages <- c("readr", "tidyverse", "ggplot2", "spdep", "sf", "wesanderson",
-                 "srvyr")
+                 "srvyr", "gt", "webshot2")
 
 installed_packages <- rq_packages %in% rownames(installed.packages())
 if (any(installed_packages == FALSE)) {
@@ -100,6 +100,47 @@ plot_map(data = mar_adm2,
          metric = "% At risk of inadequate intake (MAR < 0.75)", 
          outline_sf = rwa_adm1) 
 
+ggsave("maps/mar_risk.png", width = 8, height = 6)
+
+#-------------------------------------------------------------------------------
+
+# PRESENT DATA IN TABULAR FORMAT:
+
+# Read in aggregate estimates for individual micronutrients:
+mn_inadequacy <- read_csv("processed_data/mn_inadequacy.csv") |> 
+  dplyr::select(-geometry)
+
+mar_adm2 <- mar_adm2 |> 
+  as.data.frame() |>
+  dplyr::select(adm2, mar_inadequate)
+
+# Join: 
+mn_inadequacy <- mn_inadequacy |> 
+  left_join(mar_adm2, by = "adm2")
+
+inadequacy_table <- mn_inadequacy |>
+  gt() |> 
+  tab_header(title = md("Risk of inadequate micronutrient intake in Rwanda")) |> 
+  # Bold column names:
+  cols_label(adm2 = md("**District**"),
+             vita_inadequacy = md("**Vitamin A**"),
+             thia_inadequacy = md("**Thiamine**"),
+             ribo_inadequacy = md("**Riboflavin**"),
+             niac_inadequacy = md("**Niacin**"),
+             folate_inadequacy = md("**Folate**"),
+             vitb12_inadequacy = md("**Vitamin B12**"),
+             fe_inadequacy = md("**Iron**"),
+             zn_inadequacy = md("**Zinc**"),
+             mar_inadequate = md("**Overall (MAR < 0.75)**")) |> 
+  tab_footnote(footnote = "% At risk of inadequate intake",
+               locations = cells_column_labels(columns = -adm2)) |>
+  tab_footnote(footnote = "MAR = Mean Adequacy Ratio (Vitamin A, Folate, Vitamin B12, Iron, Zinc)",
+               locations = cells_column_labels(columns = mar_inadequate)) |>
+  tab_footnote("Rwanda Integrated Household Living Conditions Survey 7 (EICV7), 2023-24")
+
+inadequacy_table
+
+gtsave(inadequacy_table, "maps/inadequacy_table.png")
 #-------------------------------------------------------------------------------
 
 # DISAGGREGATION BY URB/RURAL, SEP: 

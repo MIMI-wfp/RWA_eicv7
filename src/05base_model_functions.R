@@ -106,7 +106,8 @@ plot_map <- function(data, col, title, metric, outline_sf, palette = "Zissou1",
     # fill the states by your chosen variable
     geom_sf(data = data,
             aes_string(fill = col),
-            color = NA) +
+            color = "black",
+            size = 0.2) +
     # add a single black outline
     geom_sf(data = outline_sf,
             fill = NA,

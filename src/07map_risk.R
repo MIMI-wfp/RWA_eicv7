@@ -25,18 +25,13 @@ rm(list= c("rq_packages", "installed_packages"))
 
 #-------------------------------------------------------------------------------
 
-# Read in map function: 
-source("src/05base_model_functions.R")
-rm(list = setdiff(ls(), c("plot_map")))
-
-#-------------------------------------------------------------------------------
-
 # READ DATA: 
 hh_information <- read_csv("processed_data/rwa_eicv2324_hh_information.csv")
 base_ai <- read_csv("processed_data/rwa_eicv2324_base_ai.csv")
 source("src/05base_model_functions.R")
 
-rm(list = setdiff(ls(), c("base_ai", "allen_ear", "hh_information")))
+rm(list = setdiff(ls(), c("base_ai", "allen_ear", "hh_information",
+                         "plot_map")))
 
 # Read in shapefile data: 
 rwa_adm1 <- readRDS("shapefiles/rwa_adm1.rds")
@@ -87,9 +82,13 @@ mn_inadequacy <- analysis_df |>
             zn_inadequacy = survey_mean(zn_mg_inadequate, na.rm = T, vartype = NULL)) |> 
   left_join(rwa_adm2, by = "adm2")
 
-# Mutate across variables except "adm2" and "geometry" to multiply by 100:
+# Multiply by 100 and round to 1 decimal place:
 mn_inadequacy <- mn_inadequacy |> 
-  mutate(across(-c(adm2, geometry), ~ .x * 100))
+  mutate(across(-c(adm2, geometry), ~ .x * 100)) |> 
+  mutate(across(-c(adm2, geometry), ~ round(.x, digits = 1)))
+
+# Write to CSV:
+write_csv(mn_inadequacy, "processed_data/mn_inadequacy.csv")
 
 # Convert to correct object class: 
 mn_inadequacy <- st_as_sf(mn_inadequacy)
