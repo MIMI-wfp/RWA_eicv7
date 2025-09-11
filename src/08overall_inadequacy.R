@@ -136,7 +136,10 @@ inadequacy_table <- mn_inadequacy |>
                locations = cells_column_labels(columns = -adm2)) |>
   tab_footnote(footnote = "MAR = Mean Adequacy Ratio (Vitamin A, Folate, Vitamin B12, Iron, Zinc)",
                locations = cells_column_labels(columns = mar_inadequate)) |>
-  tab_footnote("Rwanda Integrated Household Living Conditions Survey 7 (EICV7), 2023-24")
+  tab_footnote("Rwanda Integrated Household Living Conditions Survey 7 (EICV7), 2023-24") |> 
+  cols_align(align = "center", columns = -adm2) |>
+  cols_width(everything() ~ px(90))
+
 
 inadequacy_table
 

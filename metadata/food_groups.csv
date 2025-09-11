@@ -1,149 +1,149 @@
-﻿item_code,item_name,food_group
-1,Dry bean,pulses
-2,Fresh bean,pulses
-3,String bean,pulses
-4,Groundnut flour,nuts_seeds
-5,Irish potato,grains_roots_tubers
-6,Sweet potato,grains_roots_tubers
-7,Cassava (root),grains_roots_tubers
-8,Tarot/amateke,grains_roots_tubers
-9,Banana-cooking (Inyamunyo),other_fruit
-10,Corn (flour from Mill),grains_roots_tubers
-11,Corn (flour from Factory),grains_roots_tubers
-12,Cassava flour (yasekuwe),grains_roots_tubers
-13,Cassava (fermented),grains_roots_tubers
-14,Cassava from Mill),grains_roots_tubers
-15,Cassava from Factory),grains_roots_tubers
-16,Local rice,grains_roots_tubers
-17,Imported rice,grains_roots_tubers
-18,Maize (fresh),other_veg
-19,Dry maize (grain),grains_roots_tubers
-20,Tomato,other_fruit
-21,Fresh milk,dairy
-22,Curdled Milk,dairy
-23,Cakes/Chapati/Mandazi,grains_roots_tubers
-24,Bread,grains_roots_tubers
-25,Sugar (imported),misc
-26,Sugar (local),misc
-27,Salt,misc
-28,Local banana beer,misc
-29,Sorghum juice(Ubushera),misc
-30,Local sorghum beer(ikigage),misc
-31,Peanut oil,misc
-32,Margarine,misc
-33,Palm oil,misc
-34,Other plant oils,misc
-35,Lard of pork,misc
-36,Beef meat,meat_poultry_fish
-37,Sheep /Mutton / lamb meat,meat_poultry_fish
-38,Goat meat,meat_poultry_fish
-39,Pork meat,meat_poultry_fish
-40,Rabbit Meat,meat_poultry_fish
-41,Wild Meat,meat_poultry_fish
-42,Other Meats,meat_poultry_fish
-43,"Sausages, bacon, ham etc",meat_poultry_fish
-44,Preserved/canned meat,meat_poultry_fish
-45,Sorghum,grains_roots_tubers
-46,Fermented sorghum,grains_roots_tubers
-47,Wheat (grain),grains_roots_tubers
-48,Other cereals,grains_roots_tubers
-49,Sorghum (flour),grains_roots_tubers
-50,Wheat (flour),grains_roots_tubers
-51,Millet (flour),grains_roots_tubers
-52,Other flour of cereals,grains_roots_tubers
-53,Biscuits,grains_roots_tubers
-54,Pasta,grains_roots_tubers
-55,Chicken live,meat_poultry_fish
-56,Frozen chicken,meat_poultry_fish
-57,Other domestic poultries e.g. ducks,meat_poultry_fish
-58,Eggs,eggs
-59,Fish (fresh / frozen),meat_poultry_fish
-60,Small Sized Fish (fresh),meat_poultry_fish
-61,Fish (dry / smoked),meat_poultry_fish
-62,Small Sized Fish (dry),meat_poultry_fish
-63,Preserved/canned fish,meat_poultry_fish
-64,Condensed milk unsweetened,dairy
-65,Milk powder,dairy
-66,Yogurt,dairy
-67,Ice cream,dairy
-68,Cheese,dairy
-69,Butter (local),dairy
-70,Butter (imported),dairy
-71,Banana fruit (Imineke),other_fruit
-72,Banana - beer (Ikakama/Inkashi),misc
-73,Mangos,vita_fruit_veg
-74,Papayas,vita_fruit_veg
-75,Avocado,other_fruit
-76,Pineapple,other_fruit
-77,Guava,other_fruit
-78,Orange (local),other_fruit
-79,Orange (imported),other_fruit
-80,Tangerine,other_fruit
-81,Citron - Lemon,other_fruit
-82,Passion Fruit,vita_fruit_veg
-83,Plums,other_fruit
-84,Berries,other_fruit
-85,Apples,other_fruit
-86,Other fruits,other_fruit
-87,Soya Flour,pulses
-88,Sunflower flour,nuts_seeds
-89,Ground nuts (peanuts),nuts_seeds
-90,Grilled ground nuts,nuts_seeds
-91,Soya (fresh),pulses
-92,Soya (dry),pulses
-93,Green pea (fresh),pulses
-94,Green pea (dry),pulses
-95,Onion,other_veg
-96,Garlic,other_veg
-97,Pumpkin,vita_fruit_veg
-98,Cucumber,other_veg
-99,Eggplant,other_veg
-100,Carrot,vita_fruit_veg
-101,Leeks,other_veg
-102,Lettuce,other_veg
-103,Celery,other_veg
-104,Parsley,green_leafy_veg
-105,Mushrooms,other_veg
-106,Cassava leaves,green_leafy_veg
-107,Amarante (small leafed green),green_leafy_veg
-108,Cabbages,other_veg
-109,Spinach,green_leafy_veg
-110,Amarante (large leafed green),green_leafy_veg
-111,Other Vegetables,other_veg
-112,Chayote,other_veg
-113,Pepper,vita_fruit_veg
-114,Yams/Ibikoro,grains_roots_tubers
-115,Other tubers,grains_roots_tubers
-116,Sugarcane,misc
-117,"Jam, marmalade",misc
-118,Honey,misc
-119,Chocolate,misc
-120,Candy / Gum,misc
-121,Sugar glu,misc
-122,Pepper(ground / liquid),misc
-123,Vinegar,misc
-124,Mayonnaise,misc
-125,Tomato concentrate,misc
-126,Pepper-raw,misc
-127,Boullion cubes(MAGGI),misc
-128,Baby food,misc
-129,Other food items,misc
-130,Coffee (local),misc
-131,Coffee (imported),misc
-132,Tea (local),misc
-133,Tea (imported),misc
-134,Cocoa and powdered drinking chocolate,misc
-135,Mineral water,misc
-136,Carbonated Soft Drinks,misc
-137,Local banana juice,misc
-138,Passion fruit juice,misc
-139,Other juices of fruits (local),misc
-140,Other juices of fruits (imported),misc
-141,Powdered juice(super dip),misc
-142,Liqueurs (local),misc
-143,Liqueurs (imported),misc
-144,Wine (local),misc
-145,Wine (imported),misc
-146,Other local beer,misc
-147,Commercial beer (local),misc
-148,Commercial beer (imported),misc
+﻿item_code,item_name,food_group,alternative_group
+1,Dry bean,pulses,pulses
+2,Fresh bean,pulses,pulses
+3,String bean,pulses,pulses
+4,Groundnut flour,nuts_seeds,nuts_seeds
+5,Irish potato,grains_roots_tubers,grains_roots_tubers
+6,Sweet potato,grains_roots_tubers,grains_roots_tubers
+7,Cassava (root),grains_roots_tubers,grains_roots_tubers
+8,Tarot/amateke,grains_roots_tubers,grains_roots_tubers
+9,Banana-cooking (Inyamunyo),other_fruit,fruit_vegetables
+10,Corn (flour from Mill),grains_roots_tubers,grains_roots_tubers
+11,Corn (flour from Factory),grains_roots_tubers,grains_roots_tubers
+12,Cassava flour (yasekuwe),grains_roots_tubers,grains_roots_tubers
+13,Cassava (fermented),grains_roots_tubers,grains_roots_tubers
+14,Cassava from Mill),grains_roots_tubers,grains_roots_tubers
+15,Cassava from Factory),grains_roots_tubers,grains_roots_tubers
+16,Local rice,grains_roots_tubers,grains_roots_tubers
+17,Imported rice,grains_roots_tubers,grains_roots_tubers
+18,Maize (fresh),other_veg,fruit_vegetables
+19,Dry maize (grain),grains_roots_tubers,grains_roots_tubers
+20,Tomato,other_fruit,fruit_vegetables
+21,Fresh milk,dairy,dairy
+22,Curdled Milk,dairy,dairy
+23,Cakes/Chapati/Mandazi,grains_roots_tubers,grains_roots_tubers
+24,Bread,grains_roots_tubers,grains_roots_tubers
+25,Sugar (imported),misc,sugars
+26,Sugar (local),misc,sugars
+27,Salt,misc,others
+28,Local banana beer,misc,others
+29,Sorghum juice(Ubushera),misc,others
+30,Local sorghum beer(ikigage),misc,others
+31,Peanut oil,misc,edible_oil
+32,Margarine,misc,edible_oil
+33,Palm oil,misc,edible_oil
+34,Other plant oils,misc,edible_oil
+35,Lard of pork,misc,edible_oil
+36,Beef meat,meat_poultry_fish,meat_fish_eggs
+37,Sheep /Mutton / lamb meat,meat_poultry_fish,meat_fish_eggs
+38,Goat meat,meat_poultry_fish,meat_fish_eggs
+39,Pork meat,meat_poultry_fish,meat_fish_eggs
+40,Rabbit Meat,meat_poultry_fish,meat_fish_eggs
+41,Wild Meat,meat_poultry_fish,meat_fish_eggs
+42,Other Meats,meat_poultry_fish,meat_fish_eggs
+43,"Sausages, bacon, ham etc",meat_poultry_fish,meat_fish_eggs
+44,Preserved/canned meat,meat_poultry_fish,meat_fish_eggs
+45,Sorghum,grains_roots_tubers,grains_roots_tubers
+46,Fermented sorghum,grains_roots_tubers,grains_roots_tubers
+47,Wheat (grain),grains_roots_tubers,grains_roots_tubers
+48,Other cereals,grains_roots_tubers,grains_roots_tubers
+49,Sorghum (flour),grains_roots_tubers,grains_roots_tubers
+50,Wheat (flour),grains_roots_tubers,grains_roots_tubers
+51,Millet (flour),grains_roots_tubers,grains_roots_tubers
+52,Other flour of cereals,grains_roots_tubers,grains_roots_tubers
+53,Biscuits,grains_roots_tubers,grains_roots_tubers
+54,Pasta,grains_roots_tubers,grains_roots_tubers
+55,Chicken live,meat_poultry_fish,meat_fish_eggs
+56,Frozen chicken,meat_poultry_fish,meat_fish_eggs
+57,Other domestic poultries e.g. ducks,meat_poultry_fish,meat_fish_eggs
+58,Eggs,eggs,meat_fish_eggs
+59,Fish (fresh / frozen),meat_poultry_fish,meat_fish_eggs
+60,Small Sized Fish (fresh),meat_poultry_fish,meat_fish_eggs
+61,Fish (dry / smoked),meat_poultry_fish,meat_fish_eggs
+62,Small Sized Fish (dry),meat_poultry_fish,meat_fish_eggs
+63,Preserved/canned fish,meat_poultry_fish,meat_fish_eggs
+64,Condensed milk unsweetened,dairy,dairy
+65,Milk powder,dairy,dairy
+66,Yogurt,dairy,dairy
+67,Ice cream,dairy,dairy
+68,Cheese,dairy,dairy
+69,Butter (local),dairy,dairy
+70,Butter (imported),dairy,dairy
+71,Banana fruit (Imineke),other_fruit,fruit_vegetables
+72,Banana - beer (Ikakama/Inkashi),misc,others
+73,Mangos,vita_fruit_veg,vita_fruit_veg
+74,Papayas,vita_fruit_veg,vita_fruit_veg
+75,Avocado,other_fruit,fruit_vegetables
+76,Pineapple,other_fruit,fruit_vegetables
+77,Guava,other_fruit,fruit_vegetables
+78,Orange (local),other_fruit,fruit_vegetables
+79,Orange (imported),other_fruit,fruit_vegetables
+80,Tangerine,other_fruit,fruit_vegetables
+81,Citron - Lemon,other_fruit,fruit_vegetables
+82,Passion Fruit,vita_fruit_veg,vita_fruit_veg
+83,Plums,other_fruit,fruit_vegetables
+84,Berries,other_fruit,fruit_vegetables
+85,Apples,other_fruit,fruit_vegetables
+86,Other fruits,other_fruit,fruit_vegetables
+87,Soya Flour,pulses,pulses
+88,Sunflower flour,nuts_seeds,nuts_seeds
+89,Ground nuts (peanuts),nuts_seeds,nuts_seeds
+90,Grilled ground nuts,nuts_seeds,nuts_seeds
+91,Soya (fresh),pulses,pulses
+92,Soya (dry),pulses,pulses
+93,Green pea (fresh),pulses,pulses
+94,Green pea (dry),pulses,pulses
+95,Onion,other_veg,fruit_vegetables
+96,Garlic,other_veg,fruit_vegetables
+97,Pumpkin,vita_fruit_veg,vita_fruit_veg
+98,Cucumber,other_veg,fruit_vegetables
+99,Eggplant,other_veg,fruit_vegetables
+100,Carrot,vita_fruit_veg,vita_fruit_veg
+101,Leeks,other_veg,fruit_vegetables
+102,Lettuce,other_veg,fruit_vegetables
+103,Celery,other_veg,fruit_vegetables
+104,Parsley,green_leafy_veg,green_leafy_veg
+105,Mushrooms,other_veg,fruit_vegetables
+106,Cassava leaves,green_leafy_veg,green_leafy_veg
+107,Amarante (small leafed green),green_leafy_veg,green_leafy_veg
+108,Cabbages,other_veg,fruit_vegetables
+109,Spinach,green_leafy_veg,green_leafy_veg
+110,Amarante (large leafed green),green_leafy_veg,green_leafy_veg
+111,Other Vegetables,other_veg,fruit_vegetables
+112,Chayote,other_veg,fruit_vegetables
+113,Pepper,vita_fruit_veg,vita_fruit_veg
+114,Yams/Ibikoro,grains_roots_tubers,grains_roots_tubers
+115,Other tubers,grains_roots_tubers,grains_roots_tubers
+116,Sugarcane,misc,sugars
+117,"Jam, marmalade",misc,others
+118,Honey,misc,others
+119,Chocolate,misc,others
+120,Candy / Gum,misc,others
+121,Sugar glu,misc,sugars
+122,Pepper(ground / liquid),misc,others
+123,Vinegar,misc,others
+124,Mayonnaise,misc,others
+125,Tomato concentrate,misc,others
+126,Pepper-raw,misc,others
+127,Boullion cubes(MAGGI),misc,others
+128,Baby food,misc,others
+129,Other food items,misc,others
+130,Coffee (local),misc,others
+131,Coffee (imported),misc,others
+132,Tea (local),misc,others
+133,Tea (imported),misc,others
+134,Cocoa and powdered drinking chocolate,misc,others
+135,Mineral water,misc,others
+136,Carbonated Soft Drinks,misc,others
+137,Local banana juice,misc,others
+138,Passion fruit juice,misc,others
+139,Other juices of fruits (local),misc,others
+140,Other juices of fruits (imported),misc,others
+141,Powdered juice(super dip),misc,others
+142,Liqueurs (local),misc,others
+143,Liqueurs (imported),misc,others
+144,Wine (local),misc,others
+145,Wine (imported),misc,others
+146,Other local beer,misc,others
+147,Commercial beer (local),misc,others
+148,Commercial beer (imported),misc,others
