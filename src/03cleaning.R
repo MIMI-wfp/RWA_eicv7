@@ -116,6 +116,8 @@ quantities_gdafe |>
   xlim(c(0, 35)) + 
   xlab("Salt Consumption (grams/day/AFE)")
 
+ggsave("figures/food_intake_distributions/salt.png")
+
 # Sugar:
 quantities_gdafe |> 
   filter(item_code == 25) |> 
@@ -123,6 +125,8 @@ quantities_gdafe |>
   geom_density(fill="#69b3a2", color="#e9ecef", alpha=0.8) +
   xlim(c(0, 150)) +
   xlab("Sugar Consumption (grams/day/AFE)")
+
+ggsave("figures/food_intake_distributions/sugar.png")
 
 # Intake distributions by food group: 
 quantities_gdafe <- quantities_gdafe |> 
@@ -150,6 +154,8 @@ ggplot(quantities_groups$grains_roots_tubers, aes(x = quantity_gdafe)) +
        y = "Density") +
   theme_minimal()
 
+ggsave("figures/food_intake_distributions/grains_roots_tubers.png")
+
 # Pulses: 
 ggplot(quantities_groups$pulses, aes(x = quantity_gdafe)) +
   geom_density(fill="#69b3a2", color="#e9ecef", alpha=0.8) +
@@ -159,6 +165,8 @@ ggplot(quantities_groups$pulses, aes(x = quantity_gdafe)) +
        x = "Quantity (grams/day/AFE)",
        y = "Density") +
   theme_minimal()
+
+ggsave("figures/food_intake_distributions/pulses.png")
 
 # Nuts and seeds: 
 ggplot(quantities_groups$nuts_seeds, aes(x = quantity_gdafe)) +
@@ -170,6 +178,8 @@ ggplot(quantities_groups$nuts_seeds, aes(x = quantity_gdafe)) +
        y = "Density") +
   theme_minimal()
 
+ggsave("figures/food_intake_distributions/nuts_seeds.png")
+
 # Dairy: 
 ggplot(quantities_groups$dairy, aes(x = quantity_gdafe)) +
   geom_density(fill="#69b3a2", color="#e9ecef", alpha=0.8) +
@@ -179,6 +189,8 @@ ggplot(quantities_groups$dairy, aes(x = quantity_gdafe)) +
        x = "Quantity (grams/day/AFE)",
        y = "Density") +
   theme_minimal()
+
+ggsave("figures/food_intake_distributions/dairy.png")
 
 # Meat, poultry and fish:
 ggplot(quantities_groups$meat_poultry_fish, aes(x = quantity_gdafe)) +
@@ -190,6 +202,8 @@ ggplot(quantities_groups$meat_poultry_fish, aes(x = quantity_gdafe)) +
        y = "Density") +
   theme_minimal()
 
+ggsave("figures/food_intake_distributions/meat_poultry_fish.png")
+
 # Eggs:
 ggplot(quantities_groups$eggs, aes(x = quantity_gdafe)) +
   geom_density(fill="#69b3a2", color="#e9ecef", alpha=0.8) +
@@ -199,6 +213,8 @@ ggplot(quantities_groups$eggs, aes(x = quantity_gdafe)) +
        x = "Quantity (grams/day/AFE)",
        y = "Density") +
   theme_minimal()
+
+ggsave("figures/food_intake_distributions/eggs.png")
 
 # Dark leafy grains and vegetables: 
 ggplot(quantities_groups$green_leafy_veg, aes(x = quantity_gdafe)) +
@@ -220,6 +236,8 @@ ggplot(quantities_groups$vita_fruit_veg, aes(x = quantity_gdafe)) +
        y = "Density") +
   theme_minimal()
 
+ggsave("figures/food_intake_distributions/vitamin_a_fruit_veg.png")
+
 # Other vegetables: 
 ggplot(quantities_groups$other_veg, aes(x = quantity_gdafe)) +
   geom_density(fill="#69b3a2", color="#e9ecef", alpha=0.8) +
@@ -230,6 +248,8 @@ ggplot(quantities_groups$other_veg, aes(x = quantity_gdafe)) +
        y = "Density") +
   theme_minimal()
 
+ggsave("figures/food_intake_distributions/other_vegetables.png")
+
 # Other fruit: 
 ggplot(quantities_groups$other_fruit, aes(x = quantity_gdafe)) +
   geom_density(fill="#69b3a2", color="#e9ecef", alpha=0.8) +
@@ -239,6 +259,8 @@ ggplot(quantities_groups$other_fruit, aes(x = quantity_gdafe)) +
        x = "Quantity (grams/day/AFE)",
        y = "Density") +
   theme_minimal()
+
+ggsave("figures/food_intake_distributions/other_fruit.png")
 
 # The examined distributions for the food items across the various food groups 
 # appear to be reasonable and plausible. This reassures us that there are no

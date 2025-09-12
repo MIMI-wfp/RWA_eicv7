@@ -36,6 +36,40 @@ fc_table <- read_csv("processed_data/rwa_eicv2324_fct.csv")
 
 #-------------------------------------------------------------------------------
 
+# SPECIFY SUB-POPULATION FOR ANALYSIS:
+sub_population <- "Rural" # "all", "Urban", "Rural" (CAPITALISE FIRST LETTER)
+
+food_consumption <- if(sub_population == "all") {
+
+  food_consumption
+
+} else {
+
+  if(sub_population == "Urban") {
+
+    food_consumption <- food_consumption |> 
+      left_join(hh_information |> 
+        dplyr::select(hhid, res), by = "hhid") |>
+      filter(res == "Urban")
+
+    food_consumption
+
+  } else if(sub_population == "Rural") {
+
+    food_consumption <- food_consumption |> 
+      left_join(hh_information |> 
+        dplyr::select(hhid, res), by = "hhid") |>
+      filter(res == "Rural")
+
+    food_consumption
+    
+  } else {
+    print("INVALID - Please specify one of the following: 'all', 'Urban', or 'Rural'.")
+  }
+}
+
+#-------------------------------------------------------------------------------
+
 # CALCULATE HOUSEHOLD NUTRIENT INTAKE BY FOOD ITEM:
 
 # Merge food consumption data with nutrient composition data: 
@@ -152,7 +186,8 @@ main_plot <- ggplot(energy_intake_grouped, aes(x = 1, y = energy_pct, fill = foo
     axis.ticks.y = element_blank(),
     legend.position = "top",
     axis.line.x = element_line(color = "black", size = 0.5)
-  ) 
+  ) +
+  ggtitle(paste0("% dietary energy contributions, by food group for ", sub_population, " households"))
 
 main_plot
 
@@ -189,11 +224,11 @@ combined <- plot_grid(
 combined
 
 # Save: 
-ggsave(
-  combined,
-  filename = "figures/food_groups_energy_intake.png",
-  width = 10, height = 8, dpi = 300
-)
+# ggsave(
+#   combined,
+#   filename = "SPECIFY FILE NAME AND PATH HERE",
+#   width = 10, height = 8, dpi = 300
+# )
 
 # Clear environment: 
 rm(list = ls())
