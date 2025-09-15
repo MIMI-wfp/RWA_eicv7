@@ -57,6 +57,8 @@ ggplot(hh_size, aes(x = hh_size, y = afe)) +
   theme(plot.background = element_rect(fill = "white", color = NA),
         panel.background = element_rect(fill = "white", color = NA))
 
+ggsave("figures/afe_hh_size.png", width = 8, height = 6)
+
 # Observed trends are re-assuring with almost a 1:1 relationship between AFE 
 # and household size. For larger households, the AFE trends lower than the
 # household size, which is expected as larger households tend to have more
@@ -154,7 +156,7 @@ ggplot(quantities_groups$grains_roots_tubers, aes(x = quantity_gdafe)) +
        y = "Density") +
   theme_minimal()
 
-ggsave("figures/food_intake_distributions/grains_roots_tubers.png")
+ggsave("figures/food_intake_distributions/grains_roots_tubers.png", height = 6, width = 10)
 
 # Pulses: 
 ggplot(quantities_groups$pulses, aes(x = quantity_gdafe)) +
@@ -166,7 +168,7 @@ ggplot(quantities_groups$pulses, aes(x = quantity_gdafe)) +
        y = "Density") +
   theme_minimal()
 
-ggsave("figures/food_intake_distributions/pulses.png")
+ggsave("figures/food_intake_distributions/pulses.png", height = 6, width = 10)
 
 # Nuts and seeds: 
 ggplot(quantities_groups$nuts_seeds, aes(x = quantity_gdafe)) +
@@ -178,7 +180,7 @@ ggplot(quantities_groups$nuts_seeds, aes(x = quantity_gdafe)) +
        y = "Density") +
   theme_minimal()
 
-ggsave("figures/food_intake_distributions/nuts_seeds.png")
+ggsave("figures/food_intake_distributions/nuts_seeds.png", height = 4, width = 7)
 
 # Dairy: 
 ggplot(quantities_groups$dairy, aes(x = quantity_gdafe)) +
@@ -190,7 +192,7 @@ ggplot(quantities_groups$dairy, aes(x = quantity_gdafe)) +
        y = "Density") +
   theme_minimal()
 
-ggsave("figures/food_intake_distributions/dairy.png")
+ggsave("figures/food_intake_distributions/dairy.png", height = 6, width = 10)
 
 # Meat, poultry and fish:
 ggplot(quantities_groups$meat_poultry_fish, aes(x = quantity_gdafe)) +
@@ -202,7 +204,7 @@ ggplot(quantities_groups$meat_poultry_fish, aes(x = quantity_gdafe)) +
        y = "Density") +
   theme_minimal()
 
-ggsave("figures/food_intake_distributions/meat_poultry_fish.png")
+ggsave("figures/food_intake_distributions/meat_poultry_fish.png", height = 6, width = 10)
 
 # Eggs:
 ggplot(quantities_groups$eggs, aes(x = quantity_gdafe)) +
@@ -226,6 +228,8 @@ ggplot(quantities_groups$green_leafy_veg, aes(x = quantity_gdafe)) +
        y = "Density") +
   theme_minimal()
 
+ggsave("figures/food_intake_distributions/green_leafy_veg.png", height = 5, width = 10)
+
 # Other vitamin A rich fruit and vegetables: 
 ggplot(quantities_groups$vita_fruit_veg, aes(x = quantity_gdafe)) +
   geom_density(fill="#69b3a2", color="#e9ecef", alpha=0.8) +
@@ -236,7 +240,7 @@ ggplot(quantities_groups$vita_fruit_veg, aes(x = quantity_gdafe)) +
        y = "Density") +
   theme_minimal()
 
-ggsave("figures/food_intake_distributions/vitamin_a_fruit_veg.png")
+ggsave("figures/food_intake_distributions/vitamin_a_fruit_veg.png", height = 6, width = 10)
 
 # Other vegetables: 
 ggplot(quantities_groups$other_veg, aes(x = quantity_gdafe)) +
@@ -248,7 +252,7 @@ ggplot(quantities_groups$other_veg, aes(x = quantity_gdafe)) +
        y = "Density") +
   theme_minimal()
 
-ggsave("figures/food_intake_distributions/other_vegetables.png")
+ggsave("figures/food_intake_distributions/other_vegetables.png", height = 6, width = 10)
 
 # Other fruit: 
 ggplot(quantities_groups$other_fruit, aes(x = quantity_gdafe)) +
@@ -260,7 +264,7 @@ ggplot(quantities_groups$other_fruit, aes(x = quantity_gdafe)) +
        y = "Density") +
   theme_minimal()
 
-ggsave("figures/food_intake_distributions/other_fruit.png")
+ggsave("figures/food_intake_distributions/other_fruit.png", height = 6, width = 10)
 
 # The examined distributions for the food items across the various food groups 
 # appear to be reasonable and plausible. This reassures us that there are no
