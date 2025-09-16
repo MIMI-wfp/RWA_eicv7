@@ -12,7 +12,7 @@
 # INSTALL AND LOAD PACKAGES:
 
 rq_packages <- c("readr", "tidyverse", "ggplot2", "spdep", "sf", "wesanderson",
-                 "srvyr")
+                 "srvyr", "plotly")
 
 installed_packages <- rq_packages %in% rownames(installed.packages())
 if (any(installed_packages == FALSE)) {
@@ -98,72 +98,80 @@ plot_map(data = mn_inadequacy,
          col = "vita_inadequacy",
          title = "Vitamin A",
          metric = "Risk of inadequate intake (%)", 
-         outline_sf = rwa_adm1)
+         outline_sf = rwa_adm1,
+         add_labels = TRUE)
 
-ggsave("maps/vita_risk.png", width = 8, height = 6)
+ggsave("maps/percentages_labelled/vita_risk.png", width = 16, height = 12)
 
 # THIAMINE:
 plot_map(data = mn_inadequacy,
          col = "thia_inadequacy",
          title = "Thiamine",
          metric = "Risk of inadequate intake (%)", 
-         outline_sf = rwa_adm1)
+         outline_sf = rwa_adm1, 
+         add_labels = TRUE)
 
-ggsave("maps/thia_risk.png", width = 8, height = 6)
+ggsave("maps/percentages_labelled/thia_risk.png", width = 16, height = 12)
 
 # RIBOFLAVIN:
 plot_map(data = mn_inadequacy,
          col = "ribo_inadequacy",
          title = "Riboflavin",
          metric = "Risk of inadequate intake (%)", 
-         outline_sf = rwa_adm1)
+         outline_sf = rwa_adm1,
+         add_labels = TRUE)
 
-ggsave("maps/ribo_risk.png", width = 8, height = 6)
+ggsave("maps/percentages_labelled/ribo_risk.png", width = 16, height = 12)
 
 # NIACIN:
 plot_map(data = mn_inadequacy,
          col = "niac_inadequacy",
          title = "Niacin",
          metric = "Risk of inadequate intake (%)", 
-         outline_sf = rwa_adm1)
+         outline_sf = rwa_adm1,
+         add_labels = TRUE)
 
-ggsave("maps/niac_risk.png", width = 8, height = 6)
+ggsave("maps/percentages_labelled/niac_risk.png", width = 16, height = 12)
 
 # FOLATE:
 plot_map(data = mn_inadequacy,
          col = "folate_inadequacy",
          title = "Folate",
          metric = "Risk of inadequate intake (%)", 
-         outline_sf = rwa_adm1)
+         outline_sf = rwa_adm1,
+         add_labels = TRUE)
 
-ggsave("maps/folate_risk.png", width = 8, height = 6)
+ggsave("maps/percentages_labelled/folate_risk.png", width = 16, height = 12)
 
 # VITAMIN B12:
 plot_map(data = mn_inadequacy,
          col = "vitb12_inadequacy",
          title = "Vitamin B12",
          metric = "Risk of inadequate intake (%)", 
-         outline_sf = rwa_adm1)
+         outline_sf = rwa_adm1,
+         add_labels = TRUE)
 
-ggsave("maps/vitb12_risk.png", width = 8, height = 6)
+ggsave("maps/percentages_labelled/vitb12_risk.png", width = 16, height = 12)
 
 # IRON:
 plot_map(data = mn_inadequacy,
          col = "fe_inadequacy",
          title = "Iron",
          metric = "Risk of inadequate intake (%)", 
-         outline_sf = rwa_adm1)
+         outline_sf = rwa_adm1,
+         add_labels = TRUE)
 
-ggsave("maps/fe_risk.png", width = 8, height = 6)
+ggsave("maps/percentages_labelled/fe_risk.png", width = 16, height = 12)
 
 # ZINC:
 plot_map(data = mn_inadequacy,
          col = "zn_inadequacy",
          title = "Zinc",
          metric = "Risk of inadequate intake (%)", 
-         outline_sf = rwa_adm1)
+         outline_sf = rwa_adm1,
+         add_labels = TRUE)
 
-ggsave("maps/zn_risk.png", width = 8, height = 6)
+ggsave("maps/percentages_labelled/zn_risk.png", width = 16, height = 12)
 
 #-------------------------------------------------------------------------------
 
