@@ -7,7 +7,7 @@
 6,Sweet potato,grains_roots_tubers,grains_roots_tubers
 7,Cassava (root),grains_roots_tubers,grains_roots_tubers
 8,Tarot/amateke,grains_roots_tubers,grains_roots_tubers
-9,Banana-cooking (Inyamunyo),other_fruit,fruit_vegetables
+9,Banana-cooking (Inyamunyo),grains_roots_tubers,grains_roots_tubers
 10,Corn (flour from Mill),grains_roots_tubers,grains_roots_tubers
 11,Corn (flour from Factory),grains_roots_tubers,grains_roots_tubers
 12,Cassava flour (yasekuwe),grains_roots_tubers,grains_roots_tubers
@@ -16,7 +16,7 @@
 15,Cassava from Factory),grains_roots_tubers,grains_roots_tubers
 16,Local rice,grains_roots_tubers,grains_roots_tubers
 17,Imported rice,grains_roots_tubers,grains_roots_tubers
-18,Maize (fresh),other_veg,fruit_vegetables
+18,Maize (fresh),grains_roots_tubers,grains_roots_tubers
 19,Dry maize (grain),grains_roots_tubers,grains_roots_tubers
 20,Tomato,other_fruit,fruit_vegetables
 21,Fresh milk,dairy,dairy
