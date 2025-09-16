@@ -92,6 +92,34 @@ ggsave("figures/energy_intake_histogram.png", width = 8, height = 5)
 
 ggsave("figures/energy_intake_urbrur.png", width = 8, height = 5)
 
+#-------------------------------------------------------------------------------
+
+# TRIED TO EXPLORE SEASONAL VARIATION IN VITAMIN A INTAKE - BUT NO VARIABLE 
+# PROVIDED TO INDICATE MONTH OF INTERVIEW. PERHAPS COULD BE REQURESTED FROM
+# NISR.
+
+#--------------------------------------------------------------------------------
+
+# PERCENTAGE OF HOUSEHOLDS CONSUMING CERTAIN FOOD ITEMS: 
+food_consumption <- read_csv("processed_data/rwa_eicv2324_food_consumption.csv")
+food_items <- read_csv("metadata/food_items.csv")
+
+# Join food item names: 
+food_consumption <- food_consumption |> 
+  left_join(food_items, by = "item_code")
+
+rm(food_items)
+
+# Filter for food items of interest:
+food_consumption <- food_consumption |> 
+  filter(item_code %in% c(18, 33, 41, 44, 46, 50, 72))
+
+n_households <- nrow(hh_information)
+
+food_item_cons <- table(food_consumption$item_name) |> 
+  as.data.frame() |> 
+  mutate(percentage = Freq / n_households * 100)
+
 # Clear environment: 
 rm(list = ls())
 
