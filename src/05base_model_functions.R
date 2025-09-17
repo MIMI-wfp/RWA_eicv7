@@ -137,10 +137,27 @@ plot_map <- function(data, col, title, metric, outline_sf,
     )
 
   if (isTRUE(add_labels)) {
-    # Prepare labels (use raw values + %)
+    
+    if (!"adm2" %in% names(data)) {
+      stop("When add_labels = TRUE, 'data' must contain a column named 'adm2'.")
+    }
+
+    # Build labels: "Region Name\nXX%"; no rounding, use raw values + "%"
     label_data <- data
-    label_data$.__lab__ <- paste0(label_data[[col]], "%")
-    label_data <- label_data[!is.na(label_data$.__lab__), ]
+    nm   <- as.character(label_data[["adm2"]])
+    vals <- label_data[[col]]
+
+    # Keep rows with both a name and a value
+    ok <- !is.na(nm) & !is.na(vals)
+    label_data <- label_data[ok, , drop = FALSE]
+    label_data$.__lab__ <- paste0(as.character(label_data[["adm2"]]),
+                                  "\n",
+                                  label_data[[col]], "%")
+
+    # # Prepare labels (use raw values + %)
+    # label_data <- data
+    # label_data$.__lab__ <- paste0(label_data[["adm2"]], "\n", label_data[[col]], "%")
+    # label_data <- label_data[!is.na(label_data$.__lab__), ]
 
     p <- p + geom_sf_text(
       data = label_data,
