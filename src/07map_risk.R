@@ -62,6 +62,22 @@ rm(allen_ear, ear_value, i, new_col)
 
 #-------------------------------------------------------------------------------
 
+# IF IN FUTURE WE WANT TO CREATE AN INTERACTIVE MAP WITH PLOTLY, THEN WE CAN APPLY 
+# THIS CORRECTIVE FUNCTION SO THAT THE TOOLTIP CORRECTLY SHOWS VALUES WHEN HOVERING
+# OVER AREAS INSTEAD OF LINES:
+#  
+# fixer <- function(gp) {
+#   lapply(1:length(gp$x$data), \(m) {
+#     gp$x$data[[m]]$hoveron <<- "fills"               # hover on the fill, not line
+#     if(length(gp$x$data[[m]]$text > 1)) {
+#       gp$x$data[[m]]$text <<- gp$x$data[[m]]$text[1] # only one tooltip per area
+#     }
+#   })
+#   gp
+# }
+
+#-------------------------------------------------------------------------------
+
 # CALCULATE PREVALENCE AT RISK OF INADEQUATE INTAKE (AT ADM2 LEVEL)
 
 analysis_df <- base_ai |> 
@@ -98,8 +114,8 @@ plot_map(data = mn_inadequacy,
          col = "vita_inadequacy",
          title = "Vitamin A",
          metric = "Risk of inadequate intake (%)", 
-         outline_sf = rwa_adm1,
-         add_labels = TRUE)
+         add_labels = TRUE,
+         outline_sf = rwa_adm2)
 
 ggsave("maps/percentages_labelled/vita_risk.png", width = 16, height = 12)
 
