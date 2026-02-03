@@ -44,9 +44,18 @@ The script uses Estimated Average Requirements (EAR) defined in `src/05base_mode
 
 ### Table Structure
 Each table includes:
-- **Stratification column**: Type of grouping (National, Province, Residence, Socioeconomic Quintile)
+- **Stratification column**: Type of grouping (National, Province, Residence, Socioeconomic Quintile) - shown only once per group to reduce repetition
 - **Category column**: Specific category within stratification
 - **% At Risk column**: Percentage at risk of inadequate intake (rounded to 1 decimal place)
+
+**Note**: The stratification labels appear only once per group for cleaner presentation. For example:
+```
+| Stratification | Category        | % At Risk |
+|----------------|-----------------|-----------|
+| Province       | City of Kigali  | XX.X      |
+|                | Eastern         | XX.X      |
+|                | Northern        | XX.X      |
+```
 
 ## Usage
 

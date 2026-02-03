@@ -8,17 +8,17 @@ The script will generate a GT table similar to this structure:
 |---|---|---|
 | National | Rwanda | XX.X |
 | Province | City of Kigali | XX.X |
-| Province | Eastern | XX.X |
-| Province | Northern | XX.X |
-| Province | Southern | XX.X |
-| Province | Western | XX.X |
+| | Eastern | XX.X |
+| | Northern | XX.X |
+| | Southern | XX.X |
+| | Western | XX.X |
 | Residence | Urban | XX.X |
-| Residence | Rural | XX.X |
+| | Rural | XX.X |
 | Socioeconomic Quintile | 1 (Poorest) | XX.X |
-| Socioeconomic Quintile | 2 | XX.X |
-| Socioeconomic Quintile | 3 | XX.X |
-| Socioeconomic Quintile | 4 | XX.X |
-| Socioeconomic Quintile | 5 (Wealthiest) | XX.X |
+| | 2 | XX.X |
+| | 3 | XX.X |
+| | 4 | XX.X |
+| | 5 (Wealthiest) | XX.X |
 
 **Title**: Risk of Inadequate Vitamin A Intake in Rwanda  
 **Subtitle**: Prevalence by stratification  
@@ -37,17 +37,17 @@ The script will generate a GT table with identical structure:
 |---|---|---|
 | National | Rwanda | XX.X |
 | Province | City of Kigali | XX.X |
-| Province | Eastern | XX.X |
-| Province | Northern | XX.X |
-| Province | Southern | XX.X |
-| Province | Western | XX.X |
+| | Eastern | XX.X |
+| | Northern | XX.X |
+| | Southern | XX.X |
+| | Western | XX.X |
 | Residence | Urban | XX.X |
-| Residence | Rural | XX.X |
+| | Rural | XX.X |
 | Socioeconomic Quintile | 1 (Poorest) | XX.X |
-| Socioeconomic Quintile | 2 | XX.X |
-| Socioeconomic Quintile | 3 | XX.X |
-| Socioeconomic Quintile | 4 | XX.X |
-| Socioeconomic Quintile | 5 (Wealthiest) | XX.X |
+| | 2 | XX.X |
+| | 3 | XX.X |
+| | 4 | XX.X |
+| | 5 (Wealthiest) | XX.X |
 
 **Title**: Risk of Inadequate Iron Intake in Rwanda  
 **Subtitle**: Prevalence by stratification  
@@ -67,5 +67,6 @@ The GT package will create professional, publication-ready tables with:
 - Consistent column widths
 - Professional typography
 - Clear footnotes with EAR values and data source
+- **Stratification labels shown only once per group** - reduces repetition and improves readability
 
 These tables are saved as PNG images in the `figures/` directory and can be directly inserted into reports, presentations, or publications.

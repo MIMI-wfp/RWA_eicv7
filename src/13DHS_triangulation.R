@@ -122,6 +122,12 @@ vita_sep <- analysis_svy |>
 # Combine all Vitamin A estimates:
 vita_summary <- bind_rows(vita_national, vita_adm1, vita_residence, vita_sep)
 
+# Clean up stratification column - show label only once per group:
+vita_summary <- vita_summary |> 
+  mutate(stratification_display = ifelse(stratification != lag(stratification, default = ""), 
+                                         stratification, 
+                                         ""))
+
 #-------------------------------------------------------------------------------
 
 # IRON - CALCULATE PREVALENCE BY STRATIFICATION:
@@ -182,16 +188,23 @@ fe_sep <- analysis_svy |>
 # Combine all Iron estimates:
 fe_summary <- bind_rows(fe_national, fe_adm1, fe_residence, fe_sep)
 
+# Clean up stratification column - show label only once per group:
+fe_summary <- fe_summary |> 
+  mutate(stratification_display = ifelse(stratification != lag(stratification, default = ""), 
+                                         stratification, 
+                                         ""))
+
 #-------------------------------------------------------------------------------
 
 # CREATE VITAMIN A GT SUMMARY TABLE:
 
 vita_table <- vita_summary |>
+  select(stratification_display, category, prevalence) |>
   gt() |> 
   tab_header(title = md("**Risk of Inadequate Vitamin A Intake in Rwanda**"),
              subtitle = md("Prevalence by stratification")) |> 
   cols_label(
-    stratification = md("**Stratification**"),
+    stratification_display = md("**Stratification**"),
     category = md("**Category**"),
     prevalence = md("**% At Risk**")
   ) |> 
@@ -206,10 +219,10 @@ vita_table <- vita_summary |>
   tab_footnote(
     footnote = "Rwanda Integrated Household Living Conditions Survey 7 (EICV7), 2023-24"
   ) |> 
-  cols_align(align = "left", columns = c(stratification, category)) |>
+  cols_align(align = "left", columns = c(stratification_display, category)) |>
   cols_align(align = "center", columns = prevalence) |>
   cols_width(
-    stratification ~ px(200),
+    stratification_display ~ px(200),
     category ~ px(200),
     prevalence ~ px(150)
   ) |>
@@ -229,11 +242,12 @@ gtsave(vita_table, "figures/vita_inadequacy_table.png")
 # CREATE IRON GT SUMMARY TABLE:
 
 fe_table <- fe_summary |>
+  select(stratification_display, category, prevalence) |>
   gt() |> 
   tab_header(title = md("**Risk of Inadequate Iron Intake in Rwanda**"),
              subtitle = md("Prevalence by stratification")) |> 
   cols_label(
-    stratification = md("**Stratification**"),
+    stratification_display = md("**Stratification**"),
     category = md("**Category**"),
     prevalence = md("**% At Risk**")
   ) |> 
@@ -248,10 +262,10 @@ fe_table <- fe_summary |>
   tab_footnote(
     footnote = "Rwanda Integrated Household Living Conditions Survey 7 (EICV7), 2023-24"
   ) |> 
-  cols_align(align = "left", columns = c(stratification, category)) |>
+  cols_align(align = "left", columns = c(stratification_display, category)) |>
   cols_align(align = "center", columns = prevalence) |>
   cols_width(
-    stratification ~ px(200),
+    stratification_display ~ px(200),
     category ~ px(200),
     prevalence ~ px(150)
   ) |>
