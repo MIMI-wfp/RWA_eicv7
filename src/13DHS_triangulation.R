@@ -1,17 +1,16 @@
 ################################################################################
-############## SCRIPT FOR DATA TRIANGULATION WITH RWA DHS 2019-2020 ############
+##### SCRIPT FOR INADEQUACY SUMMARY STATISTICS TO USE IN DHS TRIANGULATION #####
 ################################################################################
 
 # Author: Mo Osman
-# Date created: 02-02-2026
+# Date created: 03-Feb-2026
 # Last edited: 
 
-# Data Sources: Rwanda Integrated Household Living Conditions Survey 7 (EICV7) &
-# Rwanda Demographic and Health Survey 2019-2020 (DHS 2019-2020)
+# Data Source: Rwanda Integrated Household Living Conditions Survey 7 (EICV7) 
 
 # INSTALL AND LOAD PACKAGES:
 
-rq_packages <- c("readr", "tidyverse", "srvyr")
+rq_packages <- c("readr", "tidyverse", "ggplot2", "srvyr", "gt", "webshot2")
 
 installed_packages <- rq_packages %in% rownames(installed.packages())
 if (any(installed_packages == FALSE)) {
@@ -24,140 +23,275 @@ rm(list= c("rq_packages", "installed_packages"))
 
 #-------------------------------------------------------------------------------
 
-# SOURCE FUNCTIONS:
+# READ DATA AND EAR VALUES:
+
+# Read in E-AR values: 
 source("src/05base_model_functions.R")
 
 rm(list = setdiff(ls(), c("allen_ear")))
 
-#-------------------------------------------------------------------------------
-
-# READ DATA:
-hh_information <- read_csv("processed_data/rwa_eicv2324_hh_information.csv")
+# Read in base AI data:
 base_ai <- read_csv("processed_data/rwa_eicv2324_base_ai.csv")
 
-# Household locations: 
+# Household information: 
+hh_information <- read_csv("processed_data/rwa_eicv2324_hh_information.csv")
+
+# Household locations:
 rwa_hh_adm <- readRDS("shapefiles/rwa_hh_adm.rds")
 
-# Add locations to base_ai:
-base_ai <- base_ai |> 
-  left_join(rwa_hh_adm, by = "hhid")
-
 #-------------------------------------------------------------------------------
 
-# SPECIFY MICRONUTRIENTS FOR TRIANGULATION:
-micronutrients <- c("vita_rae_mcg", "fe_mg")
+# PREPARE DATA WITH INADEQUACY INDICATORS:
 
-#-------------------------------------------------------------------------------
+# Join all data:
+analysis_data <- hh_information |> 
+  dplyr::select(iso3, survey, hhid, survey_wgt, res, sep_quintile) |> 
+  left_join(rwa_hh_adm, by = "hhid") |>
+  left_join(base_ai, by = c("iso3", "survey", "hhid"))
 
-# CREATE ANALYSIS DATAFRAME: 
-
-analysis_df <- base_ai |> 
-  dplyr::select(hhid, vita_rae_mcg, fe_mg, adm1, adm2) |> 
-  left_join(hh_information |> 
-    dplyr::select(
-      hhid, 
-      res, 
-      sep_quintile, 
-      survey_wgt
-    ), 
-by = "hhid") |>
-  as_survey_design(
-    ids = hhid,
-    weights = survey_wgt,
-    nest = TRUE
+# Calculate inadequacy for Vitamin A and Iron:
+analysis_data <- analysis_data |> 
+  mutate(
+    vita_inadequate = ifelse(vita_rae_mcg < allen_ear[allen_ear$nutrient == "vita_rae_mcg", "ear_value"], 1, 0),
+    fe_inadequate = ifelse(fe_mg < allen_ear[allen_ear$nutrient == "fe_mg", "ear_value"], 1, 0)
   )
 
-#-------------------------------------------------------------------------------
-
-# NATIONAL INADEQUACY ESTIMATES FOR EACH MICRONUTRIENT:
-vita_national <- analysis_df |> 
-  summarise(
-    vita_rae_mcg_inadequate = survey_mean(
-      vita_rae_mcg < allen_ear$ear_value[allen_ear$nutrient == "vita_rae_mcg"],
-      na.rm = TRUE,
-      vartype = "ci"
-    )
-  )
-
-fe_national <- analysis_df |>
-  summarise(
-    fe_mg_inadequate = survey_mean(
-      fe_mg < allen_ear$ear_value[allen_ear$nutrient == "fe_mg"],
-      na.rm = TRUE,
-      vartype = "ci"
-    )
-  )
-
+# Create survey design object:
+analysis_svy <- analysis_data |> 
+  as_survey_design(ids = hhid, 
+                   weights = survey_wgt, 
+                   nest = TRUE)
 
 #-------------------------------------------------------------------------------
 
-# AT ADM1 LEVEL:
-vita_adm1 <- analysis_df |> 
+# VITAMIN A - CALCULATE PREVALENCE BY STRATIFICATION:
+
+# National estimate:
+vita_national <- analysis_svy |> 
+  summarise(prevalence = survey_mean(vita_inadequate, na.rm = TRUE, vartype = NULL)) |>
+  mutate(
+    stratification = "National",
+    category = "Rwanda",
+    prevalence = round(prevalence * 100, digits = 1)
+  ) |> 
+  select(stratification, category, prevalence)
+
+# ADM1 (Province) stratification:
+vita_adm1 <- analysis_svy |> 
   group_by(adm1) |> 
-  summarise(
-    vita_rae_mcg_inadequate = survey_mean(
-      vita_rae_mcg < allen_ear$ear_value[allen_ear$nutrient == "vita_rae_mcg"],
-      na.rm = TRUE,
-      vartype = "ci"
-    )
-  )
+  summarise(prevalence = survey_mean(vita_inadequate, na.rm = TRUE, vartype = NULL)) |>
+  mutate(
+    stratification = "Province",
+    category = adm1,
+    prevalence = round(prevalence * 100, digits = 1)
+  ) |> 
+  select(stratification, category, prevalence) |> 
+  ungroup()
 
-fe_adm1 <- analysis_df |>
-  group_by(adm1) |>
-  summarise(
-    fe_mg_inadequate = survey_mean(
-      fe_mg < allen_ear$ear_value[allen_ear$nutrient == "fe_mg"],
-      na.rm = TRUE,
-      vartype = "ci"
-    )
-  )
-
-#-------------------------------------------------------------------------------
-
-# BY URBAN/RURAL STATUS:
-vita_res <- analysis_df |> 
+# Urban/Rural stratification:
+vita_residence <- analysis_svy |> 
   group_by(res) |> 
-  summarise(
-    vita_rae_mcg_inadequate = survey_mean(
-      vita_rae_mcg < allen_ear$ear_value[allen_ear$nutrient == "vita_rae_mcg"],
-      na.rm = TRUE,
-      vartype = "ci"
-    )
-  )
+  summarise(prevalence = survey_mean(vita_inadequate, na.rm = TRUE, vartype = NULL)) |>
+  mutate(
+    stratification = "Residence",
+    category = res,
+    prevalence = round(prevalence * 100, digits = 1)
+  ) |> 
+  select(stratification, category, prevalence) |> 
+  ungroup()
 
-fe_res <- analysis_df |>
-  group_by(res) |>
-  summarise(
-    fe_mg_inadequate = survey_mean(
-      fe_mg < allen_ear$ear_value[allen_ear$nutrient == "fe_mg"],
-      na.rm = TRUE,
-      vartype = "ci"
-    )
-  )
-
-#-------------------------------------------------------------------------------
-
-# BY SEP QUINTILE:
-vita_sep <- analysis_df |> 
+# Socioeconomic quintile stratification:
+vita_sep <- analysis_svy |> 
   group_by(sep_quintile) |> 
-  summarise(
-    vita_rae_mcg_inadequate = survey_mean(
-      vita_rae_mcg < allen_ear$ear_value[allen_ear$nutrient == "vita_rae_mcg"],
-      na.rm = TRUE,
-      vartype = "ci"
-    )
-  )
+  summarise(prevalence = survey_mean(vita_inadequate, na.rm = TRUE, vartype = NULL)) |>
+  mutate(
+    stratification = "Socioeconomic Quintile",
+    category = case_when(
+      sep_quintile == 1 ~ "1 (Poorest)",
+      sep_quintile == 2 ~ "2",
+      sep_quintile == 3 ~ "3",
+      sep_quintile == 4 ~ "4",
+      sep_quintile == 5 ~ "5 (Wealthiest)",
+      TRUE ~ as.character(sep_quintile)
+    ),
+    prevalence = round(prevalence * 100, digits = 1)
+  ) |> 
+  select(stratification, category, prevalence) |> 
+  ungroup()
 
-fe_sep <- analysis_df |>
-  group_by(sep_quintile) |>
-  summarise(
-    fe_mg_inadequate = survey_mean(
-      fe_mg < allen_ear$ear_value[allen_ear$nutrient == "fe_mg"],
-      na.rm = TRUE,
-      vartype = "ci"
-    )
-  )
+# Combine all Vitamin A estimates:
+vita_summary <- bind_rows(vita_national, vita_adm1, vita_residence, vita_sep)
+
+# Clean up stratification column - show label only once per group:
+vita_summary <- vita_summary |> 
+  mutate(stratification_display = ifelse(
+    stratification != lag(stratification, default = ""), 
+    stratification, 
+    ""
+  ))
 
 #-------------------------------------------------------------------------------
 
+# IRON - CALCULATE PREVALENCE BY STRATIFICATION:
 
+# National estimate:
+fe_national <- analysis_svy |> 
+  summarise(prevalence = survey_mean(fe_inadequate, na.rm = TRUE, vartype = NULL)) |>
+  mutate(
+    stratification = "National",
+    category = "Rwanda",
+    prevalence = round(prevalence * 100, digits = 1)
+  ) |> 
+  select(stratification, category, prevalence)
+
+# ADM1 (Province) stratification:
+fe_adm1 <- analysis_svy |> 
+  group_by(adm1) |> 
+  summarise(prevalence = survey_mean(fe_inadequate, na.rm = TRUE, vartype = NULL)) |>
+  mutate(
+    stratification = "Province",
+    category = adm1,
+    prevalence = round(prevalence * 100, digits = 1)
+  ) |> 
+  select(stratification, category, prevalence) |> 
+  ungroup()
+
+# Urban/Rural stratification:
+fe_residence <- analysis_svy |> 
+  group_by(res) |> 
+  summarise(prevalence = survey_mean(fe_inadequate, na.rm = TRUE, vartype = NULL)) |>
+  mutate(
+    stratification = "Residence",
+    category = res,
+    prevalence = round(prevalence * 100, digits = 1)
+  ) |> 
+  select(stratification, category, prevalence) |> 
+  ungroup()
+
+# Socioeconomic quintile stratification:
+fe_sep <- analysis_svy |> 
+  group_by(sep_quintile) |> 
+  summarise(prevalence = survey_mean(fe_inadequate, na.rm = TRUE, vartype = NULL)) |>
+  mutate(
+    stratification = "Socioeconomic Quintile",
+    category = case_when(
+      sep_quintile == 1 ~ "1 (Poorest)",
+      sep_quintile == 2 ~ "2",
+      sep_quintile == 3 ~ "3",
+      sep_quintile == 4 ~ "4",
+      sep_quintile == 5 ~ "5 (Wealthiest)",
+      TRUE ~ as.character(sep_quintile)
+    ),
+    prevalence = round(prevalence * 100, digits = 1)
+  ) |> 
+  select(stratification, category, prevalence) |> 
+  ungroup()
+
+# Combine all Iron estimates:
+fe_summary <- bind_rows(fe_national, fe_adm1, fe_residence, fe_sep)
+
+# Clean up stratification column - show label only once per group:
+fe_summary <- fe_summary |> 
+  mutate(stratification_display = ifelse(stratification != lag(stratification, default = ""), 
+                                         stratification, 
+                                         ""))
+
+#-------------------------------------------------------------------------------
+
+# CREATE VITAMIN A GT SUMMARY TABLE:
+
+vita_table <- vita_summary |>
+  select(stratification_display, category, prevalence) |>
+  gt() |> 
+  tab_header(title = md("**Risk of Inadequate Vitamin A Intake in Rwanda**"),
+             subtitle = md("Prevalence by stratification")) |> 
+  cols_label(
+    stratification_display = md(""),
+    category = md(""),
+    prevalence = md("**Inadequate intake (%)**")
+  ) |> 
+  tab_footnote(
+    footnote = "apparent intake < EAR",
+    locations = cells_column_labels(columns = prevalence)
+  ) |>
+  tab_footnote(
+    footnote = "EAR for Vitamin A: 490 μg RAE",
+    locations = cells_column_labels(columns = prevalence)
+  ) |>
+  tab_footnote(
+    footnote = "Rwanda Integrated Household Living Conditions Survey 7 (EICV7), 2023-24"
+  ) |> 
+  cols_align(align = "left", columns = c(stratification_display, category)) |>
+  cols_align(align = "center", columns = prevalence) |>
+  cols_width(
+    stratification_display ~ px(200),
+    category ~ px(200),
+    prevalence ~ px(150)
+  ) |>
+  tab_options(
+    table.font.size = 12,
+    heading.title.font.size = 16,
+    heading.subtitle.font.size = 12
+  ) |> 
+  tab_style(
+    style = cell_text(weight = "bold"),
+    locations = cells_body(columns = stratification_display)
+  )
+
+# Display and save Vitamin A table:
+vita_table
+
+gtsave(vita_table, "figures/triangulation/vita_inadequacy_table.png")
+
+#-------------------------------------------------------------------------------
+
+# CREATE IRON GT SUMMARY TABLE:
+fe_table <- fe_summary |>
+  select(stratification_display, category, prevalence) |>
+  gt() |> 
+  tab_header(title = md("**Risk of Inadequate Iron Intake in Rwanda**"),
+             subtitle = md("Prevalence by stratification")) |> 
+  cols_label(
+    stratification_display = md(""),
+    category = md(""),
+    prevalence = md("**Inadequate intake (%)**")
+  ) |> 
+  tab_footnote(
+    footnote = "apparent intake < EAR",
+    locations = cells_column_labels(columns = prevalence)
+  ) |>
+  tab_footnote(
+    footnote = "EAR for Iron: 18 mg",
+    locations = cells_column_labels(columns = prevalence)
+  ) |>
+  tab_footnote(
+    footnote = "Rwanda Integrated Household Living Conditions Survey 7 (EICV7), 2023-24"
+  ) |> 
+  cols_align(align = "left", columns = c(stratification_display, category)) |>
+  cols_align(align = "center", columns = prevalence) |>
+  cols_width(
+    stratification_display ~ px(200),
+    category ~ px(200),
+    prevalence ~ px(150)
+  ) |>
+  tab_options(
+    table.font.size = 12,
+    heading.title.font.size = 16,
+    heading.subtitle.font.size = 12
+  ) |> 
+  tab_style(
+    style = cell_text(weight = "bold"),
+    locations = cells_body(columns = stratification_display)
+  )
+
+# Display and save Iron table:
+fe_table
+
+gtsave(fe_table, "figures/triangulation/fe_inadequacy_table.png")
+
+# Clean environment:
+rm(list = ls())
+
+################################################################################
+################################ END OF SCRIPT #################################
+################################################################################
