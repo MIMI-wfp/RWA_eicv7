@@ -103,11 +103,11 @@ mn_inadequacy <- mn_inadequacy |>
   mutate(across(-c(adm2, geometry), ~ .x * 100)) |> 
   mutate(across(-c(adm2, geometry), ~ round(.x, digits = 1)))
 
-# Write to CSV:
-write_csv(mn_inadequacy, "processed_data/mn_inadequacy.csv")
-
 # Convert to correct object class: 
 mn_inadequacy <- st_as_sf(mn_inadequacy)
+
+# Write to Rds:
+write_rds(mn_inadequacy, "processed_data/mn_inadequacy.rds")
 
 # VITAMIN A: 
 plot_map(data = mn_inadequacy,

@@ -173,38 +173,44 @@ plot_map <- function(data, col, title, metric, outline_sf,
 }
 
 
-# plot_map <- function(data, col, title, metric, outline_sf, palette = "Zissou1", 
-#                      n = 100, limits = c(0,100)) {
-#   ggplot() +
-#     # fill the states by your chosen variable
-#     geom_sf(data = data,
-#             aes_string(fill = col),
-#             color = "black",
-#             size = 0.2) +
-#     # add a single black outline
-#     geom_sf(data = outline_sf,
-#             fill = NA,
-#             color = "black",
-#             size = 1) +
-#     # continuous palette
-#     scale_fill_gradientn(
-#       colours = wes_palette(palette, n = n, type = "continuous"),
-#       limits = limits,
-#       name  = metric) +
-#     labs(title   = title) +
-#     theme_minimal() +
-#     theme(
-#       plot.title       = element_text(hjust = 0.5, size = 16, face = "bold"),
-#       plot.caption     = element_text(hjust = 0.5),
-#       panel.grid       = element_blank(),
-#       axis.title       = element_blank(),
-#       axis.text        = element_blank(),
-#       axis.ticks       = element_blank(),
-#       legend.position  = "bottom",
-#       legend.direction = "horizontal",
-#       legend.title     = element_text(hjust = 0.5),
-#       legend.key.width = unit(1.35, "cm"),
-#       legend.key.height= unit(0.6, "cm")
-#     )
-# }
+#-------------------------------------------------------------------------------
 
+plot_nutrient_map <- function(data_sf, outline_sf, var, label,
+                              palette = "Zissou1", n = 100,
+                              limits = c(0,100)) {
+  ggplot() +
+    # fill the states by your chorwa variable
+    geom_sf(data = data_sf,
+            aes_string(fill = var),
+            color = NA) +
+    # add a single black outline
+    geom_sf(data = outline_sf,
+            fill = NA,
+            color = "black",
+            size = 1) +
+    # continuous palette
+    scale_fill_gradientn(
+      colours = wes_palette(palette, n = n, type = "continuous"),
+      limits = limits,
+      name  = paste0(label, " Risk (%)")
+    ) +
+    geom_sf(data = rwa_adm1, fill= NA, color = 'black', lwd = 0.5) +
+    # labs(
+    #   title   = paste("Risk of Inadequate", label, "Intake"),
+    #   caption = "Data Source: NLSS 2018/2019"
+    # ) +
+    theme_minimal() +
+    theme(
+      plot.title       = element_text(hjust = 0.5, size = 16, face = "bold"),
+      plot.caption     = element_text(hjust = 0.5),
+      panel.grid       = element_blank(),
+      axis.title       = element_blank(),
+      axis.text        = element_blank(),
+      axis.ticks       = element_blank(),
+      legend.position  = "none",
+      legend.direction = "horizontal",
+      legend.title     = element_text(hjust = 0.5),
+      legend.key.width = unit(1.35, "cm"),
+      legend.key.height= unit(0.6, "cm")
+    )
+}
