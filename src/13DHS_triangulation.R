@@ -204,7 +204,7 @@ vita_table <- vita_summary |>
   select(stratification_display, category, prevalence) |>
   gt() |> 
   tab_header(title = md("**Risk of Inadequate Vitamin A Intake in Rwanda**"),
-             subtitle = md("Prevalence by stratification")) |> 
+             subtitle = md("Stratified by population sub-group")) |> 
   cols_label(
     stratification_display = md(""),
     category = md(""),
@@ -250,7 +250,7 @@ fe_table <- fe_summary |>
   select(stratification_display, category, prevalence) |>
   gt() |> 
   tab_header(title = md("**Risk of Inadequate Iron Intake in Rwanda**"),
-             subtitle = md("Prevalence by stratification")) |> 
+             subtitle = md("Stratified by population sub-group")) |> 
   cols_label(
     stratification_display = md(""),
     category = md(""),
