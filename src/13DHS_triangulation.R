@@ -53,7 +53,9 @@ analysis_data <- hh_information |>
 analysis_data <- analysis_data |> 
   mutate(
     vita_inadequate = ifelse(vita_rae_mcg < allen_ear[allen_ear$nutrient == "vita_rae_mcg", "ear_value"], 1, 0),
-    fe_inadequate = ifelse(fe_mg < allen_ear[allen_ear$nutrient == "fe_mg", "ear_value"], 1, 0)
+    fe_inadequate = ifelse(fe_mg < allen_ear[allen_ear$nutrient == "fe_mg", "ear_value"], 1, 0),
+    folate_inadequate = ifelse(folate_mcg < allen_ear[allen_ear$nutrient == "folate_mcg", "ear_value"], 1, 0),
+    vitb12_inadequate = ifelse(vitb12_mcg < allen_ear[allen_ear$nutrient == "vitb12_mcg", "ear_value"], 1, 0)
   )
 
 # Create survey design object:
@@ -198,6 +200,138 @@ fe_summary <- fe_summary |>
 
 #-------------------------------------------------------------------------------
 
+# FOLATE: 
+
+# National estimate: 
+folate_national <- analysis_svy |> 
+  summarise(prevalence = survey_mean(folate_inadequate, na.rm = TRUE, vartype = NULL)) |>
+  mutate(
+    stratification = "National",
+    category = "Rwanda",
+    prevalence = round(prevalence * 100, digits = 1)
+  ) |> 
+  select(stratification, category, prevalence)
+
+# ADM1 (Province) stratification:
+folate_adm1 <- analysis_svy |> 
+  group_by(adm1) |> 
+  summarise(prevalence = survey_mean(folate_inadequate, na.rm = TRUE, vartype = NULL)) |>
+  mutate(
+    stratification = "Province",
+    category = adm1,
+    prevalence = round(prevalence * 100, digits = 1)
+  ) |> 
+  select(stratification, category, prevalence) |> 
+  ungroup()
+
+# Urban/Rural stratification:
+folate_residence <- analysis_svy |> 
+  group_by(res) |> 
+  summarise(prevalence = survey_mean(folate_inadequate, na.rm = TRUE, vartype = NULL)) |>
+  mutate(
+    stratification = "Residence",
+    category = res,
+    prevalence = round(prevalence * 100, digits = 1)
+  ) |> 
+  select(stratification, category, prevalence) |> 
+  ungroup()
+
+# Socioeconomic quintile stratification:
+folate_sep <- analysis_svy |> 
+  group_by(sep_quintile) |> 
+  summarise(prevalence = survey_mean(folate_inadequate, na.rm = TRUE, vartype = NULL)) |>
+  mutate(
+    stratification = "Socioeconomic Quintile",
+    category = case_when(
+      sep_quintile == 1 ~ "1 (Poorest)",
+      sep_quintile == 2 ~ "2",
+      sep_quintile == 3 ~ "3",
+      sep_quintile == 4 ~ "4",
+      sep_quintile == 5 ~ "5 (Wealthiest)",
+      TRUE ~ as.character(sep_quintile)
+    ),
+    prevalence = round(prevalence * 100, digits = 1)
+  ) |> 
+  select(stratification, category, prevalence) |> 
+  ungroup()
+
+# Combine all Folate estimates:
+folate_summary <- bind_rows(folate_national, folate_adm1, folate_residence, folate_sep)
+
+# Clean up stratification column - show label only once per group:
+folate_summary <- folate_summary |> 
+  mutate(stratification_display = ifelse(stratification != lag(stratification, default = ""), 
+                                         stratification, 
+                                         ""))
+
+#-------------------------------------------------------------------------------
+
+# VITAMIN B12:  
+
+# National estimate:
+vitb12_national <- analysis_svy |> 
+  summarise(prevalence = survey_mean(vitb12_inadequate, na.rm = TRUE, vartype = NULL)) |>
+  mutate(
+    stratification = "National",
+    category = "Rwanda",
+    prevalence = round(prevalence * 100, digits = 1)
+  ) |> 
+  select(stratification, category, prevalence)
+
+# ADM1 (Province) stratification:
+vitb12_adm1 <- analysis_svy |> 
+  group_by(adm1) |> 
+  summarise(prevalence = survey_mean(vitb12_inadequate, na.rm = TRUE, vartype = NULL)) |>
+  mutate(
+    stratification = "Province",
+    category = adm1,
+    prevalence = round(prevalence * 100, digits = 1)
+  ) |> 
+  select(stratification, category, prevalence) |> 
+  ungroup()
+
+# Urban/Rural stratification:
+vitb12_residence <- analysis_svy |> 
+  group_by(res) |> 
+  summarise(prevalence = survey_mean(vitb12_inadequate, na.rm = TRUE, vartype = NULL)) |>
+  mutate(
+    stratification = "Residence",
+    category = res,
+    prevalence = round(prevalence * 100, digits = 1)
+  ) |> 
+  select(stratification, category, prevalence) |> 
+  ungroup()
+
+# Socioeconomic quintile stratification:
+vitb12_sep <- analysis_svy |> 
+  group_by(sep_quintile) |> 
+  summarise(prevalence = survey_mean(vitb12_inadequate, na.rm = TRUE, vartype = NULL)) |>
+  mutate(
+    stratification = "Socioeconomic Quintile",
+    category = case_when(
+      sep_quintile == 1 ~ "1 (Poorest)",
+      sep_quintile == 2 ~ "2",
+      sep_quintile == 3 ~ "3",
+      sep_quintile == 4 ~ "4",
+      sep_quintile == 5 ~ "5 (Wealthiest)",
+      TRUE ~ as.character(sep_quintile)
+    ),
+    prevalence = round(prevalence * 100, digits = 1)
+  ) |> 
+  select(stratification, category, prevalence) |> 
+  ungroup()
+
+# Combine all Vitamin B12 estimates:
+vitb12_summary <- bind_rows(vitb12_national, vitb12_adm1, vitb12_residence, vitb12_sep)
+
+# Clean up stratification column - show label only once per group:
+vitb12_summary <- vitb12_summary |> 
+  mutate(stratification_display = ifelse(stratification != lag(stratification, default = ""), 
+                                         stratification, 
+                                         ""))
+
+#-------------------------------------------------------------------------------
+
 # CREATE VITAMIN A GT SUMMARY TABLE:
 
 vita_table <- vita_summary |>
@@ -288,6 +422,98 @@ fe_table <- fe_summary |>
 fe_table
 
 gtsave(fe_table, "figures/triangulation/fe_inadequacy_table.png")
+
+#-------------------------------------------------------------------------------
+
+# CREATE FOLATE GT SUMMARY TABLE:
+folate_table <- folate_summary |>
+  select(stratification_display, category, prevalence) |>
+  gt() |> 
+  tab_header(title = md("**Risk of Inadequate Folate Intake in Rwanda**"),
+             subtitle = md("Stratified by population sub-group")) |> 
+  cols_label(
+    stratification_display = md(""),
+    category = md(""),
+    prevalence = md("**Inadequate intake (%)**")
+  ) |> 
+  tab_footnote(
+    footnote = "apparent intake < EAR",
+    locations = cells_column_labels(columns = prevalence)
+  ) |>
+  tab_footnote(
+    footnote = "EAR for Folate: 320 μg DFE",
+    locations = cells_column_labels(columns = prevalence)
+  ) |>
+  tab_footnote(
+    footnote = "Rwanda Integrated Household Living Conditions Survey 7 (EICV7), 2023-24"
+  ) |> 
+  cols_align(align = "left", columns = c(stratification_display, category)) |>
+  cols_align(align = "center", columns = prevalence) |>
+  cols_width(
+    stratification_display ~ px(200),
+    category ~ px(200),
+    prevalence ~ px(150)
+  ) |>
+  tab_options(
+    table.font.size = 12,
+    heading.title.font.size = 16,
+    heading.subtitle.font.size = 12
+  ) |> 
+  tab_style(
+    style = cell_text(weight = "bold"),
+    locations = cells_body(columns = stratification_display)
+  )
+
+# Display and save Folate table:
+folate_table
+
+gtsave(folate_table, "figures/triangulation/folate_inadequacy_table.png")
+
+#-------------------------------------------------------------------------------
+
+# VITAMIN B12 GT SUMMARY TABLE:
+vitb12_table <- vitb12_summary |>
+  select(stratification_display, category, prevalence) |>
+  gt() |> 
+  tab_header(title = md("**Risk of Inadequate Vitamin B12 Intake in Rwanda**"),
+             subtitle = md("Stratified by population sub-group")) |> 
+  cols_label(
+    stratification_display = md(""),
+    category = md(""),
+    prevalence = md("**Inadequate intake (%)**")
+  ) |> 
+  tab_footnote(
+    footnote = "apparent intake < EAR",
+    locations = cells_column_labels(columns = prevalence)
+  ) |>
+  tab_footnote(
+    footnote = "EAR for Vitamin B12: 2.4 μg",
+    locations = cells_column_labels(columns = prevalence)
+  ) |>
+  tab_footnote(
+    footnote = "Rwanda Integrated Household Living Conditions Survey 7 (EICV7), 2023-24"
+  ) |> 
+  cols_align(align = "left", columns = c(stratification_display, category)) |>
+  cols_align(align = "center", columns = prevalence) |>
+  cols_width(
+    stratification_display ~ px(200),
+    category ~ px(200),
+    prevalence ~ px(150)
+  ) |>
+  tab_options(
+    table.font.size = 12,
+    heading.title.font.size = 16,
+    heading.subtitle.font.size = 12
+  ) |> 
+  tab_style(
+    style = cell_text(weight = "bold"),
+    locations = cells_body(columns = stratification_display)
+  )
+
+# Display and save Vitamin B12 table:
+vitb12_table
+
+gtsave(vitb12_table, "figures/triangulation/vitb12_inadequacy_table.png")
 
 # Clean environment:
 rm(list = ls())

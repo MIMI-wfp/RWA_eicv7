@@ -60,12 +60,11 @@ household_summary <- household_summary |>
 
  # Calculate quintiles based on per capita expenditure:
 household_summary <- household_summary |>
-  mutate(sep_quintile = ntile(pc_expenditure, 5)) |> 
+  mutate(sep_quintile = ntile(pc_expenditure, 5)) |>
   # And also quintiles stratified by res: 
-  mutate(res_quintile = case_when(
-    res == "Urban" ~ ntile(pc_expenditure, 5),
-    res == "Rural" ~ ntile(pc_expenditure, 5)
-  ))
+  group_by(res) |>
+  mutate(res_quintile = ntile(pc_expenditure, 5)) |>
+  ungroup()
 
 #-------------------------------------------------------------------------------
 

@@ -31,7 +31,7 @@ base_ai <- read_csv("processed_data/rwa_eicv2324_base_ai.csv")
 source("src/05base_model_functions.R")
 
 rm(list = setdiff(ls(), c("base_ai", "allen_ear", "hh_information",
-                         "plot_map")))
+                         "plot_map", "fe_prob_inadequacy")))
 
 # Read in shapefile data: 
 rwa_adm1 <- readRDS("shapefiles/rwa_adm1.rds")
@@ -48,7 +48,7 @@ base_ai <- base_ai |>
 
 # BINARISE RISK OF INADEQUATE MICRONUTRIENT INTAKE: 
 micronutrients <- c("vita_rae_mcg", "thia_mg", "ribo_mg", "niac_mg", 
-                    "folate_mcg", "vitb12_mcg", "fe_mg", "zn_mg")
+                    "folate_mcg", "vitb12_mcg", "zn_mg")
 
 for (i in micronutrients) {
   
@@ -62,19 +62,16 @@ rm(allen_ear, ear_value, i, new_col)
 
 #-------------------------------------------------------------------------------
 
-# IF IN FUTURE WE WANT TO CREATE AN INTERACTIVE MAP WITH PLOTLY, THEN WE CAN APPLY 
-# THIS CORRECTIVE FUNCTION SO THAT THE TOOLTIP CORRECTLY SHOWS VALUES WHEN HOVERING
-# OVER AREAS INSTEAD OF LINES:
-#  
-# fixer <- function(gp) {
-#   lapply(1:length(gp$x$data), \(m) {
-#     gp$x$data[[m]]$hoveron <<- "fills"               # hover on the fill, not line
-#     if(length(gp$x$data[[m]]$text > 1)) {
-#       gp$x$data[[m]]$text <<- gp$x$data[[m]]$text[1] # only one tooltip per area
-#     }
-#   })
-#   gp
-# }
+# PROBABILITY OF INADEQUACY (FOR IRON): 
+
+# Due to skewed iron intake distribution, we will use a full probability approach
+# instead of using a fixed-cutpoint (EAR) to determine inadequacy. 
+
+base_ai <- fe_prob_inadequacy(base_ai, bio_avail = 5) 
+# Low bioavailability of iron assumed due to low consumption of ASF in Rwanda, 
+# as well as a largely unrefined diet (high dietary phytate).
+
+rm(fe_prob_inadequacy)
 
 #-------------------------------------------------------------------------------
 
@@ -94,7 +91,7 @@ mn_inadequacy <- analysis_df |>
             niac_inadequacy = survey_mean(niac_mg_inadequate, na.rm = T, vartype = NULL),
             folate_inadequacy = survey_mean(folate_mcg_inadequate, na.rm = T, vartype = NULL),
             vitb12_inadequacy = survey_mean(vitb12_mcg_inadequate, na.rm = T, vartype = NULL),
-            fe_inadequacy = survey_mean(fe_mg_inadequate, na.rm = T, vartype = NULL),
+            fe_inadequacy = survey_mean(fe_prob_inad, na.rm = T, vartype = NULL),
             zn_inadequacy = survey_mean(zn_mg_inadequate, na.rm = T, vartype = NULL)) |> 
   left_join(rwa_adm2, by = "adm2")
 
@@ -117,7 +114,7 @@ plot_map(data = mn_inadequacy,
          add_labels = TRUE,
          outline_sf = rwa_adm2)
 
-ggsave("maps/percentages_labelled/vita_risk.png", width = 16, height = 12)
+# ggsave("maps/percentages_labelled/vita_risk.png", width = 16, height = 12)
 
 # THIAMINE:
 plot_map(data = mn_inadequacy,
@@ -127,7 +124,7 @@ plot_map(data = mn_inadequacy,
          outline_sf = rwa_adm1, 
          add_labels = TRUE)
 
-ggsave("maps/percentages_labelled/thia_risk.png", width = 16, height = 12)
+# ggsave("maps/percentages_labelled/thia_risk.png", width = 16, height = 12)
 
 # RIBOFLAVIN:
 plot_map(data = mn_inadequacy,
@@ -137,7 +134,7 @@ plot_map(data = mn_inadequacy,
          outline_sf = rwa_adm1,
          add_labels = TRUE)
 
-ggsave("maps/percentages_labelled/ribo_risk.png", width = 16, height = 12)
+# ggsave("maps/percentages_labelled/ribo_risk.png", width = 16, height = 12)
 
 # NIACIN:
 plot_map(data = mn_inadequacy,
@@ -147,7 +144,7 @@ plot_map(data = mn_inadequacy,
          outline_sf = rwa_adm1,
          add_labels = TRUE)
 
-ggsave("maps/percentages_labelled/niac_risk.png", width = 16, height = 12)
+# ggsave("maps/percentages_labelled/niac_risk.png", width = 16, height = 12)
 
 # FOLATE:
 plot_map(data = mn_inadequacy,
@@ -157,7 +154,7 @@ plot_map(data = mn_inadequacy,
          outline_sf = rwa_adm1,
          add_labels = TRUE)
 
-ggsave("maps/percentages_labelled/folate_risk.png", width = 16, height = 12)
+# ggsave("maps/percentages_labelled/folate_risk.png", width = 16, height = 12)
 
 # VITAMIN B12:
 plot_map(data = mn_inadequacy,
@@ -167,7 +164,7 @@ plot_map(data = mn_inadequacy,
          outline_sf = rwa_adm1,
          add_labels = TRUE)
 
-ggsave("maps/percentages_labelled/vitb12_risk.png", width = 16, height = 12)
+# ggsave("maps/percentages_labelled/vitb12_risk.png", width = 16, height = 12)
 
 # IRON:
 plot_map(data = mn_inadequacy,
@@ -175,9 +172,9 @@ plot_map(data = mn_inadequacy,
          title = "Iron",
          metric = "Risk of inadequate intake (%)", 
          outline_sf = rwa_adm1,
-         add_labels = TRUE)
+         add_labels = FALSE)
 
-ggsave("maps/percentages_labelled/fe_risk.png", width = 16, height = 12)
+# ggsave("maps/fe_risk.png", width = 16, height = 12)
 
 # ZINC:
 plot_map(data = mn_inadequacy,
@@ -187,7 +184,7 @@ plot_map(data = mn_inadequacy,
          outline_sf = rwa_adm1,
          add_labels = TRUE)
 
-ggsave("maps/percentages_labelled/zn_risk.png", width = 16, height = 12)
+# ggsave("maps/percentages_labelled/zn_risk.png", width = 16, height = 12)
 
 #-------------------------------------------------------------------------------
 

@@ -57,3 +57,6 @@ processed_data/
 
 # AFRICAN LSFF FIGURES
 figures/african_LSFF_convening/
+
+# R project files
+*.Rproj

@@ -214,3 +214,52 @@ plot_nutrient_map <- function(data_sf, outline_sf, var, label,
       legend.key.height= unit(0.6, "cm")
     )
 }
+
+#-------------------------------------------------------------------------------
+
+# Probability of iron inadequacy: 
+# PROBABILITY OF IRON INADEQUACY:
+fe_prob_inadequacy <- function(base_ai_df, bio_avail = 5) {
+# Calculate probability of inadequacy for each household
+# bioavailability:
+base_ai_df <- base_ai_df |> 
+  mutate(fe_prob_inad = case_when(
+  bio_avail == 5 ~ 
+    case_when(
+      fe_mg <= 15 ~ 1,
+      fe_mg > 15 & fe_mg <= 16.7 ~ 0.96,
+      fe_mg > 16.7 & fe_mg <= 18.7 ~ 0.93,
+      fe_mg > 18.7 & fe_mg <= 21.4 ~ 0.85,
+      fe_mg > 21.4 & fe_mg <= 23.6 ~ 0.75,
+      fe_mg > 23.6 & fe_mg <= 25.7 ~ 0.65,
+      fe_mg > 25.7 & fe_mg <= 27.8 ~ 0.55,
+      fe_mg > 27.8 & fe_mg <= 30.2 ~ 0.45,
+      fe_mg > 30.2 & fe_mg <= 33.2 ~ 0.35,
+      fe_mg > 33.2 & fe_mg <= 37.3 ~ 0.25,
+      fe_mg > 37.3 & fe_mg <= 45.0 ~ 0.15,
+      fe_mg > 45.0 & fe_mg <= 53.5 ~ 0.08,
+      fe_mg > 53.5 & fe_mg <= 63.0 ~ 0.04,
+      fe_mg > 63.0 ~ 0,
+      TRUE ~ NA_real_
+    ),
+  bio_avail == 10 ~
+    case_when(
+      fe_mg <= 7.5 ~ 1,
+      fe_mg > 7.5 & fe_mg <= 8.4 ~ 0.96,
+      fe_mg > 8.4 & fe_mg <= 9.4 ~ 0.93,
+      fe_mg > 9.4 & fe_mg <= 10.7 ~ 0.85,
+      fe_mg > 10.7 & fe_mg <= 11.8 ~ 0.75,
+      fe_mg > 11.8 & fe_mg <= 12.9 ~ 0.65,
+      fe_mg > 12.9 & fe_mg <= 13.9 ~ 0.55,
+      fe_mg > 13.9 & fe_mg <= 15.1 ~ 0.45,
+      fe_mg > 15.1 & fe_mg <= 16.6 ~ 0.35,
+      fe_mg > 16.6 & fe_mg <= 18.7 ~ 0.25,
+      fe_mg > 18.7 & fe_mg <= 22.5 ~ 0.15,
+      fe_mg > 22.5 & fe_mg <= 26.7 ~ 0.08,
+      fe_mg > 26.7 & fe_mg <= 31.5 ~ 0.04,
+      fe_mg > 31.5 ~ 0,
+      TRUE ~ NA_real_
+  ))) # SOURCE: WHO guidelines on food fortification with micronutrients (2006). Table 7.5, page 158
+
+  return(base_ai_df)
+}
