@@ -42,7 +42,7 @@ rwa_hh_adm <- readRDS("shapefiles/rwa_hh_adm.rds")
 
 # MEAN ADEQUACY RATIO (MAR): 
 mn_mar <- hh_information |> 
-  dplyr::select(iso3, survey, hhid, survey_wgt, res, sep_quintile) |> 
+  dplyr::select(iso3, survey, hhid, survey_wgt, res, res_quintile) |> 
   left_join(rwa_hh_adm, by = "hhid") |>
   left_join(base_ai, by = c("iso3", "survey", "hhid")) |> 
   # Nutrient adequacy ratio (NAR) for each micronutrient:
@@ -59,7 +59,7 @@ mn_mar <- hh_information |>
 # Binarise MAR (inadequate if MAR < 0.75): 
 mn_mar <- mn_mar |> 
   mutate(mar_inadequate = ifelse(mar < 0.75, 1, 0)) |> 
-  dplyr::select(iso3, survey, hhid, res, sep_quintile, adm1, adm2, survey_wgt, mar_inadequate)
+  dplyr::select(iso3, survey, hhid, res, res_quintile, adm1, adm2, survey_wgt, mar_inadequate)
 
 #-------------------------------------------------------------------------------
 
@@ -84,6 +84,14 @@ mar_adm2 <- mn_mar_svy |>
   ungroup() |> 
   mutate(mar_inadequate = round(mar_inadequate * 100, digits = 1))
 
+# Also compute national-level MAR inadequacy for labelling map: 
+national_mn_mar <- mn_mar_svy |> 
+  summarise(mar_inadequate = survey_mean(mar_inadequate, 
+                                         na.rm = TRUE, 
+                                         vartype = NULL)) |> 
+  ungroup() |> 
+  mutate(mar_inadequate = round(mar_inadequate * 100, digits = 1))
+
 # Read in shapefile data: 
 rwa_adm1 <- readRDS("shapefiles/rwa_adm1.rds")
 rwa_adm2 <- readRDS("shapefiles/rwa_adm2.rds") 
@@ -96,7 +104,7 @@ mar_adm2 <- mar_adm2 |>
 # Plot MAR map:
 plot_map(data = mar_adm2,
          col = "mar_inadequate",
-         title = "Mean Adequacy ratio (MAR)",
+         title = paste0("Overall risk of inadequate intake (", national_mn_mar$mar_inadequate, "%)"),
          metric = "% At risk of inadequate intake (MAR < 0.75)", 
          outline_sf = rwa_adm1) 
 
@@ -148,54 +156,100 @@ gtsave(inadequacy_table, "maps/inadequacy_table.png")
 
 # DISAGGREGATION BY URB/RURAL, SEP: 
 
-# Urban: 
-urban_mar <- mn_mar_svy |> 
-  filter(res == "Urban") |>
-  group_by(sep_quintile) |> 
+res_sep_estimates <- mn_mar_svy |> 
+  group_by(res, res_quintile) |> 
   summarise(mar_inadequate = survey_mean(mar_inadequate, 
                                          na.rm = TRUE, 
-                                         vartype = NULL)) |>
+                                         vartype = NULL)) |> 
   ungroup() |> 
   mutate(mar_inadequate = round(mar_inadequate * 100, digits = 1)) |> 
-  # Change class of "sep_quintile" to factor:
-  mutate(sep_quintile = recode(sep_quintile, 
+  # Change class of "res_quintile" to factor:
+  mutate(res_quintile = recode(res_quintile, 
                                `1` = "1 = poorest",
                                `2` = "2",
                                `3` = "3",
                                `4` = "4",
                                `5` = "5 = wealthiest"))
 
-# Rural: 
-rural_mar <- mn_mar_svy |> 
-  filter(res == "Rural") |>
-  group_by(sep_quintile) |> 
-  summarise(mar_inadequate = survey_mean(mar_inadequate, 
-                                         na.rm = TRUE, 
-                                         vartype = NULL)) |>
-  ungroup() |> 
-  mutate(mar_inadequate = round(mar_inadequate * 100, digits = 1)) |> 
-  # Change class of "sep_quintile" to factor:
-  mutate(sep_quintile = recode(sep_quintile, 
-                               `1` = "1 = poorest",
-                               `2` = "2",
-                               `3` = "3",
-                               `4` = "4",
-                               `5` = "5 = wealthiest"))
+ # Prepare wide-format for dumbell plot:
+res_sep_estimates <- res_sep_estimates |> 
+  mutate(res_quintile = factor(res_quintile, levels = c("1 = poorest", "2", "3", "4", "5 = wealthiest"))) |>
+  pivot_wider(names_from = res, values_from = mar_inadequate) |>
+  mutate(diff = abs(Urban - Rural))
 
-# Create geom_point plot: 
-ggplot(data = urban_mar, aes(x = mar_inadequate, y = sep_quintile)) +
-  geom_point(size = 3) +
-  xlim(0, 100) +
-  labs(title = "Urban populations",
-       x = "% At risk of inadequate intake (MAR < 0.75)",
-       y = "Socio-economic quntile")
+# # Urban: 
+# urban_mar <- mn_mar_svy |> 
+#   filter(res == "Urban") |>
+#   group_by(sep_quintile) |> 
+#   summarise(mar_inadequate = survey_mean(mar_inadequate, 
+#                                          na.rm = TRUE, 
+#                                          vartype = NULL)) |>
+#   ungroup() |> 
+#   mutate(mar_inadequate = round(mar_inadequate * 100, digits = 1)) |> 
+#   # Change class of "sep_quintile" to factor:
+#   mutate(sep_quintile = recode(sep_quintile, 
+#                                `1` = "1 = poorest",
+#                                `2` = "2",
+#                                `3` = "3",
+#                                `4` = "4",
+#                                `5` = "5 = wealthiest"))
 
-ggplot(data = rural_mar, aes(x = mar_inadequate, y = sep_quintile)) +
-  geom_point(size = 3) +
-  xlim(0, 100) +
-  labs(title = "Rural populations",
-       x = "% At risk of inadequate intake (MAR < 0.75)",
-       y = "Socio-economic quntile")
+# # Rural: 
+# rural_mar <- mn_mar_svy |> 
+#   filter(res == "Rural") |>
+#   group_by(sep_quintile) |> 
+#   summarise(mar_inadequate = survey_mean(mar_inadequate, 
+#                                          na.rm = TRUE, 
+#                                          vartype = NULL)) |>
+#   ungroup() |> 
+#   mutate(mar_inadequate = round(mar_inadequate * 100, digits = 1)) |> 
+#   # Change class of "sep_quintile" to factor:
+#   mutate(sep_quintile = recode(sep_quintile, 
+#                                `1` = "1 = poorest",
+#                                `2` = "2",
+#                                `3` = "3",
+#                                `4` = "4",
+#                                `5` = "5 = wealthiest"))
+
+# # Create geom_point plot: 
+# ggplot(data = urban_mar, aes(x = mar_inadequate, y = sep_quintile)) +
+#   geom_point(size = 3) +
+#   xlim(0, 100) +
+#   labs(title = "Urban populations",
+#        x = "% At risk of inadequate intake (MAR < 0.75)",
+#        y = "Socio-economic quntile")
+
+# ggplot(data = rural_mar, aes(x = mar_inadequate, y = sep_quintile)) +
+#   geom_point(size = 3) +
+#   xlim(0, 100) +
+#   labs(title = "Rural populations",
+#        x = "% At risk of inadequate intake (MAR < 0.75)",
+#        y = "Socio-economic quntile")
+
+# Dumbell plot for overall MAR: urban vs rural by wealth quintile:
+
+# If diff <5, code as NA (for visualisation purposes only)
+res_sep_estimates <- res_sep_estimates |> 
+  mutate(diff = ifelse(diff < 5, NA, diff))
+
+ggplot(res_sep_estimates) +
+  geom_segment(aes(x = Rural, xend = Urban, y = res_quintile, yend = res_quintile),
+                        color = "gray80", size = 6.5, alpha = 0.7) +
+  geom_text(data = ~ filter(., !is.na(diff)),
+  aes(label = paste("Δ", round(diff, 1), "%"), x = (Rural + Urban) / 2, y = res_quintile),
+  color = "#4a4e4d", fill = "white", family = "Segoe UI Semibold", size = 3) +
+  geom_point(aes(x = Rural, y = res_quintile, color = "Rural"), size = 6) +
+  geom_point(aes(x = Urban, y = res_quintile, color = "Urban"), size = 6) +
+  scale_color_manual(name = "Residence", values = c("Rural" = "#762a83", "Urban" = "#009688")) +
+  scale_x_continuous(limits = c(0, 100), expand = c(0, 0)) +
+  labs(x = "Percentage of households at risk of inadequate intake (MAR < 0.75)", y = "Wealth quintile",
+                # caption = "Source: Rwanda Integrated Household Living Conditions Survey 7 (EICV7), 2023-24",
+                title = ""
+                ) +
+  theme(panel.grid.minor = element_blank(),
+                 legend.position = "right") 
+
+ggsave("figures/overall_mar_dumbell.png", width = 10, height = 7)
 
 
 rm(list = ls())

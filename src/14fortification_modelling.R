@@ -33,6 +33,7 @@ food_consumption <- read_csv("processed_data/rwa_eicv2324_food_consumption.csv")
 fortification_factors <- read_excel("metadata/fortification/fortification_factors.xls", 
                                     sheet = "fortification_factors")
 
+
 # Raw food consumption module: 
 food_cons8b <- read_dta("raw_data/CS_S8B_Food_Expenditure_Consumption.dta")
 conversion_factors <- read_csv("metadata/conversion_factors.csv") |> 
@@ -384,3 +385,10 @@ map_fortification_scenario <- function(scenario_df,
 map_fortification_scenario(edible.oil_scenario, "Scenario 1: Edible oil fortification", "fortification_edible_oil")
 map_fortification_scenario(flour_scenario, "Scenario 2: Wheat and Maize flour fortification", "fortification_flours")
 map_fortification_scenario(all_vehicles_scenario, "Scenario 3: All vehicles fortification", "fortification_all_vehicles")
+
+#-------------------------------------------------------------------------------
+
+# T0 CONTINUE SCRIPT WITH OTHER VISUALISATIONS: 
+# - bivariate maps to show consumption of market acquired vehicles (use data-frame from earlier in the script)
+# - Dumbell plots to show overall MN inadequacy (MAR), baseline vs fortification scenarios
+# - Tabular results - MAR nationally and disaggregated by ADM1, residence and wealth quintile. With ΔMAR for scnarios
