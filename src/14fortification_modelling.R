@@ -31,8 +31,8 @@ rm(list= c("rq_packages", "installed_packages"))
 # READ DATA:
 food_consumption <- read_csv("processed_data/rwa_eicv2324_food_consumption.csv")
 fortification_factors <- read_excel("metadata/fortification/fortification_factors.xls", 
-                                    sheet = "fortification_factors")
-
+                                    sheet = "fortification_factors") |> 
+  dplyr::select(-source)
 
 # Raw food consumption module: 
 food_cons8b <- read_dta("raw_data/CS_S8B_Food_Expenditure_Consumption.dta")
@@ -88,14 +88,14 @@ proportion_market <- food_cons8b |>
   dplyr::select(hhid, s8bq0, proportion_market) |>
   rename(item_code = s8bq0)
 
-rm(cf_vec, food_cons8b)
+rm(cf_vec, food_cons8b, conversion_factors)
 
 #--------------------------------------------------------------------------------
 
 # JOIN FOOD CONSUMPTION, PROPORTION MARKET ACQUIRED, AND FORTIFICATION FACTORS DATAFRAMES:
 vehicle_consumption <- food_consumption |> 
   left_join(proportion_market, by = c("hhid", "item_code")) |>
-  left_join(fortification_factors, by = "item_code") |> 
+  left_join(fortification_factors, by = c("item_code")) |> 
   # Filter to include only fortifiable food vehicles:
   filter(!is.na(vehicle)) |> 
   # Select required variables:
@@ -109,11 +109,11 @@ vehicle_quantities <- vehicle_consumption |>
   group_by(hhid, vehicle) |>
   summarise(quantity_100g = sum(quantity_100g, na.rm = TRUE))
 
-rm(list = setdiff(ls(), c("vehicle_quantities", "afe", "base_ai")))
+rm(list = setdiff(ls(), c("vehicle_quantities", "cflour_quantities", "afe", "base_ai")))
 
 #--------------------------------------------------------------------------------
 
-# MICRONUTIENT CONTENT OF FORTIFIED VEHICLES:
+# READ IN MICRONUTIENT CONTENT OF FORTIFIED VEHICLES:
 vehicle100g_intake <- read_excel("metadata/fortification/fortification_factors.xls", 
                                 sheet = "vehicle100g_intake") |> 
   pivot_longer(
@@ -135,7 +135,7 @@ fortification <- vehicle_quantities |>
 
 #--------------------------------------------------------------------------------
 
-# COMPUTE MICRONUTRIENT INTAKE FROM FORTIFYING VEHICLES:
+# COMPUTE MICRONUTRIENT INTAKE FROM FORTIFYING INDIVIDUAL VEHICLES:
 
 # Edible oil:
 edible.oil_fortification <- fortification |> 
@@ -143,6 +143,11 @@ edible.oil_fortification <- fortification |>
   filter(vehicle == "edible_oil") |> 
   mutate(eo.vita_rae_mcg = coalesce((quantity_100g * vita_rae_mcg) / afe, 0)) |> 
   dplyr::select(hhid, eo.vita_rae_mcg) 
+
+edible.oil_scenario <- base_ai |> 
+  left_join(edible.oil_fortification, by = "hhid") |> 
+  mutate(vita_rae_mcg = vita_rae_mcg + eo.vita_rae_mcg) |> 
+  dplyr::select(-eo.vita_rae_mcg)
 
 # Wheat flour:
 wheat.flour_fortification <- fortification |>
@@ -155,6 +160,21 @@ wheat.flour_fortification <- fortification |>
   )) |>
   dplyr::select(hhid, starts_with("wf."))
 
+wheat.flour_scenario <- base_ai |> 
+  left_join(wheat.flour_fortification, by = "hhid") |> 
+  mutate(
+    vita_rae_mcg = vita_rae_mcg + wf.vita_rae_mcg,
+    thia_mg = thia_mg + wf.thia_mg,
+    ribo_mg = ribo_mg + wf.ribo_mg,
+    niac_mg = niac_mg + wf.niac_mg,
+    vitb6_mg = vitb6_mg + wf.vitb6_mg,
+    folate_mcg = folate_mcg + wf.folate_mcg,
+    vitb12_mcg = vitb12_mcg + wf.vitb12_mcg,
+    fe_mg = fe_mg + wf.fe_mg,
+    zn_mg = zn_mg + wf.zn_mg
+  ) |> 
+  dplyr::select(-starts_with("wf."))
+
 # Maize flour:
 maize.flour_fortification <- fortification |>
   left_join(afe, by = "hhid") |>
@@ -166,55 +186,159 @@ maize.flour_fortification <- fortification |>
   )) |>
   dplyr::select(hhid, starts_with("mf."))
 
-rm(afe)
+maize.flour_scenario <- base_ai |>
+  left_join(maize.flour_fortification, by = "hhid") |> 
+  mutate(
+    vita_rae_mcg = vita_rae_mcg + mf.vita_rae_mcg,
+    thia_mg = thia_mg + mf.thia_mg,
+    ribo_mg = ribo_mg + mf.ribo_mg,
+    niac_mg = niac_mg + mf.niac_mg,
+    vitb6_mg = vitb6_mg + mf.vitb6_mg,
+    folate_mcg = folate_mcg + mf.folate_mcg,
+    vitb12_mcg = vitb12_mcg + mf.vitb12_mcg,
+    fe_mg = fe_mg + mf.fe_mg,
+    zn_mg = zn_mg + mf.zn_mg
+  ) |> 
+  dplyr::select(-starts_with("mf."))
+
+# Composite flours: 
+composite.flour_fortification <- fortification |>
+  left_join(afe, by = "hhid") |>
+  filter(vehicle == "composite_flour") |> 
+  mutate(across(
+    c(vita_rae_mcg, thia_mg, ribo_mg, niac_mg, vitb6_mg, folate_mcg, vitb12_mcg, fe_mg, zn_mg),
+    ~ coalesce((quantity_100g * .x) / afe, 0),
+    .names = "cf.{.col}"
+  )) |>
+  dplyr::select(hhid, starts_with("cf."))
+
+ composite.flour_scenario <- base_ai |>
+  left_join(composite.flour_fortification, by = "hhid") |> 
+  mutate(
+    vita_rae_mcg = vita_rae_mcg + cf.vita_rae_mcg,
+    thia_mg = thia_mg + cf.thia_mg,
+    ribo_mg = ribo_mg + cf.ribo_mg,
+    niac_mg = niac_mg + cf.niac_mg,
+    vitb6_mg = vitb6_mg + cf.vitb6_mg,
+    folate_mcg = folate_mcg + cf.folate_mcg,
+    vitb12_mcg = vitb12_mcg + cf.vitb12_mcg,
+    fe_mg = fe_mg + cf.fe_mg,
+    zn_mg = zn_mg + cf.zn_mg
+  ) |> 
+  dplyr::select(-starts_with("cf."))
+
+# Rice: 
+rice_fortification <- fortification |>
+  left_join(afe, by = "hhid") |>
+  filter(vehicle == "rice") |> 
+  mutate(across(
+    c(vita_rae_mcg, thia_mg, ribo_mg, niac_mg, vitb6_mg, folate_mcg, vitb12_mcg, fe_mg, zn_mg),
+    ~ coalesce((quantity_100g * .x) / afe, 0),
+    .names = "rice.{.col}"
+  )) |>
+  dplyr::select(hhid, starts_with("rice."))
+
+rice_scenario <- base_ai |>
+  left_join(rice_fortification, by = "hhid") |> 
+  mutate(
+    vita_rae_mcg = vita_rae_mcg + rice.vita_rae_mcg,
+    thia_mg = thia_mg + rice.thia_mg,
+    ribo_mg = ribo_mg + rice.ribo_mg,
+    niac_mg = niac_mg + rice.niac_mg,
+    vitb6_mg = vitb6_mg + rice.vitb6_mg,
+    folate_mcg = folate_mcg + rice.folate_mcg,
+    vitb12_mcg = vitb12_mcg + rice.vitb12_mcg,
+    fe_mg = fe_mg + rice.fe_mg,
+    zn_mg = zn_mg + rice.zn_mg
+  ) |> 
+  dplyr::select(-starts_with("rice."))
+
+# Sorghum:
+# ** NO STANDARDS DEVELOPED, THEREFORE NOT POSSIBLE TO MODEL AT PRESENT **
+
+# Cassava flour:
+cassava.flour_fortification <- fortification |>
+  left_join(afe, by = "hhid") |>
+  filter(vehicle == "cassava_flour") |> 
+  mutate(across(
+    c(vita_rae_mcg, thia_mg, ribo_mg, niac_mg, vitb6_mg, folate_mcg, vitb12_mcg, fe_mg, zn_mg),
+    ~ coalesce((quantity_100g * .x) / afe, 0),
+    .names = "cassava.f.{.col}"
+  )) |> 
+  dplyr::select(hhid, starts_with("cassava.f."))
+
+cassava.flour_scenario <- base_ai |>
+  left_join(cassava.flour_fortification, by = "hhid") |> 
+  mutate(
+    vita_rae_mcg = vita_rae_mcg + cassava.f.vita_rae_mcg,
+    thia_mg = thia_mg + cassava.f.thia_mg,
+    ribo_mg = ribo_mg + cassava.f.ribo_mg,
+    niac_mg = niac_mg + cassava.f.niac_mg,
+    vitb6_mg = vitb6_mg + cassava.f.vitb6_mg,
+    folate_mcg = folate_mcg + cassava.f.folate_mcg,
+    vitb12_mcg = vitb12_mcg + cassava.f.vitb12_mcg,
+    fe_mg = fe_mg + cassava.f.fe_mg,
+    zn_mg = zn_mg + cassava.f.zn_mg
+  ) |> 
+  dplyr::select(-starts_with("cassava.f."))
 
 #-------------------------------------------------------------------------------
 
-# FORTIFICATION SCENARIOS:
-# Add apparent intake from fortifying vehicles to baseline apparent intake
+# BIOFORTIFIED FOODS:
 
-# Scenario 1: Edible oil fortification only: 
-edible.oil_scenario <- base_ai |> 
-  left_join(edible.oil_fortification, by = "hhid") |> 
-  mutate(vita_rae_mcg = coalesce(vita_rae_mcg + eo.vita_rae_mcg, vita_rae_mcg)) |> 
-  dplyr::select(-eo.vita_rae_mcg)
+# BEANS
+bean_biofortification <- fortification |>
+  left_join(afe, by = "hhid") |>
+  filter(vehicle == "dry_bean") |> 
+  mutate(across(
+    c(vita_rae_mcg, thia_mg, ribo_mg, niac_mg, vitb6_mg, folate_mcg, vitb12_mcg, fe_mg, zn_mg),
+    ~ coalesce((quantity_100g * .x) / afe, 0),
+    .names = "beans.{.col}"
+  )) |>
+  dplyr::select(hhid, starts_with("beans."))
 
-# Scenario 2: Fortification of wheat flour and milled maize products alone: 
-flour_scenario <- base_ai |> 
-  left_join(wheat.flour_fortification, by = "hhid") |> 
-  left_join(maize.flour_fortification, by = "hhid") |> 
+bean_scenario <- base_ai |>
+  left_join(bean_biofortification, by = "hhid") |> 
   mutate(
-    vita_rae_mcg = coalesce(vita_rae_mcg + wf.vita_rae_mcg + mf.vita_rae_mcg, vita_rae_mcg),
-    thia_mg = coalesce(thia_mg + wf.thia_mg + mf.thia_mg, thia_mg),
-    ribo_mg = coalesce(ribo_mg + wf.ribo_mg + mf.ribo_mg, ribo_mg),
-    niac_mg = coalesce(niac_mg + wf.niac_mg + mf.niac_mg, niac_mg),
-    vitb6_mg = coalesce(vitb6_mg + wf.vitb6_mg + mf.vitb6_mg, vitb6_mg),
-    folate_mcg = coalesce(folate_mcg + wf.folate_mcg + mf.folate_mcg, folate_mcg),
-    vitb12_mcg = coalesce(vitb12_mcg + wf.vitb12_mcg + mf.vitb12_mcg, vitb12_mcg),
-    fe_mg = coalesce(fe_mg + wf.fe_mg + mf.fe_mg, fe_mg),
-    zn_mg = coalesce(zn_mg + wf.zn_mg + mf.zn_mg, zn_mg)
+    vita_rae_mcg = vita_rae_mcg + beans.vita_rae_mcg,
+    thia_mg = thia_mg + beans.thia_mg,
+    ribo_mg = ribo_mg + beans.ribo_mg,
+    niac_mg = niac_mg + beans.niac_mg,
+    vitb6_mg = vitb6_mg + beans.vitb6_mg,
+    folate_mcg = folate_mcg + beans.folate_mcg,
+    vitb12_mcg = vitb12_mcg + beans.vitb12_mcg,
+    fe_mg = fe_mg + beans.fe_mg,
+    zn_mg = zn_mg + beans.zn_mg
   ) |> 
-  dplyr::select(-starts_with("wf."), -starts_with("mf."))
+  dplyr::select(-starts_with("beans."))
 
-# Scenario 3: Fortification of all three vehicles:
-all_vehicles_scenario <- base_ai |> 
-  left_join(edible.oil_fortification, by = "hhid") |> 
-  left_join(wheat.flour_fortification, by = "hhid") |> 
-  left_join(maize.flour_fortification, by = "hhid") |> 
+# SWEET POTATOES
+sweet.potato_biofortification <- fortification |>
+  left_join(afe, by = "hhid") |>
+  filter(vehicle == "sweet_potato") |> 
+  mutate(across(
+    c(vita_rae_mcg, thia_mg, ribo_mg, niac_mg, vitb6_mg, folate_mcg, vitb12_mcg, fe_mg, zn_mg),
+    ~ coalesce((quantity_100g * .x) / afe, 0),
+    .names = "sweetpotato.{.col}"
+  )) |>
+  dplyr::select(hhid, starts_with("sweetpotato."))
+
+sweet.potato_scenario <- base_ai |>
+  left_join(sweet.potato_biofortification, by = "hhid") |> 
   mutate(
-    vita_rae_mcg = coalesce(vita_rae_mcg + eo.vita_rae_mcg + wf.vita_rae_mcg + mf.vita_rae_mcg, vita_rae_mcg),
-    thia_mg = coalesce(thia_mg + wf.thia_mg + mf.thia_mg, thia_mg),
-    ribo_mg = coalesce(ribo_mg + wf.ribo_mg + mf.ribo_mg, ribo_mg),
-    niac_mg = coalesce(niac_mg + wf.niac_mg + mf.niac_mg, niac_mg),
-    vitb6_mg = coalesce(vitb6_mg + wf.vitb6_mg + mf.vitb6_mg, vitb6_mg),
-    folate_mcg = coalesce(folate_mcg + wf.folate_mcg + mf.folate_mcg, folate_mcg),
-    vitb12_mcg = coalesce(vitb12_mcg + wf.vitb12_mcg + mf.vitb12_mcg, vitb12_mcg),
-    fe_mg = coalesce(fe_mg + wf.fe_mg + mf.fe_mg, fe_mg),
-    zn_mg = coalesce(zn_mg + wf.zn_mg + mf.zn_mg, zn_mg)
+    vita_rae_mcg = vita_rae_mcg + sweetpotato.vita_rae_mcg,
+    thia_mg = thia_mg + sweetpotato.thia_mg,
+    ribo_mg = ribo_mg + sweetpotato.ribo_mg,
+    niac_mg = niac_mg + sweetpotato.niac_mg,
+    vitb6_mg = vitb6_mg + sweetpotato.vitb6_mg,
+    folate_mcg = folate_mcg + sweetpotato.folate_mcg,
+    vitb12_mcg = vitb12_mcg + sweetpotato.vitb12_mcg,
+    fe_mg = fe_mg + sweetpotato.fe_mg,
+    zn_mg = zn_mg + sweetpotato.zn_mg
   ) |> 
-  dplyr::select(-eo.vita_rae_mcg, -starts_with("wf."), -starts_with("mf."))
+  dplyr::select(-starts_with("sweetpotato."))
 
-rm(list = setdiff(ls(), c("base_ai", "edible.oil_scenario", "flour_scenario", "all_vehicles_scenario")))
+rm(afe)
 
 #-------------------------------------------------------------------------------
 
@@ -287,56 +411,56 @@ map_fortification_scenario <- function(scenario_df,
   # VITAMIN A: 
   plot_map(data = mn_inadequacy, col = "vita_inadequacy",
            title = paste("Vitamin A — ", scenario_name), metric = "Risk of inadequate intake (%)",
-           add_labels = FALSE, outline_sf = rwa_adm2)
+           add_labels = FALSE, outline_sf = rwa_adm1)
   
   ggsave(paste0("maps/", output_folder, "/vita_inadequacy.png"), width = 8, height = 6)
   
   # THIAMINE:
   plot_map(data = mn_inadequacy, col = "thia_inadequacy",
            title = paste("Thiamine — ", scenario_name), metric = "Risk of inadequate intake (%)",
-           add_labels = FALSE, outline_sf = rwa_adm2)
+           add_labels = FALSE, outline_sf = rwa_adm1)
   
   ggsave(paste0("maps/", output_folder, "/thia_inadequacy.png"), width = 8, height = 6)
   
   # RIBOFLAVIN:
   plot_map(data = mn_inadequacy, col = "ribo_inadequacy",
            title = paste("Riboflavin — ", scenario_name), metric = "Risk of inadequate intake (%)",
-           add_labels = FALSE, outline_sf = rwa_adm2)
+           add_labels = FALSE, outline_sf = rwa_adm1)
   
   ggsave(paste0("maps/", output_folder, "/ribo_inadequacy.png"), width = 8, height = 6)
 
   # NIACIN:
   plot_map(data = mn_inadequacy, col = "niac_inadequacy",
            title = paste("Niacin — ", scenario_name), metric = "Risk of inadequate intake (%)",
-           add_labels = FALSE, outline_sf = rwa_adm2)
+           add_labels = FALSE, outline_sf = rwa_adm1)
   
   ggsave(paste0("maps/", output_folder, "/niac_inadequacy.png"), width = 8, height = 6)
   
   # FOLATE:
   plot_map(data = mn_inadequacy, col = "folate_inadequacy",
            title = paste("Folate — ", scenario_name), metric = "Risk of inadequate intake (%)",
-           add_labels = FALSE, outline_sf = rwa_adm2)
+           add_labels = FALSE, outline_sf = rwa_adm1)
   
   ggsave(paste0("maps/", output_folder, "/folate_inadequacy.png"), width = 8, height = 6)
   
   # VITAMIN B12:
   plot_map(data = mn_inadequacy, col = "vitb12_inadequacy",
            title = paste("Vitamin B12 — ", scenario_name), metric = "Risk of inadequate intake (%)",
-           add_labels = FALSE, outline_sf = rwa_adm2)
+           add_labels = FALSE, outline_sf = rwa_adm1)
   
   ggsave(paste0("maps/", output_folder, "/vitb12_inadequacy.png"), width = 8, height = 6)
 
   # IRON:
   plot_map(data = mn_inadequacy, col = "fe_inadequacy",
            title = paste("Iron — ", scenario_name), metric = "Risk of inadequate intake (%)",
-           add_labels = FALSE, outline_sf = rwa_adm2)
+           add_labels = FALSE, outline_sf = rwa_adm1)
   
   ggsave(paste0("maps/", output_folder, "/fe_inadequacy.png"), width = 8, height = 6)
   
   # ZINC:
   plot_map(data = mn_inadequacy, col = "zn_inadequacy",
            title = paste("Zinc — ", scenario_name), metric = "Risk of inadequate intake (%)",
-           add_labels = FALSE, outline_sf = rwa_adm2)
+           add_labels = FALSE, outline_sf = rwa_adm1)
   
   ggsave(paste0("maps/", output_folder, "/zn_inadequacy.png"), width = 8, height = 6)
   
@@ -374,21 +498,21 @@ map_fortification_scenario <- function(scenario_df,
     data = mar_adm2, col = "mar_inadequate",
     title = paste0("Mean Adequacy Ratio (MAR) — ", scenario_name),
     metric = "% At risk of inadequate intake (MAR < 0.75)",
-    outline_sf = rwa_adm2
+    outline_sf = rwa_adm1
   )
 
   ggsave(paste0("maps/", output_folder, "/mar_inadequacy.png"), width = 8, height = 6)
   invisible(list(mn_inadequacy = mn_inadequacy, mar_adm2 = mar_adm2))
 }
 
-# Example calls:
-map_fortification_scenario(edible.oil_scenario, "Scenario 1: Edible oil fortification", "fortification_edible_oil")
-map_fortification_scenario(flour_scenario, "Scenario 2: Wheat and Maize flour fortification", "fortification_flours")
-map_fortification_scenario(all_vehicles_scenario, "Scenario 3: All vehicles fortification", "fortification_all_vehicles")
+#--------------------------------------------------------------------------------
 
-#-------------------------------------------------------------------------------
-
-# T0 CONTINUE SCRIPT WITH OTHER VISUALISATIONS: 
-# - bivariate maps to show consumption of market acquired vehicles (use data-frame from earlier in the script)
-# - Dumbell plots to show overall MN inadequacy (MAR), baseline vs fortification scenarios
-# - Tabular results - MAR nationally and disaggregated by ADM1, residence and wealth quintile. With ΔMAR for scnarios
+# MAP SCENARIOS: 
+map_fortification_scenario(edible.oil_scenario, "Edible Oil Fortification", "fortification_scenarios/edible_oil")
+map_fortification_scenario(wheat.flour_scenario, "Wheat Flour Fortification", "fortification_scenarios/wheat_flour")
+map_fortification_scenario(maize.flour_scenario, "Maize Flour Fortification", "fortification_scenarios/maize_flour")
+map_fortification_scenario(composite.flour_scenario, "Composite Flour Fortification", "fortification_scenarios/composite_flour")
+map_fortification_scenario(rice_scenario, "Rice Fortification", "fortification_scenarios/rice")
+map_fortification_scenario(cassava.flour_scenario, "Cassava Flour Fortification", "fortification_scenarios/cassava_flour")
+map_fortification_scenario(bean_scenario, "Bean Biofortification", "biofortification_scenarios/iron_beans")
+map_fortification_scenario(sweet.potato_scenario, "Sweet Potato Biofortification", "biofortification_scenarios/sweet_potato")

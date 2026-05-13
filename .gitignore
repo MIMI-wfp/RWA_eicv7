@@ -60,3 +60,7 @@ figures/african_LSFF_convening/
 
 # R project files
 *.Rproj
+
+# PDF documents
+*.pdf
+*.PDF

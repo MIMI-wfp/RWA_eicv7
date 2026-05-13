@@ -251,6 +251,45 @@ ggplot(res_sep_estimates) +
 
 ggsave("figures/overall_mar_dumbell.png", width = 10, height = 7)
 
+# Define the correct order (Q1 poorest at top = last in factor level order for coord flip logic)
+quintile_levels <- c("5 = wealthiest", "4", "3", "2", "1 = poorest")
+
+res_long <- res_sep_estimates %>%
+  select(res_quintile, Rural, Urban) %>%
+  pivot_longer(cols = c(Rural, Urban), names_to = "Residence", values_to = "pct") %>%
+  mutate(
+    res_quintile = factor(res_quintile, levels = quintile_levels),
+    Residence = factor(Residence, levels = c("Rural", "Urban"))
+  )
+
+ggplot(res_long, aes(x = pct, y = res_quintile, fill = Residence)) +
+  geom_col(position = position_dodge(width = 0.65), width = 0.55) +
+  geom_text(
+    aes(label = paste0(round(pct, 0), "%")),
+    position = position_dodge(width = 0.65),
+    hjust = -0.15, size = 3.5, color = "#4a4e4d", family = "Segoe UI Semibold"
+  ) +
+  scale_fill_manual(
+    name = "Residence",
+    values = c("Rural" = "#762a83", "Urban" = "#009688")
+  ) +
+  scale_x_continuous(
+    limits = c(0, 115),
+    breaks = c(0, 25, 50, 75, 100),
+    expand = c(0, 0)
+  ) +
+  labs(
+    x = "Percentage of households at risk of inadequate intake (MAR < 0.75)",
+    y = "Wealth quintile"
+  ) +
+  theme(
+    panel.grid.minor = element_blank(),
+    panel.grid.major.y = element_blank(),
+    legend.position = "top",
+    legend.justification = "left"
+  )
+
+ggsave("figures/overall_mar_bar.png", width = 10, height = 7)
 
 rm(list = ls())
 
