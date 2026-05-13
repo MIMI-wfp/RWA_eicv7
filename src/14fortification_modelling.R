@@ -11,7 +11,7 @@
 # INSTALL AND LOAD PACKAGES:
 
 rq_packages <- c("readr", "tidyverse", "ggplot2", "srvyr", "readxl", "haven",
-                 "wesanderson", "sf")
+                 "wesanderson", "sf", "cowplot", "gt")
 
 installed_packages <- rq_packages %in% rownames(installed.packages())
 if (any(installed_packages == FALSE)) {
@@ -407,62 +407,124 @@ map_fortification_scenario <- function(scenario_df,
   
   mn_inadequacy <- st_as_sf(mn_inadequacy)
 
+  # Also compute national level inadequacy for labelling maps: 
+  national_mn_inadequacy <- svy |>
+    summarise(
+      vita_inadequacy = survey_mean(vita_rae_mcg_inadequate, na.rm = TRUE, vartype = NULL),
+      thia_inadequacy = survey_mean(thia_mg_inadequate, na.rm = TRUE, vartype = NULL),
+      ribo_inadequacy = survey_mean(ribo_mg_inadequate, na.rm = TRUE, vartype = NULL),
+      niac_inadequacy = survey_mean(niac_mg_inadequate, na.rm = TRUE, vartype = NULL),
+      folate_inadequacy = survey_mean(folate_mcg_inadequate, na.rm = TRUE, vartype = NULL),
+      vitb12_inadequacy = survey_mean(vitb12_mcg_inadequate, na.rm = TRUE, vartype = NULL),
+      fe_inadequacy = survey_mean(fe_prob_inad, na.rm = TRUE, vartype = NULL),
+      zn_inadequacy = survey_mean(zn_mg_inadequate, na.rm = TRUE, vartype = NULL)
+    ) |>
+    ungroup() |>
+    mutate(across(everything(), ~ round(.x * 100, 1)))
+
   # Plot maps:
   # VITAMIN A: 
-  plot_map(data = mn_inadequacy, col = "vita_inadequacy",
-           title = paste("Vitamin A — ", scenario_name), metric = "Risk of inadequate intake (%)",
-           add_labels = FALSE, outline_sf = rwa_adm1)
+  vita_map <- plot_map(data = mn_inadequacy, 
+           col = "vita_inadequacy",
+           title = paste0("Vitamin A (", national_mn_inadequacy$vita_inadequacy, "%) — ", scenario_name), 
+           metric = "Risk of inadequate intake (%)",
+           add_labels = FALSE, 
+           outline_sf = rwa_adm1)
+  
+  vita_map
   
   ggsave(paste0("maps/", output_folder, "/vita_inadequacy.png"), width = 8, height = 6)
   
   # THIAMINE:
-  plot_map(data = mn_inadequacy, col = "thia_inadequacy",
-           title = paste("Thiamine — ", scenario_name), metric = "Risk of inadequate intake (%)",
-           add_labels = FALSE, outline_sf = rwa_adm1)
+  thia_map <- plot_map(data = mn_inadequacy, 
+           col = "thia_inadequacy",
+           title = paste0("Thiamine (", national_mn_inadequacy$thia_inadequacy, "%) — ", scenario_name), 
+           metric = "Risk of inadequate intake (%)",
+           add_labels = FALSE, 
+           outline_sf = rwa_adm1)
+  
+  thia_map
   
   ggsave(paste0("maps/", output_folder, "/thia_inadequacy.png"), width = 8, height = 6)
   
   # RIBOFLAVIN:
-  plot_map(data = mn_inadequacy, col = "ribo_inadequacy",
-           title = paste("Riboflavin — ", scenario_name), metric = "Risk of inadequate intake (%)",
-           add_labels = FALSE, outline_sf = rwa_adm1)
+  ribo_map <- plot_map(data = mn_inadequacy, 
+           col = "ribo_inadequacy",
+           title = paste0("Riboflavin (", national_mn_inadequacy$ribo_inadequacy, "%) — ", scenario_name), 
+           metric = "Risk of inadequate intake (%)",
+           add_labels = FALSE, 
+           outline_sf = rwa_adm1)
+  
+  ribo_map
   
   ggsave(paste0("maps/", output_folder, "/ribo_inadequacy.png"), width = 8, height = 6)
 
   # NIACIN:
-  plot_map(data = mn_inadequacy, col = "niac_inadequacy",
-           title = paste("Niacin — ", scenario_name), metric = "Risk of inadequate intake (%)",
-           add_labels = FALSE, outline_sf = rwa_adm1)
+  niac_map <- plot_map(data = mn_inadequacy, 
+           col = "niac_inadequacy",
+           title = paste0("Niacin (", national_mn_inadequacy$niac_inadequacy, "%) — ", scenario_name), 
+           metric = "Risk of inadequate intake (%)",
+           add_labels = FALSE, 
+           outline_sf = rwa_adm1)
+  
+  niac_map
   
   ggsave(paste0("maps/", output_folder, "/niac_inadequacy.png"), width = 8, height = 6)
   
   # FOLATE:
-  plot_map(data = mn_inadequacy, col = "folate_inadequacy",
-           title = paste("Folate — ", scenario_name), metric = "Risk of inadequate intake (%)",
-           add_labels = FALSE, outline_sf = rwa_adm1)
+  folate_map <- plot_map(data = mn_inadequacy, 
+           col = "folate_inadequacy",
+           title = paste0("Folate (", national_mn_inadequacy$folate_inadequacy, "%) — ", scenario_name), 
+           metric = "Risk of inadequate intake (%)",
+           add_labels = FALSE, 
+           outline_sf = rwa_adm1)
+  
+  folate_map
   
   ggsave(paste0("maps/", output_folder, "/folate_inadequacy.png"), width = 8, height = 6)
   
   # VITAMIN B12:
-  plot_map(data = mn_inadequacy, col = "vitb12_inadequacy",
-           title = paste("Vitamin B12 — ", scenario_name), metric = "Risk of inadequate intake (%)",
-           add_labels = FALSE, outline_sf = rwa_adm1)
+  vitb12_map <- plot_map(data = mn_inadequacy, 
+           col = "vitb12_inadequacy",
+           title = paste0("Vitamin B12 (", national_mn_inadequacy$vitb12_inadequacy, "%) — ", scenario_name), 
+           metric = "Risk of inadequate intake (%)",
+           add_labels = FALSE, 
+           outline_sf = rwa_adm1)
+  
+  vitb12_map
   
   ggsave(paste0("maps/", output_folder, "/vitb12_inadequacy.png"), width = 8, height = 6)
 
   # IRON:
-  plot_map(data = mn_inadequacy, col = "fe_inadequacy",
-           title = paste("Iron — ", scenario_name), metric = "Risk of inadequate intake (%)",
-           add_labels = FALSE, outline_sf = rwa_adm1)
+  fe_map <- plot_map(data = mn_inadequacy, 
+           col = "fe_inadequacy",
+           title = paste0("Iron (", national_mn_inadequacy$fe_inadequacy, "%) — ", scenario_name), 
+           metric = "Risk of inadequate intake (%)",
+           add_labels = FALSE, 
+           outline_sf = rwa_adm1)
+  
+  fe_map
   
   ggsave(paste0("maps/", output_folder, "/fe_inadequacy.png"), width = 8, height = 6)
   
   # ZINC:
-  plot_map(data = mn_inadequacy, col = "zn_inadequacy",
-           title = paste("Zinc — ", scenario_name), metric = "Risk of inadequate intake (%)",
-           add_labels = FALSE, outline_sf = rwa_adm1)
+  zn_map <- plot_map(data = mn_inadequacy, 
+           col = "zn_inadequacy",
+           title = paste0("Zinc (", national_mn_inadequacy$zn_inadequacy, "%) — ", scenario_name), 
+           metric = "Risk of inadequate intake (%)",
+           add_labels = FALSE, 
+           outline_sf = rwa_adm1)
+  
+  zn_map
   
   ggsave(paste0("maps/", output_folder, "/zn_inadequacy.png"), width = 8, height = 6)
+
+  grid_plot <- plot_grid(vita_map, thia_map, ribo_map, niac_map, folate_map, vitb12_map, fe_map, zn_map,
+                         ncol = 4)
+  
+  grid_plot
+
+  ggsave(paste0("maps/", output_folder, "/mn_inadequacy_grid.png"), width = 20, height = 8)
   
   # --- Compute overall MARs ---
 
@@ -492,22 +554,29 @@ map_fortification_scenario <- function(scenario_df,
     mutate(mar_inadequate = round(mar_inadequate * 100, 1)) |>
     left_join(rwa_adm2, by = "adm2") |>
     st_as_sf()
+
+  # Also compute MAR nationally for labelling maps:
+  national_mar_inadequacy <- svy2 |>
+    summarise(mar_inadequate = survey_mean(mar_inadequate, na.rm = TRUE, vartype = NULL)) |>
+    ungroup() |>
+    mutate(mar_inadequate = round(mar_inadequate * 100, 1))
   
   # PLOT MAR: 
   plot_map(
     data = mar_adm2, col = "mar_inadequate",
-    title = paste0("Mean Adequacy Ratio (MAR) — ", scenario_name),
+    title = paste0("Mean Adequacy Ratio (MAR) < 0.75 (", national_mar_inadequacy$mar_inadequate, "%) — ", scenario_name),
     metric = "% At risk of inadequate intake (MAR < 0.75)",
     outline_sf = rwa_adm1
   )
 
   ggsave(paste0("maps/", output_folder, "/mar_inadequacy.png"), width = 8, height = 6)
   invisible(list(mn_inadequacy = mn_inadequacy, mar_adm2 = mar_adm2))
+
 }
 
 #--------------------------------------------------------------------------------
 
-# MAP SCENARIOS: 
+# MAP SCENARIOS:
 map_fortification_scenario(edible.oil_scenario, "Edible Oil Fortification", "fortification_scenarios/edible_oil")
 map_fortification_scenario(wheat.flour_scenario, "Wheat Flour Fortification", "fortification_scenarios/wheat_flour")
 map_fortification_scenario(maize.flour_scenario, "Maize Flour Fortification", "fortification_scenarios/maize_flour")
@@ -516,3 +585,104 @@ map_fortification_scenario(rice_scenario, "Rice Fortification", "fortification_s
 map_fortification_scenario(cassava.flour_scenario, "Cassava Flour Fortification", "fortification_scenarios/cassava_flour")
 map_fortification_scenario(bean_scenario, "Bean Biofortification", "biofortification_scenarios/iron_beans")
 map_fortification_scenario(sweet.potato_scenario, "Sweet Potato Biofortification", "biofortification_scenarios/sweet_potato")
+
+#--------------------------------------------------------------------------------
+
+# SUMMARISE SCENARIOS AT NATIONAL LEVEL IN TABULAR FORM:
+
+national_inadequacy_summary <- function(scenario_df, scenario_name, bio_avail_fe = 5) {
+
+  micronutrients <- c("vita_rae_mcg", "folate_mcg", "vitb12_mcg", "zn_mg")
+
+  df <- scenario_df |>
+    left_join(hh_information |> dplyr::select(hhid, survey_wgt), by = "hhid")
+
+  # EAR cut-point inadequacy:
+  for (mn in micronutrients) {
+    ear_value <- allen_ear$ear_value[allen_ear$nutrient == mn]
+    df[[paste0(mn, "_inadequate")]] <- ifelse(!is.na(df[[mn]]) & df[[mn]] < ear_value, 1, 0)
+  }
+
+  # Probability of inadequacy for iron:
+  df <- fe_prob_inadequacy(df, bio_avail = bio_avail_fe)
+
+  # NAR / MAR:
+  df <- df |>
+    mutate(
+      va_nar = pmin(vita_rae_mcg / allen_ear$ear_value[allen_ear$nutrient == "vita_rae_mcg"], 1),
+      fol_nar = pmin(folate_mcg / allen_ear$ear_value[allen_ear$nutrient == "folate_mcg"], 1),
+      vb12_nar = pmin(vitb12_mcg / allen_ear$ear_value[allen_ear$nutrient == "vitb12_mcg"], 1),
+      fe_nar = pmin(fe_mg / allen_ear$ear_value[allen_ear$nutrient == "fe_mg"], 1),
+      zn_nar = pmin(zn_mg / allen_ear$ear_value[allen_ear$nutrient == "zn_mg"], 1)
+    ) |>
+    mutate(
+      mar = rowMeans(across(c(va_nar, fol_nar, vb12_nar, fe_nar, zn_nar)), na.rm = TRUE),
+      mar_inadequate = ifelse(mar < 0.75, 1, 0)
+    )
+
+  svy <- df |> as_survey_design(weights = survey_wgt)
+
+  svy |>
+    summarise(
+      vita_inadequacy = survey_mean(vita_rae_mcg_inadequate, na.rm = TRUE, vartype = NULL),
+      folate_inadequacy = survey_mean(folate_mcg_inadequate, na.rm = TRUE, vartype = NULL),
+      vitb12_inadequacy = survey_mean(vitb12_mcg_inadequate, na.rm = TRUE, vartype = NULL),
+      fe_inadequacy = survey_mean(fe_prob_inad, na.rm = TRUE, vartype = NULL),
+      zn_inadequacy = survey_mean(zn_mg_inadequate, na.rm = TRUE, vartype = NULL),
+      mar_inadequacy = survey_mean(mar_inadequate, na.rm = TRUE, vartype = NULL)
+    ) |>
+    mutate(
+      scenario = scenario_name,
+      across(c(vita_inadequacy, folate_inadequacy, vitb12_inadequacy,
+               fe_inadequacy, zn_inadequacy, mar_inadequacy),
+             ~ round(.x * 100, 1))
+    ) |>
+    dplyr::select(scenario, everything())
+}
+
+# Compute national summaries for all scenarios:
+scenario_summary <- bind_rows(
+  national_inadequacy_summary(base_ai, "Base Case"),
+  national_inadequacy_summary(edible.oil_scenario, "Edible Oil Fortification"),
+  national_inadequacy_summary(wheat.flour_scenario, "Wheat Flour Fortification"),
+  national_inadequacy_summary(maize.flour_scenario, "Maize Flour Fortification"),
+  national_inadequacy_summary(composite.flour_scenario, "Composite Flour Fortification"),
+  national_inadequacy_summary(rice_scenario, "Rice Fortification"),
+  national_inadequacy_summary(cassava.flour_scenario, "Cassava Flour Fortification"),
+  national_inadequacy_summary(bean_scenario, "Bean Biofortification"),
+  national_inadequacy_summary(sweet.potato_scenario, "Sweet Potato Biofortification")
+)
+
+# Produce gt summary table:
+scenario_table <- scenario_summary |>
+  gt() |>
+  cols_label(
+    scenario = "Scenario",
+    vita_inadequacy = "Vitamin A",
+    folate_inadequacy = "Folate",
+    vitb12_inadequacy = "Vitamin B12",
+    fe_inadequacy = "Iron",
+    zn_inadequacy = "Zinc",
+    mar_inadequacy = "MAR < 0.75"
+  ) |>
+  tab_spanner(
+    label   = md("**Households at risk of inadequate dietary micronutrient intake (%) — National level**"),
+    columns = c(vita_inadequacy, folate_inadequacy, vitb12_inadequacy,
+                fe_inadequacy, zn_inadequacy, mar_inadequacy)
+  ) |>
+  tab_style(
+    style     = cell_text(weight = "bold"),
+    locations = cells_column_labels(everything())
+  )
+
+scenario_table
+
+# Save table as image:
+gtsave(scenario_table, "maps/fortification_scenarios/scenario_comparison_table.png")
+
+# Clear environment: 
+rm(list = ls())
+
+################################################################################
+################################# END OF SCRIPT ################################
+################################################################################
